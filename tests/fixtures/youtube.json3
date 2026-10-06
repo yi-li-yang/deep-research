@@ -1,0 +1,6 @@
+{"wireMagic": "pb3", "events": [
+  {"tStartMs": 0, "dDurationMs": 2000, "segs": [{"utf8": "hello"}, {"utf8": " everyone", "tOffsetMs": 480}]},
+  {"tStartMs": 2000, "aAppend": 1, "segs": [{"utf8": "\n"}]},
+  {"tStartMs": 2100, "dDurationMs": 3000, "segs": [{"utf8": "welcome  to"}, {"utf8": " the review"}]},
+  {"tStartMs": 61000, "dDurationMs": 3000}
+]}
