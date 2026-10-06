@@ -96,7 +96,7 @@ An independent agent wrote 24 hard questions that the briefings never saw. A jud
 | searching the web for every question | 9.0 | 5 |
 
 - **A large gain over Claude's own knowledge.** `/expertise` beat answering from memory on 23 of 24 questions.
-- **No gain over thorough per-question search.** The 0.3-point gap is within noise, and a second blind judge found the same. `/expertise` made more confident errors, mostly by trusting its briefing where it should have re-checked, so the skill now treats the briefing as a starting point, not a boundary.
+- **No gain over thorough per-question search.** The 0.3-point gap is within noise, and a second blind judge found the same. The first judge also counted more confident errors for `/expertise` (11 against 5; the second judge found 7 against 6). About half came from trusting the briefing where it should have re-checked, so the skill now treats the briefing as a starting point, not a boundary.
 - **The briefing alone carries most of the gain.** With no web access at all, Claude with the briefing scored 7.5, against 4.3 from memory and 9.2 with search (second judge).
 - **Briefings are mostly right, not always.** Audits of 416 claims found 87% correct, 3% wrong and 5% cited to the wrong source. The examples have been corrected.
 - **Building one is expensive.** It took 1.1–1.7 million tokens of agent work, about five times what the web-searching Claude spent on all eight questions. Afterwards, answers needed 44% fewer web lookups.
