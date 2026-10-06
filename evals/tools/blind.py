@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Shuffle the three arms' answers per question so the judge can't tell which arm wrote which.
+"""Shuffle the arms' answers to each question so the judge can't tell which arm wrote which.
 
     python3 blind.py <topic-dir> [--seed N] [--arms A0,A,B] [--out blind]
 
