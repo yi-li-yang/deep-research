@@ -40,6 +40,7 @@ You already know most topics well. This skill closes the gap where you don't: wh
 
 3. **Patch: write the briefing.** Only you write it.
    - Include only what would change what a fresh Claude believes or knows.
+   - Compress the wording, not the meaning. Keep each claim's scope and qualifiers ("on most events", "per the docs"); don't sharpen them into "always" or "never".
    - Keep it one consistent picture of now: when a claim is superseded, replace it and note the change in the Log.
    - Keep it short enough to absorb in a few minutes. Prune as you add.
 
