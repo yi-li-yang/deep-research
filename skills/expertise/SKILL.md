@@ -42,6 +42,7 @@ You already know most topics well. This skill closes the gap where you don't: wh
    - Include only what would change what a fresh Claude believes or knows.
    - Compress the wording, not the meaning. Keep each claim's scope and qualifiers ("on most events", "per the docs"); don't sharpen them into "always" or "never".
    - Cite each claim to the source that actually states it, not to the nearest source in its paragraph.
+   - For facts that perish within days (stock, prices, live statistics), record where to check them, with the value as of its date.
    - Keep it one consistent picture of now: when a claim is superseded, replace it and note the change in the Log.
    - Keep it short enough to absorb in a few minutes. Prune as you add.
 
@@ -51,7 +52,10 @@ Then tell the user in a few lines:
 - what remains unknown
 - where the briefing is saved
 
-Continue the conversation using the briefing.
+Continue the conversation using the briefing as a prior, not a boundary:
+- Re-check anything time-sensitive that an answer hinges on: a price, a stock level, a live statistic, a version, a number or a status.
+- Never read the briefing's silence as evidence that something doesn't exist.
+- Where the briefing and a primary source disagree, trust the primary source, and patch the briefing.
 
 **Refreshing.** When the user invokes this skill on a topic that already has a briefing, run the same loop. The briefing is your prior, and the probe asks what changed since its `verified` date, re-checking the claims most likely to have moved. Treat any claim dated after `verified` as unverified. Only a probe updates `verified`.
 
