@@ -41,6 +41,8 @@ All arms are told:
 - cite sources where they have them
 - don't describe their process, tools, briefing, or knowledge cutoff, so answers are harder to tell apart
 
+B reads only the finished briefing. A real `/expertise` conversation also has the research agents' reports in context, so B is closest to a later conversation that loads a saved briefing.
+
 ## Blinding and judging
 
 - `tools/blind.py` shuffles the three answers to each question with a fixed seed and labels them Answer 1, 2 and 3. The mapping is kept in `blind-key.json`, which the judge never sees.
@@ -90,9 +92,37 @@ Reported separately:
 4. **Build cost not justified** by the quality gain.
 5. **The skill run skipping its own steps,** such as no written prior or no research agents.
 
+## Added after the pre-registered run
+
+These were designed after the pre-registered results were known. They help explain the main result but don't replace it.
+
+| Arm | Setup | Why |
+|---|---|---|
+| **B0** | The briefing in context, no tools at all | Separates what the briefing carries from what live search adds. It is also what happens whenever Claude has the briefing but doesn't search. |
+| **B1** | Same as B, but with the answer-time guidance written into SKILL.md after B's losses were diagnosed | The one fix-and-retest round the plan allowed |
+
+- **Second blind judging, four arms.** A fresh judge per topic scored A0, A, B and B0 together (`blind4.md`, `blind4-key.json`, `judge4.json`). Because it re-scores A0, A and B, it also measures how far two independent judges agree (`tools/agree.py`).
+- **Retest judging.** A third fresh judge per topic scored A, B and B1 together (`blind-retest.md`, `blind-retest-key.json`, `judge-retest.json`).
+- B0 and B1 read each briefing exactly as B saw it, archived at `build/<topic>/briefing-as-evaluated.md`. The copies in `examples/` were corrected later from the audits.
+
+B was told: "Read it first and use it throughout", and "You may use WebSearch and WebFetch as you normally would, for example where the briefing marks something as unknown or likely to have changed." That wording may itself have steered B toward the briefing and away from search. B1 was told instead, as SKILL.md now says:
+
+> Use the briefing as a prior, not a boundary:
+> - Re-check live anything time-sensitive that an answer hinges on, such as current stock, prices, live statistics, or a specific version, number or status.
+> - Never read the briefing's silence as evidence that something doesn't exist.
+> - Where the briefing and a primary source disagree, trust the primary source.
+
+## Running notes
+
+- **Search budget.** This environment caps WebSearch at 200 calls per turn, shared by every agent launched in that turn. Each arm that used the web was therefore launched in its own turn. Each recorded whether any search was refused for budget reasons; none was.
+- **Timing.** A0, A and B answered on 2026-10-06 between about 17:30 and 18:20 UTC, B0 by 18:40, and B1 from about 18:55. League of Legends patch 26.20's notes were published at about 18:00 UTC, inside that window, so League judges were told to accept the clearly labelled preview values or the final notes.
+
 ## Known limitations
 
 - **Small sample.** 24 questions show direction and rough size, not a precise effect.
 - **Same model family.** The judge and the answerers share a model family. Blinding, checking claims against sources, and an independent answer key limit judge bias but cannot remove it.
 - **Topic 1's orchestrator wasn't blind to the subject.** It had read Claude Code documentation earlier in the same session while designing the skill. Its prior came from a fresh agent with no tools, and its research came from fresh agents, but its choice of research angles may have benefited from that reading. Topics 2 and 3 had no such exposure.
 - **B was built with the parallel research team (the Claude Code path).** claude.ai runs the same loop one thread at a time, and was not evaluated here.
+- **The baseline searched diligently.** Arm A was told the date, asked to answer as of today, and given web tools. It made 11–58 searches and 35–76 fetches per topic. Whether Claude searches that thoroughly in everyday use was not measured; A0 is the other extreme.
+- **The retest ran later and was not pre-registered.** B1 answered about an hour after A and B, and its guidance was written after seeing B's losses. Treat it as evidence about the fix, not as a fresh test of the skill.
+- **Contamination, retest only.** Topic 1's questions, key and pre-registered answers were already on the public branch when B1 ran with web access. B1 was told not to open other files, and a branch pushed an hour earlier is unlikely to be in any search index, but it was possible in principle.
