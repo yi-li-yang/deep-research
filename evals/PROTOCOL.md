@@ -24,6 +24,8 @@ A separate agent per topic wrote 8 realistic user questions, 24 in total. Each s
 
 The writer also produced an answer key with sources, for the judge only. The orchestrator, who built the briefings, did not open the questions or the key until every briefing was final, so no briefing could be tailored to the test.
 
+Contamination control: this repository is public, and arm A searches the web. The questions, answer keys, briefings and answers were therefore kept out of the public repository until every arm had finished answering, so no arm could find them online.
+
 ## Arms
 
 Each arm is one fresh agent, running the same model. It answers a topic's 8 questions in order, as one conversation.
