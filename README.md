@@ -23,10 +23,10 @@ Searching the web as each question comes up only partly fixes this. Every answer
 
 - **A research team, not a search box.** Several agents research in parallel, each on a different angle: what changed, what practitioners know, what's disputed, what other-language communities say. They cover in minutes what would take you hours, and go deeper than a single search. The findings are digested into one briefing, so every answer in the conversation draws on them.
 - **Aimed at Claude's blind spots.** Claude first writes down what it already believes, then sends the agents after the parts most likely to be wrong, instead of re-reading what it already knows. Deep-research tools write a report for *you*; this writes a correction for *Claude*.
-- **It remembers.** The briefing is saved. The next conversation on the topic starts current, and a refresh only checks what changed since the last one.
+- **It remembers.** The briefing is saved. Run `/expertise` on the same topic in a later conversation and Claude starts from that briefing, checking only what changed since it was last verified.
 - **Honest about its edges.** Every claim carries its source and date. What can't be verified is written down as *unknown*, so Claude stops guessing there.
 - **It learns from you.** When you correct Claude or share what you know, it goes into the briefing, marked as yours.
-- **Tiny and keyless.** One instruction file and no API keys or servers. It works in Claude Code and on claude.ai.
+- **Tiny and keyless.** One instruction file plus an optional video script; no API keys or servers. It works in Claude Code and on claude.ai.
 
 ## How it works
 
@@ -75,7 +75,7 @@ Or, inside a session: `/plugin install expertise --marketplace yi-li-yang/deep-r
 
 **claude.ai**
 
-Download this repository, zip the `skills/expertise` folder, and upload the zip in the Skills section of claude.ai's settings. Code execution must be enabled. Once uploaded, the skill also follows you into Claude Code sessions where you sign in with the same account.
+Download this repository, zip the `skills/expertise` folder, and upload the zip under **Customize → Skills** on claude.ai. Code execution must be enabled. Once uploaded, the skill also follows you into Claude Code sessions where you sign in with the same account.
 
 **Manual**
 
@@ -93,7 +93,8 @@ Start a conversation with the topic you're about to work on:
 
 Claude reports what differs from what it believed, how confident the picture is, and what remains unknown. Then it carries on as the expert. Invoke it again on the same topic later to refresh: it reuses the saved briefing and only checks what changed.
 
-- **Where briefings live.** In Claude Code, briefings are saved in `~/.claude/briefings/`, or in your project's `briefings/` folder if it has one. Each is a plain markdown file you can read, edit, or share. On claude.ai, files don't persist between conversations: download the briefing and attach it next time, or add it to a Project.
+- **Where briefings live.** In Claude Code, briefings are saved in `~/.claude/briefings/`, or in your project's `briefings/` folder if it already holds briefings, and Claude tells you the path. Each is a plain markdown file you can read, edit, commit or share. On claude.ai, files don't persist between conversations: download the briefing and attach it next time, or add it to a Project.
+- **Permissions.** Research uses web search and web fetch. In auto mode, the default in current Claude Code, it runs without prompts; otherwise approve WebSearch and WebFetch when asked, or allow them in `/permissions`.
 - **Video.** Transcripts need [yt-dlp](https://github.com/yt-dlp/yt-dlp): `python3 -m pip install --user yt-dlp`. Without it, Claude records videos as pointers instead.
 
 ## Limits
