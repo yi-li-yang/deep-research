@@ -1,0 +1,92 @@
+## Checked beliefs
+- **CHANGED: config shape** → The `hooks` → event → `[{matcher, hooks:[…]}]` shape is unchanged. Handlers now also take `args` (exec form, no shell; 2.1.139, May 11 2026), `shell` (bash/powershell), `if` (a permission-rule filter such as `Bash(git *)`, tool events only; 2.1.85, Mar 26 2026), `statusMessage`, `async`, `asyncRewake` and `once`. — [hooks ref](https://code.claude.com/docs/en/hooks), [changelog](https://code.claude.com/docs/en/changelog) — Oct 2026
+- **CHANGED: "matchers are regexes over tool names"** → Evaluation is three-way:
+  - `*`, `""` or omitted matches everything.
+  - Only letters, digits, `_`, `-`, spaces, `,`, `|` → exact name or list.
+  - Anything else → unanchored JS regex, so `Edit.*` also matches `NotebookEdit`.
+  - Hyphenated names became exact-match in 2.1.195 (Jun 26 2026), so `mcp__brave-search` now matches nothing. Use `mcp__brave-search__.*`.
+  - Plugin MCP tools are named `mcp__plugin_<plugin>_<server>__<tool>`. Each event matches a different field. — [hooks ref](https://code.claude.com/docs/en/hooks) — Oct 2026
+- **CONFIRMED: plugins ship `hooks/hooks.json`** → Also the manifest `hooks` key. A `modules` key in that file makes the plugin a mod. — [plugin components](https://code.claude.com/docs/en/plugins/components) — Oct 2026
+- **CHANGED: event list** → There are now 33 events: SessionStart, Setup, UserPromptSubmit, UserPromptExpansion, PreToolUse, PermissionRequest, PermissionDenied, PostToolUse, PostToolUseFailure, PostToolBatch, Notification, MessageDisplay, SubagentStart/Stop, TaskCreated, TaskCompleted, Stop, StopFailure, TeammateIdle, InstructionsLoaded, ConfigChange, CwdChanged, DirectoryAdded, FileChanged, WorktreeCreate/Remove, PreCompact/PostCompact, PreModelSwitch/PostModelSwitch (2.1.251, Aug 28 2026), Elicitation/ElicitationResult, SessionEnd. — [hooks ref](https://code.claude.com/docs/en/hooks) — Oct 2026
+- **WRONG: default timeout 60s** → It is 600s for command/http/mcp_tool since 2.1.3 (Jan 9 2026). Exceptions:
+  - 30s on UserPromptSubmit and Pre/PostModelSwitch; 10s on MessageDisplay.
+  - prompt 30s; agent 60s.
+  - SessionEnd hooks share a 1.5s budget, raisable to 60s or via `CLAUDE_CODE_SESSIONEND_HOOKS_TIMEOUT_MS`.
+  - A timed-out PreToolUse settings hook fails open; Agent SDK callback hooks fail closed. — [hooks ref](https://code.claude.com/docs/en/hooks) — Oct 2026
+- **CONFIRMED with nuance: I/O and exit codes** → Exit 1 does not block (the top gotcha).
+  - JSON is now read on every exit code; with valid JSON the exit code is ignored, except that exit 2 always blocks.
+  - Exit 2 differs by event: PermissionRequest ignores it, and on UserPromptSubmit the stderr goes to the user, not to Claude.
+  - Hooks run in parallel. Identical handlers across settings files run once. One hook's deny doesn't stop sibling hooks. When several return `updatedInput`, the last to finish wins. — [hooks ref](https://code.claude.com/docs/en/hooks), [guide](https://code.claude.com/docs/en/hooks-guide) — Oct 2026
+- **CHANGED: JSON output** →
+  - `suppressOutput` is now a no-op. `terminalSequence` (OSC notifications) was added in 2.1.141 (May 13 2026).
+  - Output over 10k characters is spilled to a file (2.1.89, Apr 1 2026).
+  - PreToolUse adds `defer` (`-p` only; 2.1.89) and `additionalContext`. Precedence is deny > defer > ask > allow, and "allow" never overrides deny/ask rules.
+  - Plain stdout becomes context on UserPromptSubmit, UserPromptExpansion, SessionStart and PostModelSwitch.
+  - PostToolUse gained `updatedToolOutput` for all tools (2.1.121, Apr 28 2026). — [hooks ref](https://code.claude.com/docs/en/hooks) — Oct 2026
+- **CHANGED: Stop `decision:block` + `stop_hook_active`** → Still true, but there is now a hard cap: after 8 consecutive continuations with no tool call, the turn ends (2.1.143, May 15 2026). `CLAUDE_CODE_STOP_HOOK_BLOCK_CAP` raises it. `hookSpecificOutput.additionalContext` continues the turn without an error label (2.1.163, Jun 4 2026). `/goal` is a built-in session-scoped prompt Stop hook. — [changelog](https://code.claude.com/docs/en/changelog)
+- **CONFIRMED: later additions** →
+  - `updatedInput`: 2.0.10, Oct 8 2025.
+  - Prompt hooks: 2.0.30, Oct 30 2025.
+  - Skill and agent frontmatter hooks: 2.1.0, Jan 7 2026.
+  - `CLAUDE_ENV_FILE`: now available to SessionStart, Setup, CwdChanged and FileChanged hooks.
+- **WRONG: config snapshotted at startup** →
+  - Settings edits hot-reload (1.0.90, Aug 25 2025).
+  - `/hooks` is now a read-only browser, grouped by event since 2.1.286 (Sep 30 2026). VS Code has an editable Hooks dialog (2.1.269).
+  - `disableAllHooks` exists, but a non-managed copy can't disable managed hooks. It also stops statusLine, fileSuggestion and user-installed mods. — [settings ref](https://code.claude.com/docs/en/settings-reference) — Oct 2026
+- **CONFIRMED: vague memories** →
+  - Setup: 2.1.10, Jan 17 2026; fires only with `--init-only` or `-p --init/--maintenance`.
+  - TeammateIdle and TaskCompleted: 2.1.33, Feb 6 2026.
+  - PostToolUseFailure: existed by Apr 2026.
+  - `async`: existed by Jan 2026.
+  - `type:"agent"`: still marked "experimental".
+
+## New findings
+- **Five handler types: command, http (2.1.63, Feb 28 2026), mcp_tool (2.1.118, Apr 23 2026), prompt, agent.**
+  - SessionStart and Setup accept only command and mcp_tool. mcp_tool hooks are skipped at launch because servers aren't connected yet.
+  - prompt and agent hooks work on only 12 decision events. PermissionRequest takes no agent hooks (2.1.280).
+  - Prompt hooks return `{ok, reason, impossible}`; the hook config can set `continueOnBlock`. — [hooks ref](https://code.claude.com/docs/en/hooks)
+- **`once`** is honored only in skill frontmatter and ignored in settings and agent files.
+- **`async`** is command-only and has no timeout. Its `additionalContext`/`systemMessage` arrive on the next turn, it can't block, and it is killed at `-p` teardown. **`asyncRewake`** wakes an idle Claude on exit 2. — [hooks ref](https://code.claude.com/docs/en/hooks)
+- **Mods ("function hooks")** launched in 2.1.287 (Oct 1 2026; Desktop 2.1.286). The early-access flag `CLAUDE_CODE_ENABLE_FUNCTION_HOOKS` is now ignored. — [mods overview](https://code.claude.com/docs/en/plugins/mods/overview), [reference](https://code.claude.com/docs/en/plugins/mods/reference)
+  - A mod is a JS/TS module listed under `modules` in `hooks/hooks.json`, exporting `register(on)`. Hooks are middleware: `on('tool.call', {tool:'Bash'}, async ($, e, next) => …)`.
+  - Events include tool.call/tool.check, prompt.submit, turn.step, session.* and ui.render. Settings-hook events are wrapped as `classic.<Event>`.
+  - A mod can draw panes, a band above the prompt, a status line (`$.ui.status`) and toasts, and restyle the spinner and tool rows.
+  - Each hook gets a 10s limit; a failing hook is skipped (fails open) unless it has a `.catch`.
+  - Mods hot-reload with `--plugin-dir` and are not sandboxed. Built-in examples: `/diff`, the AGENTS.md loader, and the `sec-default` guard.
+  - Settings hooks are not deprecated.
+- **Ordering with mods.** Managed-settings PreToolUse hooks run before any mod, and their blocks are final. Other PreToolUse hooks run after the last mod. A mod's `tool.check` can override non-managed hook blocks and ask rules. Deny rules hold against it only where the guard loads (managed machines, Team/Enterprise). — [mods events](https://code.claude.com/docs/en/plugins/mods/events), [permissions](https://code.claude.com/docs/en/permissions)
+- **Managed settings.**
+  - Hooks merge across levels.
+  - `allowManagedHooksOnly` blocks user, project, local, plugin and agent-frontmatter hooks. SDK hooks and plugins force-enabled by managed settings still run.
+  - Server-managed hooks need a security-approval dialog in interactive sessions.
+  - `allowedHttpHookUrls` and `httpHookAllowedEnvVars` restrict HTTP hooks.
+  - ConfigChange hooks can't block `policy_settings` changes and don't fire on server-managed refresh.
+  - Mod controls: `allowManagedModsOnly`, `prependPlugins`/`appendPlugins`. — [settings ref](https://code.claude.com/docs/en/settings-reference), [server-managed](https://code.claude.com/docs/en/server-managed-settings), [mods admin](https://code.claude.com/docs/en/plugins/mods/admin)
+- **Cloud sessions and routines.**
+  - `~/.claude/settings.json` is not read, so user hooks don't run.
+  - Repo `.claude/settings.json` hooks load only in single-repo sessions, not multi-repo sessions or Projects threads.
+  - Plugins the repo enables are not installed.
+  - Server-managed hooks run, except in Claude Tag sessions.
+  - Self-hosted runners also run hooks seeded from the host.
+  - `CLAUDE_CODE_REMOTE=true` lets a hook scope itself to cloud runs.
+  - Routines are full cloud sessions, so the same rules apply. — [cloud envs](https://code.claude.com/docs/en/cloud-environments), [routines](https://code.claude.com/docs/en/routines)
+- **Background and scheduled sessions.**
+  - UserPromptSubmit also fires on `/loop`/cron firings, background-subagent reports and cross-session messages.
+  - Stop input carries `background_tasks` and `session_crons` (2.1.145, May 19 2026).
+  - Notification fires `agent_needs_input`/`agent_completed` for background sessions (2.1.198, Jul 1 2026).
+  - PermissionRequest hooks run where no prompt is possible; if no hook decides, the call is denied.
+  - WorktreeCreate replaces git for background-session isolation.
+- **Trust.** Interactive sessions hold back all settings-file hooks, including user hooks, until the trust dialog is accepted. `-p` and SDK sessions treat the folder as trusted, so repo hooks run. Use `--bare` or `--settings '{"disableAllHooks":true}'`. Project subagent hooks have required trust since 2.1.218 (Jul 22 2026).
+
+## Practitioner pitfalls
+- A missing script or wrong path gives a non-blocking error, so the gate is silently disabled. Profile `echo`s before the JSON make it plain text, and misplaced fields are silently ignored. — [guide](https://code.claude.com/docs/en/hooks-guide)
+- An array matcher under PreToolUse or PermissionRequest drops every hook in that file ([docs](https://code.claude.com/docs/en/debug-your-config)). A [practitioner (Aug 2026)](https://www.alexdunlop.com/writing/claude-code-hook-not-firing) says any schema-invalid entry does this (shaky).
+- A PostToolUse `Edit|Write` matcher misses writes done through Bash. `@`-file references bypass PreToolUse Read hooks.
+- **Contested:** the docs say PreToolUse/PostToolUse fire inside subagents with `agent_id`. [Issue #34692](https://github.com/anthropics/claude-code/issues/34692) (Mar 2026, v2.1.76) reported they don't and was closed "not planned." Test both paths.
+- The same practitioner article says PermissionRequest blocks on exit 2 and that exit 2 ignores JSON. Both contradict the current docs; treat them as stale. The SEO-style guides (e.g. [pixelmojo corrections, Oct 2 2026](https://www.pixelmojo.io/blogs/claude-code-hooks-production-quality-ci-cd-patterns)) admit earlier errors. Mods coverage (e.g. [rotecodefraktion, Oct 4 2026](https://www.rotecodefraktion.de/en/blog/claude-code-mods/)) mostly echoes Anthropic's docs. It adds that pattern-matching guards are easy to bypass.
+
+## Looked for but couldn't find
+- Changelog entries that introduce `async`/`asyncRewake`, PostToolUseFailure, UserPromptExpansion, PostToolBatch or agent hooks, or that make `/hooks` read-only.
+- Any `type:"function"` settings hook. "Function hooks" exist only as mods.
+- Hook docs specific to routines or Desktop scheduled tasks. The routine rules above are inferred from the cloud-session rules.
+- Independent confirmation that the subagent hook gap is fixed.

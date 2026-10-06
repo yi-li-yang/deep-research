@@ -1,0 +1,103 @@
+## Checked beliefs
+- CONFIRMED: Open-sourced Nov 2024; JSON-RPC 2.0 → unchanged in the current revision. [spec changelog](https://modelcontextprotocol.io/specification/2026-07-28/changelog), as of 2026-07-28.
+- CHANGED: stdio + Streamable HTTP, with HTTP+SSE deprecated → these are still the only two standard transports, but Streamable HTTP was reworked:
+  - no sessions and no `Mcp-Session-Id`
+  - no GET stream and no SSE resumability
+  - `Mcp-Method`/`Mcp-Name` headers are now required
+  
+  HTTP+SSE is now formally "Deprecated" under a new feature-lifecycle policy. The roadmap aims for "HTTP over stdio" as a single transport model. [changelog](https://modelcontextprotocol.io/specification/2026-07-28/changelog), [roadmap](https://modelcontextprotocol.io/development/roadmap), as of 2026-07-28 and 2026-08-22.
+- CHANGED: revisions ran through 2025-11-25 and a 2026 one was likely → **the current revision is 2026-07-28** (release candidate 2026-05-21). Simon Willison informally calls it "MCP 2.0". [release post](https://blog.modelcontextprotocol.io/posts/2026-07-28/), [versioning](https://modelcontextprotocol.io/specification/versioning), as of 2026-07-28. What changed:
+  - **Stateless core:** the `initialize` handshake and `ping` are gone. Version, capabilities and clientInfo travel in every request's `_meta`, and servers must implement `server/discover`.
+  - **Notifications:** `subscriptions/listen` replaces the GET stream and `resources/subscribe`.
+  - **Multi Round-Trip Requests:** the server returns `resultType: "input_required"` and the client retries with `inputResponses`. This replaces server-initiated sampling, elicitation and roots requests.
+  - **Caching:** list results carry `ttlMs`/`cacheScope`.
+  - **Tasks** moved out of core into the `io.modelcontextprotocol/tasks` extension (poll with `tasks/get`, new `tasks/update`).
+  - **URL elicitation:** `elicitationId` and the completion notification were removed.
+  - **Deprecations:** Roots, Sampling and Logging. Dynamic Client Registration (DCR) is deprecated in favour of Client ID Metadata Documents (CIMD).
+  - **Auth and policy:** RFC 9207 `iss` validation is required, and deprecations get a 12-month minimum window.
+  - **SDKs:** TypeScript, Python, Go and C# support it; TypeScript and Python moved to v2.
+- CONFIRMED: donated to the Linux Foundation's Agentic AI Foundation (AAIF) on 2025-12-09, co-founded by Anthropic, Block and OpenAI. Technical governance is unchanged. Den Delimarsky joined David Soria Parra as Lead Maintainer on 2026-04-08. AAIF now also lists A2A, agentgateway and Agent Router as projects. [MCP blog](https://blog.modelcontextprotocol.io/posts/2025-12-09-mcp-joins-agentic-ai-foundation/), [AAIF projects](https://aaif.io/projects).
+- CONFIRMED: the MCP Registry is still "currently in preview". [registry docs](https://modelcontextprotocol.io/registry/about), as of Oct 2026.
+- CONFIRMED and expanded: MCP Apps (`io.modelcontextprotocol/ui`) became the first official extension on 2026-01-26. The official extensions now also include Tasks, OAuth Client Credentials, Enterprise-Managed Authorization and **Skills over MCP** (SEP-2640, Final; skills are served as `skill://` resources). [Apps post](https://blog.modelcontextprotocol.io/posts/2026-01-26-mcp-apps/), [extensions](https://modelcontextprotocol.io/extensions/overview).
+- CONFIRMED: `claude mcp add --transport/--scope`, `.mcp.json` approval, `${VAR:-default}`, `/mcp` and `claude mcp serve` all still work as believed. [Claude Code MCP docs](https://code.claude.com/docs/en/mcp), [changelog](https://code.claude.com/docs/en/changelog). Added since:
+  - a `ws` (WebSocket) server type, settable only through `add-json` or `.mcp.json`; it is not a standard MCP transport
+  - `claude mcp login/logout` (v2.1.186, 2026-06-22) and `/mcp reconnect all` (v2.1.284)
+  - `.mcp.json` approvals committed to the repo are ignored until you trust the workspace (v2.1.196, 2026-06-29)
+  - credential variables such as `ANTHROPIC_API_KEY` read as empty in a remote server's `url`/`headers`
+- CONFIRMED: tools are named `mcp__<server>__<tool>`; plugin servers use `mcp__plugin_<plugin>_<server>__<tool>`. Prompts appear as `/server:prompt (MCP)` or `/mcp__server__prompt`.
+- CONFIRMED: `MAX_MCP_OUTPUT_TOKENS` defaults to 25k, with a warning at 10k. [env vars](https://code.claude.com/docs/en/env-vars). Also:
+  - Text results over 50k characters are saved to disk. A server can raise one tool's limit with `_meta["anthropic/maxResultSizeChars"]`, up to 500k (v2.1.91, 2026-04-02).
+  - `MCP_TIMEOUT` is the startup timeout and defaults to 30s. `MCP_TOOL_TIMEOUT` defaults to about 28h.
+  - The idle timeout is 5 min for remote servers and 30 min for stdio.
+  - Calls in the main conversation that run over 2 minutes move to the background (v2.1.212, 2026-07-17).
+- CHANGED: Tool Search defers tools once they reach about 10% of context → that 10% auto mode became the default on 2026-01-14 (v2.1.7). The default now **defers all MCP tools**: only tool names and server instructions load at start. [Claude Code MCP docs](https://code.claude.com/docs/en/mcp). This was the default by 2026-05-25 per a [third-party post](https://startdebugging.net/2026/05/how-to-reduce-the-number-of-mcp-tools-claude-loads/); the changelog doesn't name the version that switched it.
+  - The 10% threshold is now opt-in with `ENABLE_TOOL_SEARCH=auto` or `auto:N`.
+  - A server can be exempted with `alwaysLoad` (v2.1.121, 2026-04-28), or a single tool with `_meta["anthropic/alwaysLoad"]`.
+  - Tool Search turns off when `ANTHROPIC_BASE_URL` points at a non-first-party host, and it needs a 4.5-generation or newer model.
+  - Tool descriptions and server instructions are capped at 2,048 characters.
+- CHANGED: the MCP vs CLI-plus-skills debate is still live but has shifted (see the last new finding).
+
+## New findings
+- **Client runtimes.** Claude Code has two MCP client runtimes. The v2 runtime (TypeScript SDK 2.0) negotiates 2026-07-28 with HTTP servers. It has been the default from about v2.1.232 (2026-08-13) in sessions that fetch feature flags, and from v2.1.274 (2026-09-17) on Bedrock, Vertex and Foundry. Opt out with `MCP_SDK_GENERATION=v1` or `MCP_PROTOCOL_NEGOTIATION=legacy`. v2 also checks the OAuth issuer and refuses non-HTTPS token endpoints. [Claude Code MCP docs](https://code.claude.com/docs/en/mcp)
+- **Which MCP features Claude Code supports:**
+  - Supported:
+    - elicitation in form and URL modes (v2.1.76, 2026-03-14; URL mode on 2026-07-28 connections from v2.1.281, 2026-09-23), plus an `Elicitation` hook
+    - resources through `@` mentions
+    - prompts
+    - roots (launch directory plus added directories, v2.1.203)
+    - `list_changed` (v2.1.0, 2026-01-07)
+  - **Not documented anywhere:** sampling, the Tasks extension (Claude Code backgrounds long calls on its own instead), and Skills over MCP.
+  - MCP Apps: Claude Code hides `ui://` resources (v2.1.281). Apps render in claude.ai web and the Desktop chat; the [client matrix](https://modelcontextprotocol.io/extensions/client-matrix) doesn't list Claude Code.
+- **Claude-specific extras.**
+  - `_meta` keys: `anthropic/requiresUserInteraction`, `alwaysLoad` and `maxResultSizeChars`.
+  - `--channels` (research preview, v2.1.80, 2026-03-19) lets servers declaring `claude/channel` push messages into a session. It doesn't work on the 2026-07-28 revision.
+  - Hooks can call MCP tools with `type: "mcp_tool"` (v2.1.118).
+- **OAuth.** Additions:
+  - CIMD (v2.1.81, 2026-03-20)
+  - RFC 9728 discovery (v2.1.85)
+  - pre-registered `--client-id/--client-secret` (v2.1.30)
+  - `headersHelper` scripts
+  - step-up scope requests
+- **Plugins.** A plugin can bundle servers in `.mcp.json`, inline in `plugin.json`, or as `.mcpb`/`.dxt` packages. [plugin components](https://code.claude.com/docs/en/plugins/components)
+  - `userConfig` (v2.1.83, 2026-03-25) prompts for settings and stores values marked `sensitive` in the keychain or secure storage. Server configs reference them as `${user_config.KEY}`.
+  - `claude plugin install --config server.key=value` sets them at install (v2.1.285).
+- **Enterprise controls.** [managed MCP](https://code.claude.com/docs/en/managed-mcp)
+  - `managed-mcp.json` gives exclusive control over the server set.
+  - `managedMcpServers` provides remote servers to every user (v2.1.259, 2026-09-02).
+  - `allowedMcpServers`/`deniedMcpServers`, plus `allowManagedMcpServersOnly`, filter what users add.
+  - `strictPluginOnlyCustomization` limits servers to plugins.
+  - `allowAllClaudeAiMcps` lets claude.ai connectors load alongside `managed-mcp.json` (v2.1.149).
+- **claude.ai connectors.**
+  - They appear in Claude Code automatically since v2.1.46 (2026-02-18), but only with a claude.ai subscription login, not an API key or Bedrock/Vertex.
+  - They have the lowest precedence and are deduplicated by URL.
+  - The organization's per-tool `ask`/`blocked` settings apply even in bypass mode.
+  - Gmail, Google Calendar and Microsoft 365 can't be signed in to locally; they only work through claude.ai.
+  - Turn them off with `ENABLE_CLAUDEAI_MCP_SERVERS=false` or `disableClaudeAiConnectors`.
+- **2026 security incidents:**
+  - [Check Point](https://research.checkpoint.com/2026/rce-and-api-token-exfiltration-through-claude-code-project-files-cve-2025-59536/) disclosed two flaws on 2026-02-25. CVE-2025-59536 (CVSS 8.7): a repo's `.mcp.json` and hooks ran before the trust dialog. CVE-2026-21852: a repo-set `ANTHROPIC_BASE_URL` leaked the user's API key.
+  - CVE-2026-47751 (2026-05-20): `claude-code-action` loaded a pull request's `.mcp.json`, giving code execution on the GitHub Actions runner. Fixed in 1.0.74. [GHSA](https://github.com/advisories/GHSA-8q5r-mmjf-575q)
+  - OX Security (2026-04-15) reported command injection through stdio server configs across MCP-using products, with 13 CVEs; Anthropic called the behaviour intended. *Vendor claim, contested.* [OX](https://www.ox.security/blog/mcp-supply-chain-advisory-rce-vulnerabilities-across-the-ai-ecosystem/)
+  - A trojanized clone of the Oura MCP server shipped the StealC infostealer in Feb 2026. *Secondary source.* [AuthZed](https://authzed.com/blog/timeline-mcp-breaches)
+- **Adoption numbers.** The maintainers report about half a billion SDK downloads a month. *Self-reported* (2026-07-28).
+- **Roadmap** (2026-08-22):
+  - triggers and events
+  - moving Tasks toward core
+  - HTTP over stdio
+  - ETags
+  - DPoP
+  - agent identity
+  - a redesign of `tools/call` results
+  - "progressive discovery" of tools
+- **The MCP vs skills/CLI debate.**
+  - Simon Willison (2026-07-31) says MCP was "eclipsed by Skills" once agents with a shell and curl could do most of what it did. He is back because MCP is easier to audit and control, and the stateless spec is simpler. [post](https://simonwillison.net/2026/Jul/31/stateless-mcp/)
+  - The emerging view is that MCP's value lies in keeping auth out of the agent's context, access control and audit for agents that don't have open shell access. [Willison's HN comment, 2026-09-20](https://simonwillison.net/2026/Sep/20/hn-49779718/); [Sean Lynch, 2026-06-19](https://simonwillison.net/2026/Jun/19/sean-lynch/)
+  - MCP itself absorbed skills through SEP-2640, and Claude Code's docs present MCP and skills as complementary.
+  - AAIF's MCPCon Europe discussed MCP "alongside WebMCP and CLI tools." [AAIF, 2026-10-01](https://aaif.io/blog/five-themes-from-agntcon-mcpcon-europe)
+
+## Looked for but couldn't find
+- The Claude Code version where Tool Search switched from the 10% threshold to deferring everything.
+- Any Claude Code support for sampling, the Tasks extension, Skills over MCP, or rendering MCP Apps.
+- A general-availability date for the Registry.
+- MCP security incidents from Q3 2026: the shared web-search budget ran out before I could look. A follow-up message can continue that search.
+- When A2A, agentgateway and Agent Router joined AAIF.
+- Any details on WebMCP.

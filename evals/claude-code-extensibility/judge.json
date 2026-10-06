@@ -1,0 +1,143 @@
+{"questions": [
+  {"q": 1, "type": "recent-change",
+   "answers": {
+     "1": {"score": 9,
+           "confident_false_claims": [],
+           "unsupported_claims": [],
+           "rationale": "Covers all four core changes with correct versions and dates: the wizard removed in v2.1.198, background by default, fork mode on by default since v2.1.232 with /subtask and CLAUDE_CODE_FORK_SUBAGENT, and 3-level nesting. Its extras are also accurate: the Task-to-Agent rename and the hook-matching breakage in #29677, thinking inheritance, SendMessage resume, the model order, the 20-subagent cap, the 15k description warning and trust-gated frontmatter hooks. No false claims found; it omits that Explore no longer runs on Haiku."},
+     "2": {"score": 3,
+           "confident_false_claims": [
+             "/agents still creates and edits subagents (the wizard was removed in v2.1.198; /agents now only prints a reminder)",
+             "Subagents still can't spawn subagents (nesting exists since v2.1.172; default depth is 3 since v2.1.219)",
+             "The built-in Explore agent runs on Haiku (since v2.1.198 it uses the main session's model, capped at Opus)",
+             "Background subagents request permissions up front and auto-deny anything not pre-approved (they now surface every permission prompt in the main session)"],
+           "unsupported_claims": [],
+           "rationale": "Hits two key red flags: it says /agents still creates and edits agents and that subagents can't spawn subagents. It also gives outdated Explore-model and background-permission behavior and misses background-by-default and forks. The notes on new frontmatter, the Task-to-Agent rename, --agent and agent teams are correct but don't make up for the stale core."},
+     "3": {"score": 8,
+           "confident_false_claims": [
+             "A `tools: Agent(worker, researcher)` entry limits which agents a subagent may spawn (the docs say the Agent(type) allowlist applies only to an agent run as the main thread with --agent; in a subagent definition the type list is ignored)"],
+           "unsupported_claims": [
+             "statusline-setup is among the built-in agents that are new since fall 2025 (it appears to predate that)"],
+           "rationale": "Very complete and current, all verified: wizard removal, Task-to-Agent, the full new frontmatter set including fable and omitClaudeMd, background by default and the tool blocklist every subagent gets, the 20-subagent cap, 3-level nesting with its env var, forks and /subtask and the loss of foreground runs, Explore's model change, and Opus 5's tendency to delegate. It has one verified false claim (that Agent(...) restricts a subagent's spawns) and calls statusline-setup new."}
+   }},
+  {"q": 2, "type": "current-fact",
+   "answers": {
+     "1": {"score": 4,
+           "confident_false_claims": [
+             "The skill listing budget is roughly 2% of the context window (the current default is 1%, skillListingBudgetFraction 0.01)",
+             "Nothing syncs between claude.ai, Claude Code and the API (since v2.1.273, skills enabled on claude.ai sync down into Claude Code)",
+             "Skills that don't fit get dropped from the listing (every name stays; only the least-used skills' descriptions are dropped)",
+             "Without a description Claude Code falls back to the first paragraph (it uses the first non-empty line)"],
+           "unsupported_claims": [],
+           "rationale": "Gets the basics right: folder layout, several fields, the 1,024-character spec cap, and claude.ai's name and description validation. But it gives the stale 2% budget, misses the 1,536-character per-skill cap and many current fields (when_to_use, arguments, disallowed-tools, paths, shell, background), and wrongly says nothing syncs from claude.ai. It also hedges on whether claude.ai rejects unknown keys; it fails with a hard error."},
+     "2": {"score": 9,
+           "confident_false_claims": [],
+           "unsupported_claims": [
+             "The claude.ai Help Center's 200-character description limit is outdated (the Help Center article, updated July 2026, still says 200 while claude.com docs say 1,024; actual enforcement couldn't be verified)"],
+           "rationale": "Matches current docs closely: the exact Claude Code field list, silent ignoring of unknown keys, the 1,536-character per-skill cap and 1% listing budget with the right settings, the six-key hard error on claude.ai uploads with the name and description rules, and the v2.1.273 claude.ai-to-Claude Code sync (path, naming, ! handling, opt-out). It misses the ZIP packaging and Customize > Skills details and that a claude.ai skill's name must match its folder."},
+     "3": {"score": 9,
+           "confident_false_claims": [],
+           "unsupported_claims": [],
+           "rationale": "Accurate field list, including that license, compatibility and metadata are accepted but not acted on. Also correct: the 1,536-character cap, the 1% budget with skillListingBudgetFraction or SLASH_COMMAND_TOOL_CHAR_BUDGET and skillOverrides name-only, the old 250-character cap, and the claude.ai differences (six keys with a hard error, name matching the folder, 1,024 characters, ZIP layout, Customize > Skills, Share/Publish). Minor imprecision: synced skills are listed under their short name unless it is taken; the /anthropic-skills: full name always works."}
+   }},
+  {"q": 3, "type": "trap",
+   "answers": {
+     "1": {"score": 10,
+           "confident_false_claims": [],
+           "unsupported_claims": [],
+           "rationale": "Correctly says there is no publish subcommand, with an accurate subcommand list, and that claude-plugins-official doesn't take portal submissions. Then gives the verified directory-portal flow: review and publish defaults, auth by claude.ai login plus a connected GitHub account, private-repo rules, the 10-per-24h limit, the retired Console form, @synced delivery and the nightly claude-community mirror. It also covers the self-hosted marketplace route, including the v2.1.275 one-step install."},
+     "2": {"score": 8,
+           "confident_false_claims": [
+             "Background auto-updates of a private marketplace need a token such as GITHUB_TOKEN in the environment (the docs say an env token alone doesn't authenticate the background check; it works only through a git credential helper)"],
+           "unsupported_claims": [
+             "The plugin directory submission form is the intake path into claude-plugins-official (current Claude Code docs say the official marketplace doesn't take directory-portal submissions; the repo README still links the form, which now redirects to the directory docs)"],
+           "rationale": "Clearly rejects the premise (no publish command, no API key) and gives a correct self-hosted marketplace recipe. But the subcommand list is incomplete, it mixes up the directory submission form with getting into claude-plugins-official, it leaves out the paid claude.ai plan and connected-GitHub requirements, and its GITHUB_TOKEN auto-update claim contradicts current docs."},
+     "3": {"score": 10,
+           "confident_false_claims": [],
+           "unsupported_claims": [],
+           "rationale": "Rejects the premise with evidence: no publish or submit subcommand, plus the docs' quote on the official marketplace. Lays out both real routes accurately: the claude.ai/directory/manage portal (Plugin bundle, Validate, data handling and compliance, a github.com repo private until live, push access plus the GitHub App, paid-plan roles with the Directory permission on Enterprise only, tracked-branch updates, @synced) and a self-hosted marketplace. Its auth explanation and pre-submission tips (validate --strict, reserved claude-/anthropic- names, Console migration) all check out."}
+   }},
+  {"q": 4, "type": "current-fact",
+   "answers": {
+     "1": {"score": 10,
+           "confident_false_claims": [],
+           "unsupported_claims": [],
+           "rationale": "Names the five handler types correctly. The PreToolUse HTTP hook config and response format are accurate, as are fail-open behavior with a fail-closed alternative, the 600 s default, allow never overriding deny, the URL and env-var allowlists, and how managed settings and mods interact. The Stop-hook section correctly contrasts prompt hooks (background model, 30 s, impossible) with experimental agent hooks (50 turns, 60 s) and covers the 8-continuation cap, stop_hook_active and /goal."},
+     "2": {"score": 7,
+           "confident_false_claims": [
+             "Hooks support three types besides command (http, prompt, agent); there are four, and mcp_tool is omitted"],
+           "unsupported_claims": [],
+           "rationale": "The HTTP PreToolUse setup, the fail-open caveat, allowedEnvVars, the agent and prompt Stop-hook behavior and the loop-avoidance advice are correct. It leaves out the mcp_tool type (so it miscounts the types), the default timeouts and the 8-block continuation cap, and is less specific than the others."},
+     "3": {"score": 10,
+           "confident_false_claims": [],
+           "unsupported_claims": [],
+           "rationale": "Lists all five types with versions and gives a correct HTTP hook (Bash|PowerShell matcher), response format and fail-open caveat, plus deny holding in bypass mode and the managed-settings/mod interplay. Prompt versus agent Stop hooks are accurate (impossible, 50 turns, 60 s default), as are the caveat that Stop fires on every turn, the 8-block cap that resets on tool calls, and /goal's evaluator running no tools. The stray 'covered in Q6' cross-reference is cosmetic."}
+   }},
+  {"q": 5, "type": "judgment",
+   "answers": {
+     "1": {"score": 9,
+           "confident_false_claims": [],
+           "unsupported_claims": [
+             "Cloud sessions load claude.ai-synced plugins (the docs list synced plugins only for Cowork and terminal sessions signed in with claude.ai)"],
+           "rationale": "A strong, current plan: one plugin in a private marketplace and a sensitive userConfig token (or an org OAuth connector). Server-managed extraKnownMarketplaces and enabledPlugins with autoUpdate are correctly named as the only managed route into cloud sessions, alongside managed hooks and the allowManagedHooksOnly exemption, the bin/ rejection, git credentials for background updates, and correct web-token guidance (no API credentials on Team/Enterprise; use a personal environment, not a shared one). One claim, about synced plugins in cloud sessions, isn't supported by the docs."},
+     "2": {"score": 5,
+           "confident_false_claims": [
+             "Advises declaring the plugin in each repo's committed settings so it reaches Claude Code on the web, as if repo-declared plugins install there (cloud sessions don't install plugins declared in a repo's .claude/settings.json)"],
+           "unsupported_claims": [],
+           "rationale": "Sound on packaging, token handling with OAuth or env vars, managed guardrails and update hygiene. But it misses that server-managed settings are the only plugin route into cloud sessions and points web users at repo-declared plugins, which cloud sessions ignore. It also hedges on server-managed settings and userConfig and doesn't warn that cloud environment variables are readable by everyone using that environment."},
+     "3": {"score": 9,
+           "confident_false_claims": [],
+           "unsupported_claims": [],
+           "rationale": "Accurate and current throughout: a sensitive userConfig token; server-managed settings JSON (hourly refresh, the only managed source reaching the web, no per-group targeting); and the repo-settings fallback that cloud sessions ignore. Also correct: managed hooks with their approval dialog and the mod/disableAllHooks caveats, what cloud sessions load (.mcp.json only in single-repo sessions), secret exposure in shared environments, managedMcpServers (v2.1.259), auto-update policy, canary channels and plugin_loaded telemetry. It openly flags two untested points and omits the claude.ai org-sync route."}
+   }},
+  {"q": 6, "type": "recent-change",
+   "answers": {
+     "1": {"score": 5,
+           "confident_false_claims": [],
+           "unsupported_claims": [],
+           "rationale": "Its sketch of mods (in-process JS/TS plugins of function hooks that can draw UI, keep state and hot-reload) and its porting advice are broadly right. But it can't say when they shipped (v2.1.287, Oct 1 2026), doubts that they are publicly documented, and misses the trust and permission interplay with settings hooks."},
+     "2": {"score": 10,
+           "confident_false_claims": [],
+           "unsupported_claims": [
+             "The early-access period was specifically in September"],
+           "rationale": "Precise and verified: what mods are (an in-process hooks module with a $ API), the Oct 1 2026 / v2.1.287 launch (Desktop from 2.1.286, early-access env var now ignored), the built-in mods, and where drawing appears. It gets the safety interplay right: tool.check can override non-managed hooks and ask rules, managed PreToolUse blocks are final, and deny rules hold where sec-default loads. Its porting advice quotes the admin docs saying settings hooks aren't deprecated and lists the right controls."},
+     "3": {"score": 10,
+           "confident_false_claims": [],
+           "unsupported_claims": [],
+           "rationale": "Accurate on every key point: the register(on) hooks module and its capabilities, v2.1.287 on Oct 1 with Desktop 2.1.286 and the now-ignored early-access variable, the follow-up fixes, and the built-in mods (/diff, AGENTS.md, You should know). Also correct: the 33 settings-hook events, where handlers run versus where they draw, the unsandboxed trust model (including overriding deny rules on unmanaged machines), and the controls (allowManagedModsOnly, --safe-mode, validate, plugin test). Its porting advice is sensible and well calibrated."}
+   }},
+  {"q": 7, "type": "current-fact",
+   "answers": {
+     "1": {"score": 4,
+           "confident_false_claims": [
+             "While an MCP tool runs, Claude's turn is blocked (since v2.1.212, a main-conversation call still running after 2 minutes moves to a background task)"],
+           "unsupported_claims": [],
+           "rationale": "Gets the 10k/25k token thresholds right and gives good server-side design advice (browsable schema, progress notifications, a job pattern). But it hedges on the current save-to-file behavior and the default timeout, misses the 50k-character threshold, the anthropic/maxResultSizeChars annotation, the 5-minute idle timeout for remote servers and the first-byte timer, and describes calls as blocking the turn."},
+     "2": {"score": 9,
+           "confident_false_claims": [
+             "Issue #76571 is an open request for MCP Tasks support (it was closed as a duplicate)"],
+           "unsupported_claims": [],
+           "rationale": "Thorough and current: the 10k/25k thresholds, save-to-file at 50k characters, the maxResultSizeChars annotation up to 500k, the ~28h wall clock, the 5- and 30-minute idle timeouts with the per-server floor, the first-byte timer and 2-minute auto-backgrounding, plus practical server advice. Its only slip is calling the closed duplicate #76571 an open request."},
+     "3": {"score": 10,
+           "confident_false_claims": [],
+           "unsupported_claims": [
+             "The 2026-07-28 MCP protocol revision is 'stateless'"],
+           "rationale": "Every core limit is correct and current: the thresholds, file saving at 50k characters, the 500k annotation ceiling, error-result truncation, the 2,048-character description cap, tool search, the wall-clock, first-byte and idle timers, and auto-backgrounding (tasks die with the session). Its server advice is specific and tied to verified changelog items: the 2.1.288 fix for calls running twice and the v2 MCP runtime since about 2.1.232."}
+   }},
+  {"q": 8, "type": "judgment",
+   "answers": {
+     "1": {"score": 5,
+           "confident_false_claims": [
+             "Subagents can't nest (since v2.1.219 they can spawn subagents up to 3 levels deep by default)"],
+           "unsupported_claims": [],
+           "rationale": "Offers an excellent audit method (deterministic inventory, rubric, verification that tries to refute each finding, canary routes) and a workable claude -p/SDK pipeline. But it mentions the purpose-built dynamic workflow (ultracode) only as a hedged maybe, and it includes the outdated claim that subagents can't nest."},
+     "2": {"score": 10,
+           "confident_false_claims": [],
+           "unsupported_claims": [],
+           "rationale": "Recommends dynamic workflows with verified specifics: v2.1.154, agent/pipeline/parallel/phase, 16 concurrent agents, 4,096 items per pipeline, 1,000 agents per run, resumable runs, adversarial verification. It correctly rules out subagents (20 cap, context flooding) and agent teams (experimental, 3-5 peers, about 7x tokens). It gives a concrete ultracode prompt and accurate settings: size guideline medium (small on Pro), no mid-run input, saving from /workflows with s."},
+     "3": {"score": 10,
+           "confident_false_claims": [],
+           "unsupported_claims": [],
+           "rationale": "The right recommendation, with verified details: 1,000 agents per run, 16 concurrent (adjustable to 256), the docs' own route-audit example, the 20-subagent cap, and agent teams off by default. The setup is solid: inventory, rubric, verification by two agents trying to refute each finding, the unrestricted size guideline, the Large workflow warning, a pilot run, saving to .claude/workflows and a Workflow(name) allow rule for -p. It is also well calibrated, noting that 'verified' still needs human review."}
+   }}
+]}
