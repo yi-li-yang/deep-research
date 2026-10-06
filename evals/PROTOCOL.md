@@ -115,7 +115,7 @@ B was told: "Read it first and use it throughout", and "You may use WebSearch an
 ## Running notes
 
 - **Search budget.** This environment caps WebSearch at 200 calls per turn, shared by every agent launched in that turn. Each arm that used the web was therefore launched in its own turn. Each recorded whether any search was refused for budget reasons; none was.
-- **Timing.** A0, A and B answered on 2026-10-06 between about 17:30 and 18:20 UTC, B0 by 18:40, and B1 from about 18:55. League of Legends patch 26.20's notes were published at about 18:00 UTC, inside that window, so League judges were told to accept the clearly labelled preview values or the final notes.
+- **Timing.** A0, A and B answered on 2026-10-06 between about 17:30 and 18:20 UTC, B0 by 18:40, and B1 between about 18:55 and 19:30. League of Legends patch 26.20's notes were published at about 18:00 UTC, inside that window, so League judges were told to accept the clearly labelled preview values or the final notes.
 
 ## Known limitations
 

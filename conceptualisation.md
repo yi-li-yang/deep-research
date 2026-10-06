@@ -63,7 +63,7 @@ The original brief specified volatility classes, anchors, domain shapes, scoring
 - **Unknown unknowns.** The agents search for what Claude suspects is missing. Nobody can search for what they can't imagine.
 - **Poisoned sources.** A saved briefing could carry a manipulated claim into every later conversation. Sourcing every claim and treating web text as evidence reduce this risk; they don't remove it.
 - **Judgment over rules.** Quality rests on the model following principles. The evaluation found that judgment mostly sound. It failed in four specific, repeated ways, and each became a short rule (§3).
-- **Over-trust.** A briefing in context made Claude search less than it should have. The answer-time rule counters this; it can't guarantee it.
+- **Over-trust and confident errors.** A briefing in context made Claude search less than it should have, and its answers held more confident errors than answers from search alone. The answer-time rule restored the searching but not the accuracy (§5).
 - **Value against search.** A Claude that searched the web for every question answered as well as one with a briefing. The briefing's measured value is elsewhere (§5).
 - **claude.ai.** There are no parallel agents (research runs one thread at a time), and briefings must be downloaded and re-attached by hand.
 - **Video.** Transcripts depend on yt-dlp and on the site accepting the network. When they fail, a pointer ("watch X at 12:30 for Y") replaces the transcript.
@@ -79,7 +79,8 @@ The A/B design was fixed before any results ([evals/PROTOCOL.md](evals/PROTOCOL.
 
 What this taught the design:
 - **The errors were in the writing, not the research.** The wrong claims came from compression that dropped a qualifier, from citing the nearest source instead of the one that says it, and from stating perishable facts as fixed. Each became a one-line rule in the Patch step.
-- **A briefing is a prior, not a boundary.** The arm with a briefing searched 44% less than the arm without. Its losses came where it trusted the briefing's silence, repeated a perishable fact, or left a gap the briefing exposed unfilled. The skill now says so at answer time.
+- **A briefing is a prior, not a boundary.** The arm with a briefing searched 44% less than the arm without. Its losses came where it trusted the briefing's silence, repeated a perishable fact, or left a gap the briefing exposed unfilled. The skill now says so at answer time. In a retest, Claude then searched as much as a Claude without a briefing, but neither its score nor its count of confident errors improved.
+- **Confident errors are the open problem.** In all three judgings, answers with a briefing held more confident false claims than answers from search alone, and only part of that traces to the briefing. Two things to try next: verifying at answer time any briefing claim an answer hinges on, and auditing each briefing claim by claim after it is built.
 - **The value is not "better than search".** It is current knowledge without per-question search, and a sourced document a person can read, check and reuse. Whether that beats everyday Claude depends on how often Claude searches unprompted, which this evaluation did not measure.
 
 ## Appendix: the original decisions, mapped

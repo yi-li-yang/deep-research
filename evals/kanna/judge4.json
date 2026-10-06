@@ -1,0 +1,319 @@
+{
+  "questions": [
+    {
+      "q": 1,
+      "type": "recent-change",
+      "answers": {
+        "1": {
+          "score": 9,
+          "confident_false_claims": [
+            "Romanizes 似鳥透 as 'Nitori Tōru'; the Yoita union site and the na-nagaoka article give the reading Nitadori (にたどり)."
+          ],
+          "unsupported_claims": [],
+          "rationale": "Correct and current. Funatsu (b. 1946) died on 13 Mar 2026 (Risaku Works), the union lists the workshop as 廃業, and no new orders are possible. Mizuno (b. 1950, 4th generation, lines and steels matching his and the union's pages, phone orders, slow delivery), Mizudori and Komori are all right, as are the Usui and Nakano closures and the 200+ to ~a dozen figure. The only slip is the Nitadori reading."
+        },
+        "2": {
+          "score": 2,
+          "confident_false_claims": [
+            "Says very few people, if any besides Funatsu, still forge kanna in Yoita. Mizuno Kanna Seisakusho, Komori Koganna and Mizudori Hamono all make kanna.",
+            "Says Yoita's remaining smiths are better known now for nomi, axes and chōna. In fact it is the chisel makers (Nakano, Usui) that have closed; those remaining are kanna makers."
+          ],
+          "unsupported_claims": [],
+          "rationale": "Misses the March 2026 death and the closure, treats Funatsu as possibly still working, and doubts that Genshin is a Funahiro line (it is). It also wrongly says hardly anyone else in Yoita forges kanna. Mostly a non-answer, with false statements about Yoita."
+        },
+        "3": {
+          "score": 8,
+          "confident_false_claims": [
+            "Romanizes 似鳥透 as 'Nitori' (the union gives Nitadori).",
+            "Gives Mizuno as 'about 70'. He was born in 1950, so he is 76."
+          ],
+          "unsupported_claims": [
+            "Attributes the death date to a Mandaraya dealer note; the daiku-dougu.jp pages checked do not mention it (Risaku Works does).",
+            "Says the Komori brothers make only small planes and are Japan's only small-plane specialists. The 2019-20 Gifu survey supports the specialist and no-successor points, but the union lists large planes among their products too."
+          ],
+          "rationale": "The death date, closure, impossibility of a new order, Hida prices with everything out of stock, three of five union forges closed, and the craft hall closing in Feb 2025 are all correct. The Mizuno, Mizudori (Suzaku with wrought iron, 羽根印 with mild steel, ex-Nikon) and Komori alternatives are right. It is less specific than the best answers on Mizuno's lines and on ordering, and has minor slips."
+        },
+        "4": {
+          "score": 9,
+          "confident_false_claims": [
+            "Romanizes 似鳥透 as 'Nitori' (the union gives Nitadori).",
+            "Gives Mizuno as 'about 70'. He was born in 1950, so he is 76."
+          ],
+          "unsupported_claims": [
+            "Attributes the death date to Mandaraya; not found on daiku-dougu.jp (Risaku Works confirms the date itself).",
+            "Says Mizuno makes large planes of '3–10 sun'."
+          ],
+          "rationale": "Correct and current, and it answers the 70 mm Genshin question directly with Kurashige stock I verified: the old-stock Genshin #2 at ¥92,250 is sold out and only a 168 mm Genshin at ¥473,550 is still listed. Hida prices are verified too. The Mizuno details (Gahōjin in K120, Mandaraya ¥49,800, phone orders, slow delivery), Mizudori (b. 1989, ex-Nikon, Suzaku and 羽根印) and Komori all check out; only minor slips on the name reading and Mizuno's age."
+        }
+      }
+    },
+    {
+      "q": 2,
+      "type": "current-fact",
+      "answers": {
+        "1": {
+          "score": 4,
+          "confident_false_claims": [],
+          "unsupported_claims": [
+            "'Gokunantetsu reportedly isn't made any more.'"
+          ],
+          "rationale": "Honest, but it largely fails the question: it declines to identify Togo, Inukubi, Tsubame or CWA at all. What it says about Swedish steel (Alleima, ASSAB/Uddeholm under voestalpine, Tsunesaburo's 汐音 from Nov 2025) and the KSN tamahagane test is correct."
+        },
+        "2": {
+          "score": 9,
+          "confident_false_claims": [],
+          "unsupported_claims": [
+            "Dates Kawai's Togo imports 'from the Taishō era'; Yamamoto dates the brand to late Meiji.",
+            "Cites Mandaraya's steel page for the CWA and Tsubame details, but that page does not contain them. The figures themselves match Yamamoto."
+          ],
+          "rationale": "Accurate and specific throughout. Togo is Kawai's brand from Andrew(s), with imports ending at the war, and Ray is close to SKS1. Inukubi is narrow 18 × 4.5 mm bar, matching Tsunesaburo, and Covington's ~5% W composition and Weaver's experience are correct. CWA is the old SKS1 (1.39 C, 4.65 W), Tsubame dates from ~40 years ago with unpublished analysis, and Swedish steel is still current (汐音, Mizuno's K120). The Kurashige price table is verified, and it rightly says the premium buys scarcity, not proven performance."
+        },
+        "3": {
+          "score": 3,
+          "confident_false_claims": [
+            "Says Inukubi, Tsubame and CWA are 'generally understood to be plain high-carbon steels valued for purity'. They are high-tungsten alloy steels; CWA is roughly SKS1 with 4.65% W.",
+            "Says these steels are prized for easy keen edges and clean softwood finishing and 'usually aren't claimed to beat Aogami for wear resistance'. Yamamoto and Tsunesaburo class Togo, Inukubi, Tsubame and CWA as hardwood steels prized for long edge life (永切れ)."
+          ],
+          "unsupported_claims": [],
+          "rationale": "It gets availability roughly right: the special steels are old stock and Swedish steel is still made. But it describes the special steels as plain, pure carbon steels for keen softwood edges, the opposite of what the Japanese makers say. It gives no origin for Togo."
+        },
+        "4": {
+          "score": 9,
+          "confident_false_claims": [],
+          "unsupported_claims": [
+            "K120 'roughly 1.0–1.25% C with a trace of Cr' (retailer figures, which are contested)."
+          ],
+          "rationale": "Matches Yamamoto, Tsunesaburo, Japan-Tool and the Togo research blog on every steel. That covers the late-Meiji Kawai/Andrew origin, Ray's forging difficulty and long edge life, Inukubi (including the HSS-like versus white-steel disagreement), CWA as SKS1 and no longer made, Tsubame's uncertain analysis, and Swedish steels behaving like Shirogami #1. The Honmamon prices (¥138,000 and ¥46,500) are verified, and it is balanced about the premium."
+        }
+      }
+    },
+    {
+      "q": 3,
+      "type": "judgment",
+      "answers": {
+        "1": {
+          "score": 9,
+          "confident_false_claims": [],
+          "unsupported_claims": [
+            "Says Covington wants blade pressure 'only in the strips beside the grooves'; his Part 4 aims for more uniform bed contact.",
+            "Gives about 1 mm of side play as the fitting target."
+          ],
+          "rationale": "Covers all the essentials. Remove the blade and allow longer than Covington's week in Arizona; fit snug, seating in 3–4 blows; keep the chipbreaker gap-free at 0.1–0.3 mm; true the sole last with the blade at working tension and only a paper's thickness of relief. Tsunesaburo's mouth-plus-台尻 pattern is correctly described, including which end leads in the pull. Specific figures check out: Covington's 0.5–0.8 mm and 0.2–0.5 mm, Mandaraya's ~51° bevel, 0.3 mm mouth, and the advice to fix a skewed chipbreaker at the pin."
+        },
+        "2": {
+          "score": 8,
+          "confident_false_claims": [],
+          "unsupported_claims": [
+            "Attributes the warning that the bed's front corners split to Covington; it is Mandaraya's advice.",
+            "Says Covington stores planes with the blades out.",
+            "Says the dai may shrink 'a millimetre or more' across its width."
+          ],
+          "rationale": "A sound sequence: acclimatise with the blade out and drying slowed, fit with 3–4 blows, set the chipbreaker with no gap at 0.1–0.3 mm, and true the sole with both irons in at tension using Tsunesaburo's pattern and a paper's-thickness of relief. It also covers the monsoon. Much the same as the best answer, with a little less detail."
+        },
+        "3": {
+          "score": 8,
+          "confident_false_claims": [],
+          "unsupported_claims": [
+            "Weighing the dai until its weight is stable typically takes 3–6 weeks in a desert climate.",
+            "Says sandpaper rounds the sole (other sources accept abrasive on glass)."
+          ],
+          "rationale": "A good practical plan. Take the wedge pressure off now, slow the drying and track it by weight, then pare the high spots. True the sole with the blade in, using three narrow lands and minimal relief (a coherent scheme). Tap the chipbreaker ears so it bears firmly, and set it ~0.1 mm back. It cites few sources."
+        },
+        "4": {
+          "score": 9,
+          "confident_false_claims": [],
+          "unsupported_claims": [],
+          "rationale": "Cites Covington (remove the blade, about a week, three medium blows) and Holcombe (a few weeks) accurately, and follows Tsunesaburo on storing the plane with the blade retracted. It works the sole with both irons installed, keeps two narrow lands with hair-thin relief, and acknowledges the alternative layout. Ears are tapped so the chipbreaker presses at the edge, set at 0.1–0.2 mm. It also warns that monsoon humidity will swell the dai again."
+        }
+      }
+    },
+    {
+      "q": 4,
+      "type": "trap",
+      "answers": {
+        "1": {
+          "score": 10,
+          "confident_false_claims": [],
+          "unsupported_claims": [],
+          "rationale": "Clearly says there is no Aogami #3, citing Proterial's YSS grade list, and suggests the listing is really Aogami #2 or Shirogami #3. It gives correct carbon figures showing that Aogami #2 has less carbon than Shirogami #1, and Proterial's '60 over' HRC spec. It names real makers of the real grades: Keizaburo's blue #2 (Big Sand) and Mizuno's Shisei in Shirogami #1."
+        },
+        "2": {
+          "score": 9,
+          "confident_false_claims": [],
+          "unsupported_claims": [
+            "Mizuno's 青壱 is 'often sold out'.",
+            "One retailer scores edge retention at 5.5 for Blue #2 and 4.5 for White #2."
+          ],
+          "rationale": "Rejects the premise with a correct composition table and names the real #3 grades (Shirogami #3, Gingami #3). Its specifics are verified: Dictum's 63 HRC for Blue Paper blades, 土性骨 at ¥26,760, Hida's Suika at $410.90, and Chiyozuru Sadahide's standard Aogami #1. It invents no hardness or makers for the fake grade."
+        },
+        "3": {
+          "score": 8,
+          "confident_false_claims": [],
+          "unsupported_claims": [],
+          "rationale": "Says Aogami #3 does not exist and declines to give a hardness or maker list. The carbon comparison is correct, and so is Proterial's recommendation of both steels for planes. It is somewhat hedged ('as far as I know', 'can't confirm today') even though Proterial's grade pages are public."
+        },
+        "4": {
+          "score": 8,
+          "confident_false_claims": [
+            "Says 'Most makers' blue-steel kanna are Aogami #2; #1 and Super are less common.' Tsunesaburo says Aogami #1 is the steel most used in Japanese high-grade kanna, and Yamamoto uses #2 for kanna only to order."
+          ],
+          "unsupported_claims": [
+            "Typical hardness bands: Shirogami #1 at the top of 62–65 HRC, Aogami #2 at 62–64.",
+            "Lists Kigami #3 among the current #3 grades; Proterial's current YSS list has only Kigami 2."
+          ],
+          "rationale": "Correctly says there is no standard Aogami #3 and declines to quote a hardness or makers for it. But it then reverses the facts about which blue steel kanna makers mostly use, which skews its buying advice."
+        }
+      }
+    },
+    {
+      "q": 5,
+      "type": "current-fact",
+      "answers": {
+        "1": {
+          "score": 5,
+          "confident_false_claims": [],
+          "unsupported_claims": [],
+          "rationale": "Partly right: only a handful remain, it names Tsunesaburo and Yamamoto, and it correctly flags Kakuri as a machine maker. But it is vague and unsure about Yamamoto, omits Chiyozuru Sadahide and Keizaburo, and gives only loose ranges instead of the documented 87 in 1929 or the 50-to-4 figure. The visiting tips (museum, roadside-station hall, autumn festival) are correct."
+        },
+        "2": {
+          "score": 9,
+          "confident_false_claims": [],
+          "unsupported_claims": [
+            "Says all four 'appear among the Miki cooperative's kanna members' (the cooperative's page was not accessible)."
+          ],
+          "rationale": "Names the four workshops the sources support (Tsunesaburo, Yamamoto, Keizaburo, Chiyozuru Sadahide) with accurate details. Its counts are correct: about 50 at the peak and 4 now (Hyogo tourism, updated 2024), and 87 in 1929 and 55 in 1939 (Yamamoto). The visiting advice is verified: Tsunesaburo tours by reservation with planes and stones sold on site, and about 70 makers at the roadside-station hall."
+        },
+        "3": {
+          "score": 6,
+          "confident_false_claims": [],
+          "unsupported_claims": [
+            "Says no specialist chipbreaker smiths remain; the Gifu report only says none could be surveyed.",
+            "Says Tsunesaburo uses three outside dai makers plus an in-house fitter.",
+            "Workshop Heaven price range of £155–169."
+          ],
+          "rationale": "Accurate on what it covers: the Gifu 2019–20 survey (8 kanna smiths in Miki, 6 in Yoita, 4 in Sanjō; dai makers' ages and successor gaps), Tsunesaburo under Uozumi Tōru, and Morita Naoki as Sadahide III. But it names only two of the four workshops, leaving out Yamamoto, and says it has no figure for the peak although documented counts exist."
+        },
+        "4": {
+          "score": 8,
+          "confident_false_claims": [],
+          "unsupported_claims": [
+            "Says Kensuke Yamamoto was certified as a traditional craftsman in 2021.",
+            "Says Tsunesaburo uses outside dai makers plus an in-house fitter."
+          ],
+          "rationale": "The historical table matches Yamamoto (87 in 1929 down to 6 in 2010), along with the 50-to-4 tourism figure and a sensible note that the Gifu count likely counts people. Its Tsunesaburo (reserved tours, sales on site), Yamamoto and Chiyozuru Sadahide details are verified, the last including charcoal and bellows, Aogami #1 as standard, and inherited Yasugi and old Swedish steel. It misses Keizaburo as the fourth."
+        }
+      }
+    },
+    {
+      "q": 6,
+      "type": "judgment",
+      "answers": {
+        "1": {
+          "score": 9,
+          "confident_false_claims": [],
+          "unsupported_claims": [
+            "Says a 3–4 mm flat strip makes the chipbreaker easier to fit.",
+            "Says a 'ringing' note means poor support (sources describe a rattling or clattering sound)."
+          ],
+          "rationale": "Correct technique: strike only the jigane on the bevel, 2–3 mm behind the steel line; use light taps with a small hammer; put a rounded anvil corner directly under the blow, and listen for a dull 'kotsu-kotsu'. Check often, then lap back a narrow ito-ura. It correctly says not to hammer the HSS blade but to lap it, citing Tsunesaburo's no-ura-dashi HSS and HAP40 blades."
+        },
+        "2": {
+          "score": 9,
+          "confident_false_claims": [],
+          "unsupported_claims": [
+            "Cites Mandaraya's tatakikata page for warming the blade; the page does not say this (the advice is still sensible)."
+          ],
+          "rationale": "Detailed and well sourced, all verified. It follows Covington's band starting 2–3 mm behind the steel line, with about two-thirds of blows in the centre third, and Kakuri's 15 mm hazuchi, ½ tsp carborundum with 3 drops of water, and warning against hitting the steel. It calls for a rounded or crowned anvil, a solid sound, and ura-oshi that keeps the hollow. The HSS advice matches Tsunesaburo's SKH51 and HAP40 lines, which need no ura-dashi."
+        },
+        "3": {
+          "score": 7,
+          "confident_false_claims": [],
+          "unsupported_claims": [
+            "Says to tilt the blade on a flat block or 'use the anvil's edge' to get support, with no mention of a rounded corner."
+          ],
+          "rationale": "The principles are right: hit only the jigane, use light taps, support the blade directly under each blow, check progress, follow with ura-oshi, and don't peen the HSS blade. But it is vaguer on the anvil (a flat block or its edge rather than a rounded corner), and it places blows 'close to' the steel line rather than set back from it."
+        },
+        "4": {
+          "score": 6,
+          "confident_false_claims": [
+            "Recommends as 'the safest fix' grinding the bevel back 1–2 mm 'until the flat reaches the edge again', claiming no risk. Ura-gire means the edge has reached the hollow, so grinding back moves it further into the hollow and cannot restore the flat."
+          ],
+          "unsupported_claims": [],
+          "rationale": "The ura-dashi details are excellent and sourced: a 15 mm hazuchi, a rounded 目振り台, blows 2–3 mm behind the steel line, the 'kotsu-kotsu' sound check, Mandaraya's warning about hidden cracks, and Tsunesaburo's HSS on extra-soft iron with no ashi. But its lead advice would make ura-gire worse and waste blade length."
+        }
+      }
+    },
+    {
+      "q": 7,
+      "type": "recent-change",
+      "answers": {
+        "1": {
+          "score": 5,
+          "confident_false_claims": [],
+          "unsupported_claims": [
+            "Says the ownership change brought higher prices and occasional shortages of sizes or clad stock."
+          ],
+          "rationale": "Correct on the Bain-led sale, the January 2023 rename to Proterial, and continued Yasugi production of Shirogami and Aogami, and it reaches the right conclusion. But it misses the key recent change: it does not know that Aigami (藍紙) is a real Proterial grade launched on 9 Dec 2025, and suggests it may be a mix-up or a house name."
+        },
+        "2": {
+          "score": 9,
+          "confident_false_claims": [],
+          "unsupported_claims": [],
+          "rationale": "Correct throughout. Proterial since 4 Jan 2023; the 1 Jul 2026 restructuring (Bain's BCJ-52 renamed Proterial, YSS in the Aero & Industrial Alloy unit, aim to relist), which I verified in Proterial's releases; no discontinuation notice, with the price and grade rumours flagged as unconfirmed; and Aigami launched 9 Dec 2025 for knives and razors with its composition unpublished. Slightly less detail on the two Aigami grades."
+        },
+        "3": {
+          "score": 10,
+          "confident_false_claims": [],
+          "unsupported_claims": [],
+          "rationale": "Fully current and accurate. It covers the rename, the 1 Jul 2026 restructuring and relisting aim, the absence of any discontinuation notice, and both Aigami grades: No.1 (rust resistance like SUS420J2, still in trial) and No.2 (hardness at least Aogami #2, rust resistance like GIN3, in production). The stated uses exclude planes. Its reasons for not seeking an Aigami kanna are sound: no maker offers one, rust resistance matters little, and forge-welding is untested."
+        },
+        "4": {
+          "score": 10,
+          "confident_false_claims": [],
+          "unsupported_claims": [
+            "Says chromium-bearing steels are harder to forge-weld onto soft iron (plausible metallurgy, but unsourced)."
+          ],
+          "rationale": "Accurate and current. It covers the 2023 rename and the 2026 split, with magnets and cable/auto parts moved into subsidiaries and specialty steel kept, verified in Proterial's 1 Jul 2026 release. It notes that Proterial's YSS list still includes Shirogami 1/2/3, Kigami 2 and Aogami 1/2/Super, with 'High quality Plane' listed among Aogami Super's uses. Aigami's two grades, uses and ease of sharpening match the release, and its advice is well reasoned."
+        }
+      }
+    },
+    {
+      "q": 8,
+      "type": "current-fact",
+      "answers": {
+        "1": {
+          "score": 10,
+          "confident_false_claims": [],
+          "unsupported_claims": [],
+          "rationale": "Correct and current: 41st at Katano (Apr 2025), 42nd at Miki (13–14 Jun 2026, about 500 participants), and the next, the 43rd, at Yōkaichiba Dome, Sōsa, on 21–22 Nov 2026. It explains the 2–20 µm spread precisely and every point checks out: 3–5 µm per point at the top (the winner's 3.5 µm), 2 µm as Idei's record, three-point summed scores with ≤30 µm as a respectable target, the 5-sun division won at 19 µm, and thicker finals on the organisers' wood."
+        },
+        "2": {
+          "score": 9,
+          "confident_false_claims": [],
+          "unsupported_claims": [
+            "Says 2 µm shavings have been pinned up 'since at least 2009'.",
+            "The Paklan quote 'far from the reality of day-to-day work' and the single-blade preference do not appear in the public part of the article."
+          ],
+          "rationale": "Correct on the 40th–42nd meets, the next (43rd, Sōsa, 21–22 Nov 2026, about 400 competitors and 5,000 visitors), the stale official site, the KK-USA dates, the Katano rules, and Watanabe's 3.5 µm twice in the preliminaries before winning the final. It explains the ~20 µm figures as finals results, which is supported (finals on supplied wood have run up to ~50 µm), but omits the 5-sun division and summed scores."
+        },
+        "3": {
+          "score": 4,
+          "confident_false_claims": [
+            "Says each meet is announced on the association's Japanese website. kezuroukai.jp has not been updated since 1 Apr 2024 and does not list the 41st–43rd meets."
+          ],
+          "unsupported_claims": [],
+          "rationale": "Cannot say when or where the next national meet is, names no recent meet, and sends the user to a stale official site. Its 3–6 µm range for top results is reasonable but generic."
+        },
+        "4": {
+          "score": 9,
+          "confident_false_claims": [],
+          "unsupported_claims": [
+            "Cites kezuroukai.jp for the claim that crowdfunding has fallen short; the site says nothing about this, though the 2025 CAMPFIRE campaign did end at 45% of target.",
+            "Says 2 µm shavings were already being pinned up in 2009."
+          ],
+          "rationale": "Current and accurate. It covers the 40th meet (752 entrants), the 41st, and the 42nd with the Itoigawa champion (verified), and gives the next as the 43rd in Sōsa on 21–22 Nov 2026. Tani Kazuo, the Hadano office move and the KK-USA dates are all correct. The thickness explanation (3–4 µm in preliminaries versus finals on supplied boards) is supported but omits the 5-sun division's 19 µm."
+        }
+      }
+    }
+  ]
+}

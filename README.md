@@ -96,10 +96,14 @@ An independent agent wrote 24 hard questions that the briefings never saw. A jud
 | searching the web for every question | 9.0 | 5 |
 
 - **A large gain over Claude's own knowledge.** `/expertise` beat answering from memory on 23 of 24 questions.
-- **No gain over thorough per-question search.** The 0.3-point gap is within noise, and a second blind judge found the same. The first judge also counted more confident errors for `/expertise` (11 against 5; the second judge found 7 against 6). About half came from trusting the briefing where it should have re-checked, so the skill now treats the briefing as a starting point, not a boundary.
+- **No gain over thorough per-question search.** The 0.3-point gap is within noise, and two more blind judges found the same.
+- **More confident errors than per-question search.** In all three judgings, answers with the briefing held more confident false claims: 11, 7 and 8, against 5, 6 and 4. Between a third and a half came from trusting the briefing.
+  - We changed the skill to treat the briefing as a starting point, not a boundary.
+  - In a retest, Claude then searched as much as per-question search, but scored the same and made as many errors.
+  - This is the skill's main open problem. Check the claims that matter against their sources.
 - **The briefing alone carries most of the gain.** With no web access at all, Claude with the briefing scored 7.5, against 4.3 from memory and 9.2 with search (second judge).
 - **Briefings are mostly right, not always.** Audits of 416 claims found 87% correct, 3% wrong and 5% cited to the wrong source. The examples have been corrected.
-- **Building one is expensive.** It took 1.1–1.7 million tokens of agent work, about five times what the web-searching Claude spent on all eight questions. Afterwards, answers needed 44% fewer web lookups.
+- **Building one is expensive.** It took 1.1–1.7 million tokens of agent work, about five times what the web-searching Claude spent on all eight questions. With the current guidance, answering afterwards cost about the same as searching every question.
 
 **So:** use `/expertise` when you'll work in a topic across several conversations, when the research itself is worth reading, or when Claude would otherwise answer from memory. For a few one-off questions, asking Claude to search the web is enough, and much cheaper. [Full results](evals/RESULTS.md).
 
@@ -141,6 +145,7 @@ Claude reports what differs from what it believed, how confident the picture is,
 ## Limits
 
 - **Unknown unknowns.** The agents search for what Claude suspects it's missing; no one can search for what they can't imagine.
+- **Confident errors.** Answers with a briefing held more confident false claims than answers from per-question search, in every judging.
 - **Briefings can be wrong.** Audits found 3% of claims wrong. Sourcing every claim and treating web text as evidence reduce the risk of carrying a bad claim forward, but don't remove it. Briefings are plain files: read them.
 - **Building costs tokens.** In our tests a briefing took 1–2 million tokens of agent work to build, and about 0.3 million to refresh.
 - **claude.ai runs one research thread at a time** (no parallel agents), so building takes longer there.
