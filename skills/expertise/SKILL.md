@@ -45,6 +45,7 @@ You already know most topics well. This skill closes the gap where you don't: wh
    - For facts that perish within days (stock, prices, live statistics), record where to check them, with the value as of its date.
    - Keep it one consistent picture of now: when a claim is superseded, replace it and note the change in the Log.
    - Keep it short enough to absorb in a few minutes. Prune as you add.
+   - Check it before saving. Give the claims, grouped by cited source, to 2–3 fresh agents. Each opens the source and reports, per claim: stated there with the same scope and qualifiers, wrong, superseded, or not in the source, quoting the line. Fix, re-cite or drop whatever fails, and note it in the Log. Without agents, check the *What's changed* claims yourself.
 
 Then tell the user in a few lines:
 - what differs from your prior
@@ -53,7 +54,7 @@ Then tell the user in a few lines:
 - where the briefing is saved
 
 Continue the conversation using the briefing as a prior, not a boundary:
-- Re-check anything time-sensitive that an answer hinges on: a price, a stock level, a live statistic, a version, a number or a status.
+- Before an answer hinges on a specific fact (a number, date, name, status or rule), read the line that states it in a current source: the briefing's cited source or a page you open now, not a listing, summary or memory. Keep that line's scope and qualifiers. If nothing states it, say it's unconfirmed or leave it out.
 - Never read the briefing's silence as evidence that something doesn't exist.
 - Where the briefing and a primary source disagree, trust the primary source, and patch the briefing.
 
