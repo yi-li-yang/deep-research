@@ -25,6 +25,7 @@ Web search helps when Claude thinks to use it. In the same test, a Claude that s
 - **Aimed at Claude's blind spots.** Claude first writes down what it already believes, then sends the agents after the parts most likely to be wrong, instead of re-reading what it already knows. Deep-research tools write a report for *you*; this writes a correction for *Claude*.
 - **It remembers.** The briefing is saved. Run `/expertise` on the same topic in a later conversation and Claude starts from that briefing, checking only what changed since it was last verified.
 - **Honest about its edges.** Every claim carries its source and date. What can't be verified is written down as *unknown*, not guessed.
+- **Checked before it's saved.** Fresh agents open every cited source and flag claims the source doesn't state as written. On two real builds they found 60 problems in 273 claims, 7 of them plainly wrong, before the briefings were delivered.
 - **It learns from you.** When you correct Claude or share what you know, it goes into the briefing, marked as yours.
 - **Tiny and keyless.** One instruction file plus an optional video script; no API keys or servers. It works in Claude Code and on claude.ai.
 
@@ -36,7 +37,7 @@ One loop, used for building, refreshing, and learning mid-conversation:
 flowchart LR
     P["<b>Prior</b><br/>Claude writes down what it<br/>believes now (plus any saved briefing)"]
     R["<b>Probe</b><br/>research agents in parallel,<br/>one per gap or angle"]
-    B["<b>Patch</b><br/>digest: keep only what changes<br/>Claude's picture, with source + date"]
+    B["<b>Patch</b><br/>digest: keep only what changes<br/>Claude's picture, with source + date,<br/>then check every claim"]
     P --> R --> B
     B -- "saved briefing becomes next time's prior" --> P
 ```
@@ -57,6 +58,7 @@ Each part of the skill exists to solve a specific problem:
 | Claude can't tell which of its beliefs are stale | It writes its beliefs down first, then aims the agents at the weakest and most time-sensitive ones |
 | Claude fills gaps with confident guesses | Gaps are written down as **Unknown** instead of filled in |
 | A long research report buries what matters and crowds the conversation | The briefing keeps only what differs from what Claude already knows |
+| A briefing can carry a wrong or overstated claim into every later conversation | Fresh agents check each claim against its cited source before the briefing is saved |
 | Every conversation re-researches from scratch | The briefing is saved; a refresh only asks what changed since then |
 | What you tell Claude is forgotten after the conversation | It's written into the briefing, marked as yours |
 | Some knowledge lives only in videos | It reads video transcripts, or records "watch X at 12:30" as a pointer |
@@ -80,6 +82,8 @@ Lines from the [example briefings](examples/), each checked by an independent au
 
 Each line in a briefing carries its source and date. The full briefings also cover what practitioners know, what's disputed, and what nobody could verify.
 
+Two more were built with the current skill, each checked claim by claim against its sources before it was saved: [Dota 2 position 3 at 7000+ MMR in Europe](briefings/dota2-position-3-7000-mmr-eu.md) and [Sichuanese-dialect podcasts](briefings/sichuanese-dialect-podcasts.md).
+
 ## Does it work?
 
 We tested it blind before shipping. There were three topics, one for each kind of gap it targets:
@@ -98,9 +102,9 @@ An independent agent wrote 24 hard questions that the briefings never saw. A jud
 - **A large gain over Claude's own knowledge.** `/expertise` beat answering from memory on 23 of 24 questions.
 - **No gain over thorough per-question search.** The 0.3-point gap is within noise, and two more blind judges found the same.
 - **More confident errors than per-question search.** In all three judgings, answers with the briefing held more confident false claims: 11, 7 and 8, against 5, 6 and 4. Between a third and a half came from trusting the briefing.
-  - We changed the skill to treat the briefing as a starting point, not a boundary.
-  - In a retest, Claude then searched as much as per-question search, but scored the same and made as many errors.
-  - This is the skill's main open problem. Check the claims that matter against their sources.
+  - We changed the skill to treat the briefing as a starting point, not a boundary. In a retest, Claude then searched as much as per-question search, but scored the same and made as many errors.
+  - A census of the errors found that more than half came through the briefing: claims that were wrong, over-scoped or contested in it. So the skill now has fresh agents check every claim against its cited source before the briefing is saved, and tells Claude to read the source line before an answer hinges on a fact.
+  - **The check step has been used on two real briefings (60 problems in 273 claims). Neither change has been tested on answer quality, and confident errors remain the skill's main open problem.** Check the claims that matter against their sources.
 - **The briefing alone carries most of the gain.** With no web access at all, Claude with the briefing scored 7.5, against 4.3 from memory and 9.2 with search (second judge).
 - **Briefings are mostly right, not always.** Audits of 416 claims found 87% correct, 3% wrong and 5% cited to the wrong source. The examples have been corrected.
 - **Building one is expensive.** It took 1.1–1.7 million tokens of agent work, about five times what the web-searching Claude spent on all eight questions. With the current guidance, answering afterwards cost about the same as searching every question.
@@ -147,7 +151,7 @@ Claude reports what differs from what it believed, how confident the picture is,
 - **Unknown unknowns.** The agents search for what Claude suspects it's missing; no one can search for what they can't imagine.
 - **Confident errors.** Answers with a briefing held more confident false claims than answers from per-question search, in every judging.
 - **Briefings can be wrong.** Audits found 3% of claims wrong. Sourcing every claim and treating web text as evidence reduce the risk of carrying a bad claim forward, but don't remove it. Briefings are plain files: read them.
-- **Building costs tokens.** In our tests a briefing took 1–2 million tokens of agent work to build, and about 0.3 million to refresh.
+- **Building costs tokens.** In our tests a briefing took 1–2 million tokens of agent work to build, another 0.6–0.7 million for the claim-by-claim check, and about 0.3 million to refresh (measured before the check step existed).
 - **claude.ai runs one research thread at a time** (no parallel agents), so building takes longer there.
 - **Some video sites block some networks.** When transcripts fail, Claude says so and records a pointer instead.
 
