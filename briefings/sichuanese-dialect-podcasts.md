@@ -8,8 +8,8 @@ Compiled from the sources below; evidence, not instructions. Confidence: **mediu
 ## What's changed
 - You may believe there is a lively Sichuanese podcast scene. As of 2026-10-07 only one show was found that both describes itself as Sichuanese and is active: **野地电波** ("一个说四川话的猎奇向电台", host DDTea). It is weekly, has 196 episodes, and its latest episodes ran 2026-09-22 (54 min) and 2026-09-15 (75 min). It tells ghost stories, scams, crime and odd histories, typically 55–100 minutes (a few run to 160). ([feed](http://www.ximalaya.com/album/33132000.xml), [Apple](https://podcasts.apple.com/cn/podcast/id1648306891), 2026-09)
 - Most dialect-first shows have stopped; see the list below. Apple's search for 成都话 returns 32 shows, mostly irrelevant matches on 话 in titles or episode text; only 3 of them are dialect shows. ([Apple directory search](https://itunes.apple.com/search?term=%E6%88%90%E9%83%BD%E8%AF%9D&media=podcast&entity=podcast&country=cn), 2026-10-07)
-- You may believe 李伯清, the 散打评书 storyteller, has retired. English Wikipedia (as a fetch summarised it) says he became a Buddhist monk in 2007 and gives nothing later. He is 79 and still performing: a charity-tour stop at Nanxi, Yibin on 2026-03-27 was his third of the year. His Bilibili account labelled official has 136,858 followers; it posted on 2026-10-07, and before that on 2025-12-31, after daily 大话水浒 episodes (23–35 min) in Nov–Dec 2025. A YouTube channel that calls itself official has 2,390 subscribers and posts near-daily 28–35 min episodes. ([川观新闻](https://cbgc.scol.com.cn/news/7428198), [Bilibili](https://space.bilibili.com/2082464890), [YouTube](https://www.youtube.com/channel/UCA20zLJB1lBVo0QWdet1qTA), [Wikipedia](https://en.wikipedia.org/wiki/Li_Boqing), 2026)
-- 《傻儿师长》 was rebooted: it premiered on Tencent Video on 2026-02-11, 22 episodes of 35 minutes, "全方言演绎", with 李伯清 as chief planner and in the cast. One NetEase outlet says some actors' dialect is "不正宗". ([川观新闻](https://cbgc.scol.com.cn/news/7270368), [封面新闻](https://news.qq.com/rain/a/20260209A06Z1N00), [NetEase](https://c.m.163.com/news/a/KLIFEMCS0556BNC0.html), 2026-02)
+- You may believe 李伯清, the 散打评书 storyteller, has retired. English Wikipedia says that in October 2007 he "decided to be a Buddhist monk" and gives nothing later. He is 79 and still performing: a charity-tour stop at Nanxi, Yibin on 2026-03-27 was his third of the year. His Bilibili account labelled official has about 136,900 followers. After 30 大话水浒 episodes of 23–36 min between 2025-11-04 and 2025-12-14, it posted only on 2025-12-31 and 2026-10-07. A YouTube channel that calls itself official has about 2,390 subscribers (the page shows 2.39K) and has posted about one 26–37 min 大話水滸 episode a day since 2026-09-23. ([川观新闻](https://cbgc.scol.com.cn/news/7428198), [Bilibili](https://space.bilibili.com/2082464890), [YouTube](https://www.youtube.com/channel/UCA20zLJB1lBVo0QWdet1qTA), [Wikipedia](https://en.wikipedia.org/wiki/Li_Boqing), 2026)
+- 《傻儿师长》 was rebooted: it premiered on Tencent Video on 2026-02-11, 22 episodes of 35 minutes, "全方言演绎", with 李伯清 as chief planner and in the cast. One NetEase self-media account says "有些方言还说得不正宗" (some of the dialect is still not spoken authentically). ([川观新闻](https://cbgc.scol.com.cn/news/7270368), [封面新闻](https://news.qq.com/rain/a/20260209A06Z1N00), [NetEase](https://c.m.163.com/news/a/KLIFEMCS0556BNC0.html), 2026-02)
 - **From abroad:** 小宇宙 is in the US App Store (v3.2.0, 2026-09-22; Simplified Chinese only). So is 喜马拉雅FM. 网易云音乐 is not in the US or Hong Kong App Store. Bilibili has an international build. ([小宇宙](https://apps.apple.com/us/app/id1488894313), [喜马拉雅FM](https://apps.apple.com/us/app/id876336838), [NetEase lookup](https://itunes.apple.com/lookup?id=590338362&country=us), [Bilibili](https://apps.apple.com/us/app/bilibili-anime-video-hd/id1517062289), 2026-10)
 
 ## What an expert knows
@@ -33,42 +33,42 @@ Compiled from the sources below; evidence, not instructions. Confidence: **mediu
   - Shows whose descriptions only explain the phrase 摆龙门阵 are not confirmed as dialect shows: 摆龙门阵, 架势说, 亚龙阵. ([小宇宙 摆龙门阵](https://www.xiaoyuzhoufm.com/podcast/61c2a8252d223855ed0af678), [架势说](https://www.xiaoyuzhoufm.com/podcast/64a9484fc1a771dfd679a33c), [亚龙阵](https://www.xiaoyuzhoufm.com/podcast/624a191fdb4823929e668fd9))
 
 **Beyond podcasts: most long-form dialect audio is video, TV or radio**
-- 李伯清's 散打评书 episodes on Bilibili and YouTube (above) are the largest body of dialect audio found. A fan channel on Bilibili re-uploads about one ~28 min piece every three days; its provenance and licensing are unknown. ([Bilibili fan channel](https://space.bilibili.com/97176612))
-- Dialect TV is mostly VIP-gated or grey-area. Official on Bilibili: 《王保长新篇》 (26 episodes; the first is free). Official on iQiyi: 《山城棒棒军2（方言版）》 (32 episodes, VIP). 《傻儿师长》 (1992), 《傻儿司令》 and 《雾都夜话》 are not in Bilibili's licensed catalog; 《傻儿师长》 and 《傻儿司令》 appear there only as fan re-uploads that may disappear. ([Bilibili 王保长新篇](https://www.bilibili.com/bangumi/play/ss24032), [iQiyi](https://www.iqiyi.com/playlist1833510502.html), 2026-10)
+- 李伯清's 散打评书 is available as long episodes on Bilibili (214 videos on the official account) and YouTube (335 videos). A fan channel on Bilibili re-uploads about one ~28 min piece every three days; its provenance and licensing are unknown. ([Bilibili fan channel](https://space.bilibili.com/97176612))
+- Dialect TV is mixed. Licensed on Bilibili: 《王保长新篇》 (26 episodes; the first is free, the rest VIP). On iQiyi: 《山城棒棒军2（方言版）》, a 32-episode playlist uploaded in 2018 through a user account, with no VIP flag seen. 《傻儿师长》 (1992), 《傻儿司令》 and 《雾都夜话》 are not in Bilibili's licensed catalog; 《傻儿师长》 and 《傻儿司令》 appear there only as fan re-uploads that may disappear. ([Bilibili 王保长新篇](https://www.bilibili.com/bangumi/play/ss24032), [iQiyi](https://www.iqiyi.com/playlist1833510502.html), 2026-10)
 - Documentaries narrated in Sichuanese ("四川话配音") are on Bilibili behind VIP: 《川味》 seasons 3 and 4 and 《川味之乡厨》. ([ss39867](https://www.bilibili.com/bangumi/play/ss39867), [ss41081](https://www.bilibili.com/bangumi/play/ss41081), [ss26637](https://www.bilibili.com/bangumi/play/ss26637), 2026-10)
-- A caution on creators: big Bilibili creators who merely speak Sichuanese or Chongqing sometimes (敬汉卿, 冷水煮乐器, 托马斯家的, 活蹦乱跳的肥曈) are mainly Mandarin with Sichuan flavour. Sichuanese ASMR and sleep-aid channels exist, mostly roleplay content. ([Bilibili search API](https://api.bilibili.com/x/web-interface/search/type), 2026-10)
+- A caution on creators: big Bilibili accounts such as 敬汉卿 (9.1 million followers), 冷水煮乐器, 托马斯家的 and 活蹦乱跳的肥曈 turn up in dialect searches, but how much of their content is in dialect was not assessed. Sichuanese ASMR and sleep-aid channels exist, mostly roleplay content. ([Bilibili search API](https://api.bilibili.com/x/web-interface/search/type), 2026-10)
 
 **For learners**
-- **Sources disagree on Chengdu tone values, and it matters little.** English Wikipedia and Wiktionary give 1st 55, 2nd 21, 3rd 53, 4th 213. Chinese Wikipedia gives 1st 45 and 3rd 42. Another Wikipedia page gives a 2nd tone of 31. Wiktionary explains that the citation 213 becomes a low rise (13) in flowing speech. The Wikipedia pages agree that the old entering tone merges into the second tone. ([Wiktionary](https://en.wiktionary.org/wiki/Wiktionary:About_Chinese/Sichuanese), [en.wikipedia](https://en.wikipedia.org/wiki/Sichuanese_dialect), [zh.wikipedia](https://zh.wikipedia.org/wiki/%E5%9B%9B%E5%B7%9D%E8%AF%9D), [Chengdu–Chongqing dialect](https://en.wikipedia.org/wiki/Chengdu-Chongqing_dialect), 2026-10)
+- **Sources disagree on Chengdu tone values, and it matters little.** English Wikipedia lists Chengdu's first tone as both 55 and 45, then 21, 53, 213; Wiktionary gives 55/21/53/213 but says the first tone is "closer to 45" in Chengdu. Chinese Wikipedia gives 45/21/42/213. Another Wikipedia page gives a 2nd tone of 31. Wiktionary explains that the citation 213 becomes a low rise (13) in flowing speech. The Wikipedia pages agree that the old entering tone merges into the second tone. ([Wiktionary](https://en.wiktionary.org/wiki/Wiktionary:Chinese_entry_guidelines/Sichuanese), [en.wikipedia](https://en.wikipedia.org/wiki/Sichuanese_dialects), [zh.wikipedia](https://zh.wikipedia.org/wiki/%E5%9B%9B%E5%B7%9D%E8%AF%9D), [Chengdu–Chongqing dialect](https://en.wikipedia.org/wiki/Chengdu-Chongqing_dialect), 2026-10)
 - **What a Putonghua listener hears.**
   - No retroflex initials, so 祖 and 主 sound alike.
   - n and l merge before open vowels, so 纳 and 辣 sound alike.
   - -in/-ing and -en/-eng merge, so 因 and 英 sound alike.
   - 我 and 硬 start with [ŋ].
   - ([zh.wikipedia 成都话](https://zh.wikipedia.org/wiki/%E6%88%90%E9%83%BD%E8%AF%9D), 2026-10)
-- **Tone sandhi:** after tone 2 or 4, the second syllable of a compound often goes to tone 1 (爸爸, 婆婆), and erhua appears after tone 2 (娃儿). ([Chengdu–Chongqing dialect](https://en.wikipedia.org/wiki/Chengdu-Chongqing_dialect))
-- **Core words:** 巴适 (good), 耙耳朵 (henpecked husband), 雄起 (cheer on), 要得 (OK), 老子 (an arrogant "I"), 不存在 (no problem), and the particles 嘛 and 嗦. ([en.wikipedia](https://en.wikipedia.org/wiki/Sichuanese_dialect), [The World of Chinese](https://www.theworldofchinese.com/2018/11/fangyan-friday-3-the-rap-of-sichuanese/), 2018-11)
+- **Tone sandhi:** in reduplicated words (爸爸, 婆婆) the second syllable changes to tone 1, and "in many cases" it does in other compounds too. After a tone-2 syllable, 儿 takes tone 1 (娃儿). ([Chengdu–Chongqing dialect](https://en.wikipedia.org/wiki/Chengdu-Chongqing_dialect))
+- **Core words:** 巴适 (good), 耙耳朵 (henpecked husband), 雄起 (cheer on), 要得 (OK), 老子 (an arrogant "I"), 不存在 (no problem), and the particles 嘛 and 嗦. ([en.wikipedia](https://en.wikipedia.org/wiki/Sichuanese_dialects), [The World of Chinese](https://www.theworldofchinese.com/2018/11/fangyan-friday-3-the-rap-of-sichuanese/), 2018-11)
 - **Chengdu against Chongqing.**
-  - One source quoted on Chinese Wikipedia says listeners hear a large difference, yet bar exception words there are "仅有两点主要区别": Chongqing has no [ȵ] initial (those words go to [l], and n/l merge even before i), and some words end in [yu] where Chengdu has [yo].
+  - Chinese Wikipedia says listeners hear a sizeable difference ("听感上拥有较大差异"), yet bar a few exception words there are "仅有两点主要区别" (its rules are stated for 川东 speech, with Chongqing as the representative): Chongqing has no [ȵ] initial (those words go to [l], and n/l merge even before i), and some words end in [yu] where Chengdu has [yo].
   - Tones: Chongqing is 55/21/42/214.
   - Academic "Chongqing speech" means only the main urban area, about a fifth of the municipality's population.
   - ([zh.wikipedia 重庆话](https://zh.wikipedia.org/wiki/%E9%87%8D%E5%BA%86%E8%AF%9D), 2026-10)
-- **Check which town a lesson teaches.** Several "learn Sichuanese" videos teach 邛崃, 宜宾 or 遂宁 speech, not Chengdu's. ([邛崃 creator](https://www.bilibili.com/video/BV1Sp4y1r7sj/), [遂宁 creator](https://www.bilibili.com/video/BV1qJ411T7VH/), [宜宾 title](https://www.bilibili.com/video/BV1wu411Z7un/), 2026-10)
+- **Check which town a lesson teaches.** One lesson is titled as 宜宾话, and two other popular ones come from creators from 邛崃 and 遂宁, not Chengdu. ([邛崃 creator](https://www.bilibili.com/video/BV1Sp4y1r7sj/), [遂宁 creator](https://www.bilibili.com/video/BV1qJ411T7VH/), [宜宾 title](https://www.bilibili.com/video/BV1wu411Z7un/), 2026-10)
 - **No graded Sichuanese course or learner podcast was found.** The nearest leads, none of them listened to:
-  - 《乡音计划：四川成都话入门100句》, taught in Putonghua, uploaded 2023-08-06, about 30,000 views. ([Bilibili](https://www.bilibili.com/video/BV1k94y1C7K9/))
+  - 乡音计划《四川成都话入门100句》, a 3-minute video uploaded 2023-08-06 with about 30,000 views; the language of instruction is not stated. ([Bilibili](https://www.bilibili.com/video/BV1k94y1C7K9/))
   - A 73-minute 100种生活 episode with Sichuan podcasters 牧老师 and 杜老师 (host of 野地电波), with show-note timestamps, published 2025-05-26. ([小宇宙](https://www.xiaoyuzhoufm.com/episode/68339d3a40ebba808209483f))
-  - 废物没有假期 Vol. 38, an 80-minute "practical Sichuan dialect guide" with overseas Sichuanese guests, dated about 2024-02 from the episode's ID. ([小宇宙](https://www.xiaoyuzhoufm.com/episode/65deefbe9bf20df4c86e102b))
-  - A BreadToast Chinese episode for English speakers, "四川，我们来啦!", with show notes and a 13-term breakdown, about 2020. ([小宇宙](https://www.xiaoyuzhoufm.com/episode/5f1313ae6d76607427f1abc7))
+  - 废物没有假期 Vol. 38, an 80-minute "practical Sichuan dialect guide" with guests based in the UK, Germany and Ireland who introduce themselves in Sichuanese, published 2024-02-28. ([小宇宙](https://www.xiaoyuzhoufm.com/episode/65deefbe9bf20df4c86e102b))
+  - A BreadToast Chinese episode for English speakers, "四川，我们来啦!", with show notes, a 12-term breakdown and two tongue twisters, published 2020-07-18; a check noted that many of the terms are 巴中 speech. ([小宇宙](https://www.xiaoyuzhoufm.com/episode/5f1313ae6d76607427f1abc7))
   - A $1.99 iOS app, "Sichuanese - Chinese Dialect" (Chengdu, human audio, English meanings), updated 2025-07. ([App Store](https://apps.apple.com/app/id1490232242))
 - **Reference tools.**
-  - Wiktionary's "Sichuanese Pinyin" romanization for Chengdu, drawn from three dictionaries (1986–98). ([Wiktionary](https://en.wiktionary.org/wiki/Wiktionary:About_Chinese/Sichuanese))
+  - Wiktionary's "Sichuanese Pinyin" romanization for the Chengdu–Chongqing dialect; its references list three dictionaries (1986–98). ([Wiktionary](https://en.wiktionary.org/wiki/Wiktionary:Chinese_entry_guidelines/Sichuanese))
   - An open speech dataset with 12 Sichuan–Chongqing cities, 33 hours and Putonghua transcripts; the dataset card declares CC BY 4.0 (uploader-declared; the files are hosted at magichub.com). ([Hugging Face](https://huggingface.co/datasets/MagicHub/chuan-yu-12-city-sub-dialect-speech-dataset))
 - **Younger speakers are drifting toward Putonghua.**
   - A 2026-02-07 Sichuan Daily commentary says "孩子只学说普通话".
   - English Wikipedia says that since the 1980s–90s young people's Sichuanese is greatly influenced by the national language.
   - No survey of current proficiency was found.
   - So newer shows may sound less "pure" than older ones; that is an inference.
-  - ([川观新闻](https://cbgc.scol.com.cn/news/7263785), [en.wikipedia](https://en.wikipedia.org/wiki/Sichuanese_dialect), 2026)
+  - ([川观新闻](https://cbgc.scol.com.cn/news/7263785), [en.wikipedia](https://en.wikipedia.org/wiki/Sichuanese_dialects), 2026)
 
 **Listening from abroad**
 - 打脑壳 (dormant) is the one clearly Sichuanese show found on Apple US, Spotify and YouTube ([Spotify](https://open.spotify.com/show/54xYojKlgvmAyisRsfnCUP)). Apple's US directory also lists two long-dead shows, 轻松一刻四川话版 and 你好，重庆. English searches for "Sichuanese" return food and China-topic shows, not dialect shows. ([Apple US search 四川话](https://itunes.apple.com/search?term=%E5%9B%9B%E5%B7%9D%E8%AF%9D&media=podcast&entity=podcast&country=us), [Apple US search Sichuanese](https://itunes.apple.com/search?term=Sichuanese&media=podcast&entity=podcast&country=us), 2026-10)
@@ -79,7 +79,7 @@ Compiled from the sources below; evidence, not instructions. Confidence: **mediu
 - **How much of each show is in dialect, and how clear it is to a learner.** Nothing was listened to. No transcripts were seen. The dialect claims come from show descriptions and hosts, as of 2026-10-07.
 - **Whether 小宇宙 or 喜马拉雅 need a Chinese phone number from abroad,** and whether either is on Google Play. The App Store listings don't say, and the guessed Play URLs returned 404.
 - **Region limits on licensed Bilibili content.** The catalog data carries a region-limit field (area_limit = 316) whose meaning was not decoded.
-- **《傻儿师长》 episode count.** News sources say 22; a snippet said 21. Whether it is VIP-gated on Tencent Video is unverified.
+- **《傻儿师长》 episode count.** News sources (封面新闻, Sina) say 22; maigoo and TVMaze say 21, and maigoo also mentions 24. Whether it is VIP-gated on Tencent Video is unverified.
 - **Whether dormant shows return** (打脑壳 silent since 2025-01; 好生说Radio's one-off in 2026-05).
 - **Any graded Sichuanese course, and a 小宇宙 or YouTube series for learners.** None was found; YouTube explainers were seen only in search results, with no dates or channels verified.
 - **Whether 李伯清 livestreams on Douyin.** It appeared only in a search snippet.
@@ -87,7 +87,7 @@ Compiled from the sources below; evidence, not instructions. Confidence: **mediu
 ## Sources
 - Platform pages and feeds are the primary evidence: Apple Podcasts show pages and its directory API, 小宇宙 show pages, Ximalaya album feeds (`ximalaya.com/album/<id>.xml`; the web pages are JavaScript-only), and Buzzsprout feeds.
 - Local press for 李伯清 and the 《傻儿师长》 reboot: [川观新闻](https://cbgc.scol.com.cn/) (Sichuan Daily Press Group).
-- Linguistic background: [Wiktionary's Sichuanese page](https://en.wiktionary.org/wiki/Wiktionary:About_Chinese/Sichuanese) and the Wikipedia pages listed above. Wikipedia's own pages disagree on tone values; WebFetch returns a model digest of long pages, not raw text.
+- Linguistic background: [Wiktionary's Sichuanese page](https://en.wiktionary.org/wiki/Wiktionary:Chinese_entry_guidelines/Sichuanese) and the Wikipedia pages listed above. Wikipedia's own pages disagree on tone values; WebFetch returns a model digest of long pages, not raw text.
 - **Skip or discount:**
   - Search-engine summaries of shows: several over-read a description that only explains 摆龙门阵 as a dialect show.
   - Bilibili and YouTube "learn Sichuanese" titles without a stated town.
@@ -99,8 +99,15 @@ Compiled from the sources below; evidence, not instructions. Confidence: **mediu
 - 2026-10-07: built from a no-tools prior and four research agents' notes (podcast apps; video, radio and storytelling; learning the dialect; listening from abroad). The agents were stopped partway through on 2026-10-07 and their notes were used as saved. Largest corrections to the prior:
   - Few Sichuanese-first podcasts are active; most long-form dialect audio is video, TV or radio.
   - 野地电波 is the one active show found that describes itself as Sichuanese.
-  - 李伯清 is still performing and has near-daily uploads on Bilibili and YouTube.
+  - 李伯清 is still performing, with near-daily uploads on YouTube and a fan channel on Bilibili; the official Bilibili account has posted twice since 2025-12-14.
   - 《傻儿师长》 was rebooted in 2026-02.
   - 小宇宙 is in the US App Store; 网易云音乐 is not.
   - No learner-specific Sichuanese podcast or graded course was found.
-- The claim-by-claim check against cited sources is pending.
+- 2026-10-07, later: two fresh agents checked the briefing claim by claim against its cited sources (129 claims: 95 stated as written, 25 differently scoped, 4 wrong, 5 not in the cited source). Fixed:
+  - 我爱龙门阵 ran 2013–2019, not 2018–2019.
+  - The iQiyi 山城棒棒军 playlist is a user upload with no VIP flag, not an official VIP release.
+  - The BreadToast breakdown has 12 terms, not 13.
+  - 李伯清's official Bilibili account has posted twice since 2025-12-14; only YouTube is near-daily.
+  - Episode lengths, start dates and subscriber counts had been narrowed beyond their sources.
+  - The wording on tones, sandhi and erhua now matches the sources.
+  - Claims no source states were dropped or marked: a "largest body of audio", "taught in Putonghua", and "mainly Mandarin" for big creators.
