@@ -10,6 +10,7 @@
 - **B made more confident errors than A in all three judgings:** 11, 7 and 8, against 5, 6 and 4. Three of B's eight losses came from trusting the briefing too far, so the skill now tells Claude to use the briefing as a prior, not a boundary. In an exploratory retest, that guidance made Claude search as much as A, but neither its score (8.9 against A's 9.0) nor its confident errors (9 against 4) improved. **Confident errors are the main open problem.**
 - **The briefings are mostly right, not always.** Of 416 audited claims, 87% were correct, 3.4% wrong and 5.3% cited to the wrong source. All three examples have been corrected.
 - **Building a briefing is expensive.** It took 1.1–1.7M tokens of agent work, 4.6–6.0 times what arm A spent answering all eight questions. B answered with fewer web calls than A (159 against 284) and in about a quarter less time. With the revised guidance (B1), answering cost about the same as A: 276 web calls, 7% more tokens and 7% less time.
+- **Since then, a second fix was used on two new briefings (§12).** Both skill changes are in SKILL.md: a check of every claim against its cited source before a briefing is saved, and a rule to read the source line before an answer hinges on a fact. The check found 60 problems in 273 claims (7 outright wrong) before the briefings were delivered. **Whether it reduces confident errors in answers has not been tested.**
 
 ## Setup
 
@@ -205,7 +206,7 @@ Tokens are each agent's total as reported by the harness; times are wall-clock. 
 |---|---|---|---|
 | A wrong claim in a briefing | Yes: 14 of 416 claims (3.4%), plus 22 mis-cited | Medium. None of the 14 surfaced in a judged answer, but an over-scoped stock claim did (kanna 1), and a saved briefing carries its errors into every later conversation. | Two writing rules and a perishable-facts rule in SKILL.md; examples corrected |
 | B losing to A | 8 losses against 4 wins, mean −0.29, not significant; −0.25 and −0.12 under two more judges | Medium. B is no better than per-question search. | "A prior, not a boundary" guidance. In the retest, B1 searched more but scored the same (§5). |
-| B with more confident errors than A, or inventing a trap answer | Yes, in all three judgings (11/5, 7/6, 8/4), and again in the retest (B1 9, A 4). No invented trap answers. | Medium, and **open** | The fix didn't reduce it. The cause is partly the briefing and partly unexplained. |
+| B with more confident errors than A, or inventing a trap answer | Yes, in all three judgings (11/5, 7/6, 8/4), and again in the retest (B1 9, A 4). No invented trap answers. | Medium, and **open** | The first fix didn't reduce it. A second fix (§11) adds a build-time check and a source-line rule; the check was used on two briefings (§12), but answers using them were not tested. |
 | Build cost not justified by the quality gain | Yes, against a Claude that searches every question; no, against Claude from memory | High for one-off questions | The README says when to use it and when not to |
 | The skill skipping its own steps | Not seen | None | None |
 
@@ -228,9 +229,11 @@ Tokens are each agent's total as reported by the harness; times are wall-clock. 
 
 For a few one-off questions, asking Claude to search is enough and much cheaper. Whoever uses a briefing should check the claims an answer hinges on against their cited sources.
 
-**What to try next.** The confident-error gap is the problem worth solving next. Two candidates, neither tested:
-- Have Claude verify, at answer time, any claim it takes from the briefing that the answer hinges on, just as it re-checks perishable facts.
-- Have a separate auditor check a briefing claim by claim after it's built, as the audits here did. They found and fixed 14 wrong claims.
+**What to try next.** The confident-error gap is the problem worth solving. Both candidate fixes are now in SKILL.md, and neither has been tested on answers:
+- Have Claude read the source line before an answer hinges on a specific fact (the answer-time rule).
+- Have fresh agents check each claim against its cited source before a briefing is saved. This has been used on two briefings (§12) but not yet measured against answer quality.
+
+The test that would settle it is the A/B design in [PROTOCOL.md](PROTOCOL.md) run on new topics with the revised skill: arm B2 against a same-day arm A2, on fresh blind judges. It costs about 3.7M tokens of agent work.
 
 **The hinges, where being wrong would change the conclusion:**
 1. **How often everyday Claude searches.** Arm A was told the date, asked to answer as of today, and searched 11–58 times per topic. If everyday Claude searches less, the real-world gain sits between B − A (none) and B − A0 (+4.2). This was not measured.
@@ -263,3 +266,51 @@ After the retest, every confident false claim from all three judgings was listed
 - **At answer time, Claude asserts a hinge fact only after reading the line that states it, and keeps that line's scope.**
 
 The build-time check was exercised on two new briefings (§12). **The answer-time rule has not had a controlled retest.**
+
+## 12. Field use: the build-time check on two briefings
+
+After the second fix, the revised skill was used on two topics chosen for their usefulness to a person, not for the test: [Dota 2 position 3 at 7000+ MMR, Europe](../briefings/dota2-position-3-7000-mmr-eu.md) and [Sichuanese-dialect podcasts](../briefings/sichuanese-dialect-podcasts.md). Each build followed SKILL.md:
+- a prior written before any search
+- research agents (five and four)
+- a draft, written by the orchestrator from the agents' notes
+- the new check step: two fresh agents per topic, each taking the claims cited to its group of sources. Dota's split was official and primary sources against media and community posts; the podcasts' was platform pages and feeds against press, video platforms and reference works. Each agent opened every cited source and reported each claim as stated, wrong, superseded, differently scoped or not in the source, with the line quoted.
+
+The drafts were fixed from the reports before they were delivered. The reports are in `build/dota2-pos3/check/` and `build/sichuanese-podcasts/check/`.
+
+| Briefing | Claims checked | Stated as written | Differently scoped | Wrong | Not in the cited source |
+|---|---|---|---|---|---|
+| Dota 2 offlane | 144 | 118 (82%) | 16 (11%) | 3 | 7 |
+| Sichuanese podcasts | 129 | 95 (74%) | 25 (19%) | 4 | 5 |
+| **Both** | **273** | **213 (78%)** | **41 (15%)** | **7 (2.6%)** | **12 (4.4%)** |
+
+**What the check caught.** All seven wrong claims were real errors that would have been saved.
+- **Dota:**
+  - "Immortal entry ~5,420 on the old table" is Divine 5 on Liquipedia's table. The rank estimate built on it was dropped.
+  - "Underlord and Tidehunter appear only in commentary": both are in the pro data (116 and 84 games).
+  - A note said a player's region and account ID weren't recorded; his post states the region and his Stratz link gives the ID.
+- **Podcasts:**
+  - A show's "main run 2018–2019" ran 2013–2019, with 30 episodes in 2013 alone.
+  - An iQiyi playlist called official and VIP-gated carries no VIP flag and was uploaded by a user.
+  - A "13-term breakdown" has 12.
+  - The official Bilibili account of 李伯清 was called near-daily; it has posted twice since 2025-12-14.
+
+The 53 scope and not-in-source rows share a pattern:
+- **Ranges and dates narrowed beyond the source.** Episode lengths of "6–22 min" run 2–22; a "from April 2021" start was May.
+- **Inferences stated as facts.** "Boots are optional" for Centaur; a lesson "taught in Putonghua"; big creators "mainly Mandarin".
+- **Superlatives with no comparison.** "The largest body of dialect audio found."
+- **Quotes that lost a qualifier.** A safe-lane player's "a very good change" omitted that he said it favours offlaners only "a little bit".
+
+Most of these came from compressing in the draft. Two came from the research notes (a pro-match count of 19 games at 58% was 20 at 55%; "87%" was 89%).
+
+The Dota checkers also **re-ran the pro-match queries** on OpenDota and reproduced the headline figures exactly (970 matches, 11 figures in the nine-event table). They found the nine events by search, since the briefing hadn't named them.
+
+**What it cost.** Dota's two check agents used 0.71M tokens and the podcasts' two 0.59M, each pair running in parallel for 20–47 minutes. An earlier build's research took 1.1–1.7M tokens.
+
+**How this compares with the earlier audits.** Not directly: the audits of §6 ran after the answers, used different checkers, and counted a claim "correct" if a source supported it, where "stated" here also requires the same scope and qualifiers. The wrong-claim rates are close (2.6% against 3.4%), which says the writing rules from the first fix did not remove errors. The check did, before delivery.
+
+**What this does not show.**
+- **Answer quality.** These topics were not run through the A/B design, to save its cost. We can say the check found and removed 60 problems before delivery. We cannot say it reduces confident errors in answers, or that the answer-time rule works.
+- **Independence.** Writer and checkers are the same model family. Sources the checkers couldn't open (Reddit, Stratz, Dotabuff, NGA) were read through mirrors or not at all, and absence claims ("no source maps 7,000 to a leaderboard rank") can't be checked by opening a source.
+- **Coverage.** The Dota briefing says plainly that pub hero statistics for 7000+ EU couldn't be sourced from this network.
+
+**Operational note.** The harness refused check agents' attempts to write files named "report" ("Subagents should return findings as text"). Their reports came back as text and were saved from their replies. Research agents' notes files were written without trouble.
