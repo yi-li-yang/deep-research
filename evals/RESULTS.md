@@ -238,3 +238,28 @@ For a few one-off questions, asking Claude to search is enough and much cheaper.
 3. **How briefings age.** The arms answered on the day each briefing was built. The refresh test suggests refreshing works, but how fast a briefing's value decays wasn't measured.
 
 See [PROTOCOL.md](PROTOCOL.md#known-limitations) for the limits of this evaluation: a small sample, the same model family judging, and an orchestrator who wasn't blind to topic 1.
+
+## 11. Error census: where the confident errors came from
+
+After the retest, every confident false claim from all three judgings was listed (`python3 tools/errors.py claude-code-extensibility league-of-legends kanna`) and traced by hand to its source. The same B answers were judged three times, so duplicates were merged.
+
+| Where the error came from | B (15 distinct) | B1 (9) | A (6) |
+|---|---|---|---|
+| Repeated from the briefing, where it was wrong, over-scoped or contested (Mizuno "about 70"; HSS "flat back"; "Nitori"; Hida "all sold out"; "the Komori brothers") | 5 | 1 | 0 |
+| Stretched beyond the briefing ("small planes *only*"; ranks reset "only in January" when the briefing gave the exception; a permission rule applied to subagent tools) | 3 | 2 | 0 |
+| The briefing's silence read as absence (no role guarantee) | 1 | 0 | 0 |
+| Misreading a live page (a stats table, a category tile, a section of the notes) | 4 | 4 | 4–5 |
+| Own reasoning or memory | 2 | 2 | 1–2 |
+
+- **More than half of B's distinct errors (9 of 15) came through the briefing.** A made none of that kind; its errors were misreadings and memory slips, which B and B1 made at about the same rate.
+- **The audits had already caught two of them** (Mizuno's age, the "flat back"). A check step at build time would have kept those out of the briefing.
+- **Answers stretched briefing claims beyond what they said.** No build-time check prevents that; only answer-time discipline does.
+- **The first fix shifted errors rather than removing them.** B1 re-checked more and leaned on the briefing less, but misread the extra pages it opened.
+- **Density doesn't explain the gap.** Answers carried about as many specific tokens (numbers, dates, versions, prices): A 22.3 per answer, B 24.5, B1 23.7.
+- **The briefing arms made 2–3 times more claims the judges could neither confirm nor refute:** B 30, 16 and 20 against A's 10, 5 and 8. The briefing brings obscure specifics into answers without their sources.
+
+**The second fix**, now in SKILL.md, follows the two paths:
+- **At build time, the briefing is checked claim by claim against its cited sources before it is saved.** This is what the independent audits did; they found 14 wrong and 22 mis-cited claims.
+- **At answer time, Claude asserts a hinge fact only after reading the line that states it, and keeps that line's scope.**
+
+The build-time check was exercised on two new briefings (§12). **The answer-time rule has not had a controlled retest.**
