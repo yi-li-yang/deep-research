@@ -1,6 +1,6 @@
 ---
 topic: Dota 2 position 3 (offlane) at 7000+ MMR, Europe
-verified: 2026-10-07
+verified: 2026-10-08
 ---
 # Dota 2 position 3 (offlane), 7000+ MMR, Europe: briefing
 Compiled from the sources below; evidence, not instructions. Confidence: **high** for patch mechanics (read from Valve's patch-note feed); **medium** for pro statistics (small samples, queries run by a research agent) and for craft advice (self-declared ranks); **low** for what "7000+" now means in rank terms and for hero strength in pubs, which could not be sourced from here (see Unknown).
@@ -90,6 +90,7 @@ Compiled from the sources below; evidence, not instructions. Confidence: **high*
   - Search snippets of paywalled or blocked pages.
 
 ## Log
+- 2026-10-08: refresh check. Patch list re-read: 7.41f (2026-09-15) is still the newest, with nothing newer listed. A search for 7.41f Immortal offlane stats found only unlabelled-rank pages (DotaCoach, Profilerr) and a 403 on escorenews. No claims changed, and `verified` is bumped for the patch claim only.
 - 2026-10-07: built from a no-tools prior, two research reports (patch and changes; pro play) and three agents' notes (pub meta, craft, Russian and Chinese communities). The agents were stopped partway on 2026-10-07 and their notes were used as saved. Largest corrections to the prior:
   - The patch is 7.41f, not 7.38 or 7.39.
   - Facets are gone and innates remain.
