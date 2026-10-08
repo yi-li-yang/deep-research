@@ -314,3 +314,39 @@ The Dota checkers also **re-ran the pro-match queries** on OpenDota and reproduc
 - **Coverage.** The Dota briefing says plainly that pub hero statistics for 7000+ EU couldn't be sourced from this network.
 
 **Operational note.** The harness refused check agents' attempts to write files named "report" ("Subagents should return findings as text"). Their reports came back as text and were saved from their replies. Research agents' notes files were written without trouble.
+
+## 13. After delivery: three fresh-session runs of the refresh path
+
+The Dota briefing was delivered on 2026-10-07. The next day, asked which heroes are strongest, the answer came from the briefing, and the maintainer pointed out that a main stats site (Dota2ProTracker) had not been read, and that the tool should not need a person to fetch things. Three fresh cloud sessions then ran the skill as a user would, one day after the build. Each is a **single run**.
+
+| | Run 1 | Run 2 | Run 3 |
+|---|---|---|---|
+| Skill text | `main` | `main` | `main` plus one clause in the answer-time rule |
+| Prompt | the topic | the topic and "which heroes are strongest in this role this patch?" | same as run 2 |
+| Checkout | whole repository | `skills`, `.claude`, `briefings` only | same as run 2 |
+| Cost at list price | $0.44 | $0.46 | $0.48 |
+| Output tokens | 2,835 | 6,040 | 8,005 |
+| Fresh input (input plus cache writes) | 51,583 | 48,815 | 63,907 |
+| Cached context re-read | 1.01M | 1.22M | 1.23M |
+| Time | about 1 minute | about 1 minute | about 1.5 minutes |
+| Research agents | 0 | 0 | 0 |
+| Lookups for pub position stats | 0 | 0 | 1 search, 1 fetch (403) |
+| Outcome | repeated "unsourceable", offered a full re-probe if asked | repeated it, and told the user to check Stratz or Dotabuff themselves | repeated it, same advice |
+
+The clause in run 3 was: "If nothing states it, go and find it, starting from why it was thought unfindable (that may have been wrong); only if that fails, say it's unconfirmed or leave it out." It lived on a throwaway branch; `main` is unchanged.
+
+**What the transcripts show.**
+- **A refresh of a day-old briefing was treated as a patch-list check.** The sessions fetched the patch list, found 7.41f still newest, and stopped. No agents were sent and no check step ran, because nothing new was written.
+- **Run 2 bumped `verified`** after that check, although the skill says only a probe updates it.
+- **The briefing's own reason for the gap was believed.** All three repeated "OpenDota's public matches carry no positions" and none questioned it, so the clause in run 3 produced a little more effort and no change of outcome.
+- **The answer-time rule ends in "say it's unconfirmed or leave it out".** When the question hinged on a gap, the rule told the session to give up, and it did so politely.
+
+**A correction to section 12.** "Pub hero statistics for 7000+ EU couldn't be sourced from this network" was too strong, and the briefing says the same. The research notes already recorded that OpenDota's per-match endpoint returns each player's rank tier and an estimated position for about three in four top-bucket matches. On 2026-10-08 about 225 top-bucket EU ranked matches appeared in two hours, and three sampled matches each returned all ten players with positions. Dotabuff, Stratz and Dota2ProTracker did return 403 or a bot challenge. The briefing's summary ("public matches carry no positions") was true of the explorer's `public_matches` table and false of the per-match endpoint, and nothing in the build checked a negative claim like that one. That is a gap in the check step: it verifies what the briefing says, not what it says cannot be done.
+
+**What this does not show.**
+- Single runs, one topic, one day-old briefing.
+- It does not test what the skill does in a real probe. None of the runs sent an agent.
+- The one-clause result says that clause did not change the outcome here, not that no rewording could.
+- Costs are API-level (cached re-reads are cheap), so they are not comparable with the agent-token figures of section 12.
+
+**The lean rewrite.** A shorter rewrite of the skill's judgement sections is pre-registered in `lean-test/` with eight scenarios and a gate that asks for a clear edge. Its Q1 pilot (one answer per version, not judged) cost 99,017 and 136,310 tokens, about four times the estimate, almost all of it the subject's own deliberation, so it was stopped there. The static size is smaller (about 1.9k against 2.3k tokens when the skill runs). Nothing is adopted.
