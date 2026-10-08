@@ -1,0 +1,27 @@
+{
+  "name": "deep-research",
+  "description": "Skills that keep Claude current on any topic.",
+  "owner": {
+    "name": "yi-li-yang"
+  },
+  "plugins": [
+    {
+      "name": "expertise",
+      "source": "./",
+      "description": "Bring Claude up to date on a topic before you work on it: parallel research agents check what Claude is most likely to have wrong, and the findings become a saved, sourced briefing that /expertise reuses and refreshes next time.",
+      "version": "0.1.0",
+      "author": {
+        "name": "yi-li-yang"
+      },
+      "repository": "https://github.com/yi-li-yang/deep-research",
+      "license": "MIT",
+      "keywords": [
+        "research",
+        "briefing",
+        "up-to-date",
+        "expertise",
+        "agents"
+      ]
+    }
+  ]
+}

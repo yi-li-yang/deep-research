@@ -1,0 +1,86 @@
+## Checked beliefs
+- **CONFIRMED (dated):** contests since the late 1990s → the 1st national meet was 22–23 Feb 1997 in Nagoya; the 40th was Nov 2024 — [kezuroukai.jp](https://kezuroukai.jp/meeting.html) — as of Apr 2024. Miki tourism pages say Kezurou-kai was "born in 1975 in Gifu". That contradicts the organization's own list, so treat it as an error — [example](https://miki-genkimura.or.jp/?p=182) — 2026.
+- **CONFIRMED, with a caveat:** hinoki, full-width shavings a few microns thick → 2025 rules: you bring your own hinoki (≥55 mm × ≥1,800 mm), the plane must be under 76 mm, and each shaving is measured at 3 points. The top 5 then plane a board the organizers supply, in 5 minutes — [Katano rules](https://kezuroukai-katano.to-ryou.com/competition/) — Apr 2025. Finals shavings are much thicker: ~15 µm in 2019 ([KK-USA](https://kezuroukai.us/evolution-of-the-kezurou-contest-in-japan/)), and ~48–50 µm on sugi at Itoigawa ([Big Sand](https://www.bigsandwoodworking.com/kezurou-kai-39/)) — Nov 2023.
+- **CHANGED:** "Kezurou-kai USA since the late 2010s" → the Japanese body ran US meets from Aug 2000 (Berkeley) and German ones in 2005, 2007 and 2018 ([list](https://kezuroukai.jp/other.html)). The KK-USA nonprofit has met every year since 2015 except 2020–21: 8th in Kingston NY (Oct 2024), 9th in El Cerrito (Oct 2025, ~160 people). The next is El Cerrito, 17–18 Oct 2026 — [events](https://kezuroukai.us/events/), [report](https://kezuroukai.us/the-2025-kezuroukai-national-event-report/) — Apr 2026.
+- **CONFIRMED:** 西岡常一 (Nishioka Tsunekazu) revived the yari-ganna for the rebuild of the burned Hōryū-ji Kondō. The blade was forged by Sakai swordsmith 水野正範 (Mizuno Masanori) from Asuka-era nails. 小川三夫 (Ogawa Mitsuo, b. 1947) was his only live-in apprentice, founded 鵤工舎 (Ikaruga Kōsha), and is living — [ja.wikipedia](https://ja.wikipedia.org/wiki/西岡常一), [小川](https://ja.wikipedia.org/wiki/小川三夫) — Apr 2026. Yari-ganna work now goes beyond that lineage: 村上宏治 (Murakami Kōji)'s bulletin series 『平成ヤリガンナ考』 reached No. 38 — [bulletin index](https://kezuroukai.jp/magazine.html) — Mar 2024.
+- **CHANGED:** English references:
+  - Chris Hall died in April 2020. *The Carpentry Way* moved to thecarpentryway.blog, kept up by his widow (last post Apr 2025), and the old blogspot URL is dead — [post](https://thecarpentryway.blog/2025/04/five-years-without-chris-and-a-book-recommendation-and-some-updates/).
+  - Still active:
+    - Stan Covington, who also sells tools: handplane series Parts 6–9, Jul 2024–Apr 2026 ([feed](https://covingtonandsons.com/feed/)).
+    - Wilbur Pan: talks at Woodworking in America (Oct 2025) and Handworks (Sep 2026) ([Giant Cypress](https://giantcypress.net/)).
+    - Yann Giguère: Mokuchi podcast, 20 episodes by Jul 2026 ([feed](https://mokuchistudio.buzzsprout.com/2172467)).
+    - Andrew Hunter: on the KK-USA board; co-hosted Kingston 2024.
+  - Odate (b. 1930) is still listed as living on Wikipedia (Jun 2026).
+  - Missing from the prior: Dale Brotherton's *Sharpening and the Japanese Hand Plane – In Depth* (2017), called the key beginner text — [Paklan](https://www.paklan.org/dale-brotherton-of-the-takumi-company/) — Aug 2026.
+- **MOSTLY CONFIRMED:** the debates are live:
+  - **Single blade vs chipbreaker:** serious contest planers favour 一枚台 (single-blade dai, no chipbreaker, narrower mouth). The same tool retailer says "steel type doesn't decide records" — [曼陀羅屋](https://daiku-dougu.jp/kezuroukai-shiyou-kannna.html) — 2026.
+  - **Smith names vs the dai:** 土田昇 (Tsuchida Noboru) wrote in the Takenaka museum's 2024 kanna-exhibition brochure. He repeats the saying that adjusting the dai matters more than sharpening, and says dai-makers (台屋) are overlooked — [translation](https://www.paklan.org/the-kanna-dai-by-nobori-tsuchida/) — Jul 2025.
+  - **Sole relief:** Covington recommends 0.2–0.5 mm recesses between 6–10 mm contact strips. He says Kezurou-kai made Western card scrapers popular in Japan for truing dai — [Part 6](https://covingtonandsons.com/2024/07/06/the-japanese-handplane-part-6-setting-up-and-maintaining-the-sole/) — Jul 2024.
+  - **New: blade bedding.** Full, even contact vs a "U-shaped" contact area; Covington rejects both — [Part 7](https://covingtonandsons.com/2024/10/16/japanese-handplanes-part-7-bedding-the-blade-correcting-some-common-misunderstandings/) — Oct 2024.
+  - **Stones and micro-bevels:**
+    - Paklan's 2026 Q&A says only that "some believe" natural-stone edges last longer; untested.
+    - Somakosha teaches secondary bevels and hollow grinds ([Paklan](https://www.paklan.org/how-do-i-begin-using-natural-stones-with-japanese-woodworking-tools/)).
+    - Matt Connorton gave a talk called "The Nano Bevel" ([schedule](https://www.mainejapanesewoodworkingfestival.com/schedule)) — Jul 2026.
+  - **Steel labels:** no new controlled steel tests found.
+
+## New findings
+- **Records:** Kezurou-kai keeps no official record list.
+  - 2 µm shavings were already pinned up at the 23rd meet — [daiku-dougu](https://daiku-dougu.jp/toukyou-kezurou.html) — Apr 2009.
+  - Recent preliminary-round winners sit around 3–4 µm:
+    - 2023 women's winner 竹本 (Takemoto): ~3 µm ([school](https://www.shiko-th.ed.jp/schoollife/club/architecture/news/20240518/)).
+    - 2026 champion 渡辺智紀 (Watanabe Tomoki? reading unconfirmed): 3.5 µm twice in preliminaries, per his company's post ([匠-TAKUMI](https://takumi-123.com/news/20260625/)).
+    - A competitor averaging 5.16 µm missed the prizes by about 1 µm ([アラキ工務店](https://www.kyoto-araki.jp/araki/kensyu/kezurou.html)) — 2026.
+  - Claims of 1 µm are unverified.
+- **Results:**
+  - **Hadano, 40th** (9–10 Nov 2024; 700+ participants, ~15,000 visitors):
+    - General: 1st 井本輝正 (Imoto Terumasa?), 2nd 久保正幸 (Kubo Masayuki).
+    - Women: 工藤由佳 (Kudō Yuka).
+    - Five-sun plane (~150 mm wide): 小林健太郎 (Kobayashi Kentarō), 19 µm, per a company press release.
+    - Sources: [city](https://www.city.hadano.kanagawa.jp/soshiki/7/1049/1_1/2826.html), [PDF](https://omotan-hadano.jp/kezuroukai/assets/files/data/result2024.pdf), [PR Times](https://prtimes.jp/main/html/rd/p/000000013.000085359.html).
+  - **Katano, 41st:** 12–13 Apr 2025, ~400 competitors expected.
+  - **Miki, 42nd** (13–14 Jun 2026):
+    - General: 渡辺智紀 of Itoigawa ([city](https://www.city.itoigawa.lg.jp/page/26214.html)).
+    - Students: 伊勢脇恭兵 (Isewaki Kyōhei), 19 µm summed over three points ([school](https://www.nsg.gr.jp/blog/sado_kezuroukai-champion-student_202607/)).
+    - There was no women's division this year.
+  - **Sosa, Chiba, 43rd:** 21–22 Nov 2026. The chair is 川口泰弘 (Kawaguchi Yasuhiro), who has won two divisions — [Sosa tourism](https://sosa-kanko.com/blog/2026/05/15/3885/).
+- **Organization:**
+  - 谷和雄 (Tani Kazuo) has led it since May 2021, after 上條勝 (Kamijō Masaru).
+  - The office moved from Nagoya to Hadano in Apr 2024.
+  - The official site has not been updated since 1 Apr 2024 — [kezuroukai.jp](https://kezuroukai.jp/).
+- **Money is tight:**
+  - Katano's crowdfunding raised ¥1.358M of a ¥3M goal (Feb 2025), and committee members said they were paying from their own pockets — [CAMPFIRE](https://camp-fire.jp/projects/791937/view).
+  - Sosa's raised ¥401k of ¥2M (closed 15 Jun 2026) — [CAMPFIRE](https://camp-fire.jp/projects/934545/view).
+- **Contest arms race (Hadano 2024):**
+  - Competitors brought pre-sharpened planes rather than stones, and vacuum-sealed their tools and boards.
+  - Judges added a 15-second limit on spreading a shaving out before it is measured.
+  - Favourite stones: Naniwa 2000 and 12k, and Kensyou — [Paklan](https://www.paklan.org/a-few-frames-from-kezuroukai-japan-2024/) — Feb 2025.
+  - Boards are kept moist with damp towels. Jon Billing says going under 10 µm needs control of the wood "far from the reality of day-to-day work" (Big Sand, Nov 2023).
+- **International:**
+  - Korean entrants now place: Ha Kyung Min was 3rd in the 2024 women's division, and six Koreans were on Katano's 2025 entry list ([list](https://kezuroukai-katano.to-ryou.com/competition/)).
+  - Andrew Ren of Ottawa competed in Japan in 2024 and 2026.
+- **KK-USA is spreading inland:** a booth at the Denver Cherry Blossom Festival (Jun 2025), and two Colorado board members added in 2024 ([board](https://kezuroukai.us/about/board-of-directors/)).
+- **New US venues:**
+  - Maine Japanese Woodworking Festival (Wabi Sabi School), 24–26 Jul 2026, its 4th year under Jason Fox, with a Kezurou-kai-style final.
+  - Port Townsend Japanese Woodworking Festival, free, 15 Aug 2026 ([PTWS](https://www.ptwoodschool.org/japanese-woodworking-festival)).
+  - A monthly "Mini Kez" at Rowan Woodwork, Kingston NY ([KK-USA](https://kezuroukai.us/mini-kez/)).
+- **New voices:**
+  - Brian Lam's Paklan, since Nov 2024. It is a paid newsletter and has sold tools since Jul 2026, so it has a commercial stake ([post](https://www.paklan.org/this-is-not-really-a-tool-store/)).
+  - Somakosha in Okayama (山本耕平 Yamamoto Kōhei and Jon Stollenmeyer) runs a school with dorms.
+  - Mount Fuji Wood Culture Society.
+- **Japanese voices now:**
+  - 土田昇 lectured at Katano on tools linked to 千代鶴是秀 (Chiyozuru Korehide) in Apr 2025, and writes the bulletin series 「刃物の味方」.
+  - Other bulletin series by 久保正幸 (「黒皮の主張」) and by 矢野恒夫 (Yano Tsuneo) on smiths' histories — [bulletin index](https://kezuroukai.jp/magazine.html).
+- **Went quiet:** the Daizen Joinery blog (2017); Brian Holcombe's blog (silent 2018–Nov 2025); the KK-USA blog has slowed and has no online classes scheduled (2026).
+- **Takenaka museum:** a 2024 kanna exhibition (brochure essays by 土田昇 and 須田賢司, Suda Kenji). It also hosted a warm-up event for the Miki meet on 22 Feb 2026 and a craft fair in May 2026 — [Star-M](https://www.starminfo.com/jp/event/wazatotool.html).
+- **Death (shaky):** 船津祐司 (Funatsu Yūji), the third-generation 舟弘 (Funahiro) smith, "passed away earlier this year" — [Paklan](https://www.paklan.org/a-prize-kanna-for-the-2026-maine-japanese-woodworking-festival/) — Jul 2026. This rests on one English source only.
+- **Regional events in Japan continue:** Hokkaido's 7th regional meet (Jun 2026, [site](https://kezuroukai.wixsite.com/2022iwa)); a mini-meet in Kurume on 11 Oct 2026 ([page](https://daiku-dougu.jp/kezuroukai-mini-kurume.html)).
+
+## Looked for but couldn't find
+- An official figure for the current record thickness.
+- Katano 2025 winners, and the thicknesses from the Miki 2026 finals.
+- The title and dates of Takenaka's 2024 exhibition (the museum's site blocks automated access).
+- Japanese-language confirmation of Funatsu's death.
+- Any European Kezurou-kai event since 2018.
+- New kanna books published 2024–26.
+- A 2025–26 discussion of wooden dai in dry climates.
+- **Coverage gap:** the shared web-search quota ran out partway through, so later findings came from browsing sites directly. Reddit, X and Japanese forums were not checked.

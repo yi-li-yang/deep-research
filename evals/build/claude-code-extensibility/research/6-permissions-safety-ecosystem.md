@@ -1,0 +1,75 @@
+## Checked beliefs
+- **CHANGED: the four permission modes.** There are now six: `default` (shown as "Manual", alias `manual`), `acceptEdits`, `plan`, `auto`, `dontAsk` and `bypassPermissions`. Auto mode launched on Mar 24, 2026. It became the default for Pro, Max and Team on Aug 14, 2026. Since v2.1.283 (Sep 25, 2026) it is the built-in starting mode for interactive terminal and VS Code sessions on every plan and provider. Admins can turn it off with `permissions.disableAutoMode`. — [permission-modes](https://code.claude.com/docs/en/permission-modes), [blog](https://claude.com/blog/auto-mode-default-in-claude-code) — as of Oct 6, 2026
+- **CONFIRMED, with a new caveat: `Tool(specifier)` rules where deny beats allow.** Rules are checked deny, then ask, then allow, and specificity doesn't matter. New rule forms: `Tool(param:value)` (deny/ask only), `Agent(Name)` and `Cd(path)`. Wildcards look like `Bash(npm run *)`. The caveat: a **mod** that handles `tool.check` can approve a call that an ask rule, an unmanaged PreToolUse hook or the auto classifier would stop. On machines without managed settings or a Team/Enterprise sign-in, it can override **deny** rules too. — [permissions](https://code.claude.com/docs/en/permissions) — Oct 2026
+- **CONFIRMED: optional `/sandbox`.** It shipped in 2.0.24 (Oct 20, 2025) and is still off by default. It uses Seatbelt on macOS and bubblewrap plus socat on Linux/WSL2; native Windows runs unsandboxed. It covers only Bash, PowerShell and Monitor commands; hooks, MCP servers and mods run outside it. New since: proxy-based credential masking (2.1.224, Aug 7, 2026). — [sandboxing](https://code.claude.com/docs/en/sandboxing)
+- **CONFIRMED: settings precedence managed > CLI (`--settings`) > local > project > user.** List keys merge across files. Additions:
+  - A few restrictive keys win even from lower scopes.
+  - `defaultMode: auto` or `bypassPermissions` is ignored in project and local files (for bypass, since v2.1.257, Sep 1, 2026).
+  - Project `allow` rules wait until you accept workspace trust. — [settings](https://code.claude.com/docs/en/settings)
+- **CONFIRMED and extended: layered CLAUDE.md, `@path` imports, path-scoped `.claude/rules/`.** New pieces:
+  - Auto memory: a `MEMORY.md` index, of which the first 200 lines or 25KB load each session.
+  - HTML comments in CLAUDE.md are stripped before loading.
+  - A "managed-only" instructions setting.
+  - `/doctor prompt-audit` (v2.1.283). — [memory](https://code.claude.com/docs/en/memory)
+- **HALF WRONG: on 2.1.x since Jan 2026; newest models are Opus/Sonnet 4.6.**
+  - The version line is right: 2.1.0 shipped Jan 7, 2026, and the current release is **2.1.291 (Oct 6, 2026)**.
+  - The models are stale. In order: Opus 4.6 (Feb 5), Sonnet 4.6 (Feb 17), Opus 4.7 (Apr 16), Opus 4.8 (May 28), Fable 5 (Jun 9, called "a Mythos-class model that we've made safe for general use"), Sonnet 5 (Jun 30), Opus 5 (Jul 24), Fable 5.1 (Sep 1), **Opus 5.5 (Sep 22)** and **Sonnet 5.5 (Sep 28)**.
+  - Since 2.1.280, Pro and Team Standard plans also default to Opus, like the premium plans. — [changelog](https://code.claude.com/docs/en/changelog)
+- **CHANGED: Claude Code doesn't read AGENTS.md.** Since v2.1.277 (Sep 18, 2026) it reads AGENTS.md when no CLAUDE.md or CLAUDE.local.md exists. The `/config` setting "Project instructions" can load both. The feature is a built-in plugin, `cc-plugin-agents-md`. It was extended to Bedrock, Vertex and Foundry in 2.1.281 (Sep 23). — [memory#agents-md](https://code.claude.com/docs/en/memory)
+- **CONFIRMED, and worse: supply-chain risk with no extension signing.** There is still no signing. The partial mitigations are:
+  - Anthropic's marketplace names are reserved and must come from github.com/anthropics.
+  - The community catalog pins commit SHAs, and archive sources can pin a sha256.
+  - npm-sourced plugins are fetched with `--ignore-scripts` and integrity-checked (2.1.275, Sep 17).
+  - The web marketplace marks some plugins "Anthropic verified".
+
+  The docs say a plugin "can execute arbitrary code… with your user privileges", and that Anthropic "does not security-audit" MCP servers. — [plugin security](https://code.claude.com/docs/en/plugins/security), [security](https://code.claude.com/docs/en/security)
+- **CONFIRMED, with a twist: competitors converged on the same building blocks.**
+  - The cross-vendor packaging standard **Agent Plugins 1.0** (Aug 6, 2026) came from AWS, Anysphere (Cursor), Microsoft, OpenAI and Vercel, with Google joining the same day. **Anthropic is absent.** Its layout puts `plugin.json` and `mcp.json` at the root, unlike Claude Code's `.claude-plugin/`. — [GitHub](https://github.blog/changelog/2026-08-12-agent-plugins-1-0-in-vs-code-copilot-cli-and-the-copilot-app/)
+  - Google replaced Gemini CLI with the closed-source, Go-based Antigravity CLI. It was announced May 19, and consumer access to Gemini CLI ended June 18, 2026. Search-level sources only, e.g. [TechRadar](https://www.techradar.com/pro/google-is-making-gemini-cli-users-switch-to-its-new-antigravity-2-0-so-what-will-it-mean-for-you).
+- **CONFIRMED: the people.**
+  - Boris Cherny is Head of Claude Code, Cat Wu is head of product, and Thariq Shihipar is a member of technical staff.
+  - Simon Willison is still the main skeptic.
+  - Huntley's Ralph loop is now the official `ralph-loop` plugin, alongside built-in `/loop` and `/goal`.
+  - obra/superpowers is in `claude-plugins-official`, pinned to a SHA, according to the [marketplace.json](https://github.com/anthropics/claude-plugins-official) I read on Oct 6.
+
+## New findings
+- **How the auto mode classifier works** ([eng post](https://www.anthropic.com/engineering/claude-code-auto-mode), Mar 25, 2026):
+  - Two stages: a fast filter, then chain-of-thought review only for flagged actions.
+  - It sees only user messages and tool calls; Claude's own text and tool outputs are stripped.
+  - It first ran on Sonnet 4.6, moved to Sonnet 5 (Jul 14) and became server-side by default (2.1.278, Sep 19).
+  - Reported results: 0.4% false positives on real traffic, a **17% miss rate on real overeager actions**, and a 5.7% miss rate on synthetic exfiltration.
+  - It falls back to prompts after 3 blocks in a row or 20 in total. Boundaries you state in chat (such as "don't push") can be lost when the conversation is compacted.
+- **Contested claims:** Anthropic says humans refused only 13.6% of harmful actions while the classifier would have blocked 89%, and that 0 of 720 injection attempts succeeded. Anthropic gains from the default flip. Johann Rehberger's attack (a zip with a planted `struct.py`) beat Opus 5 auto mode about 80% of the time. Willison's advice: "Run unattended coding agents in a container, VM or OS sandbox." — [Aug 8](https://simonwillison.net/2026/Aug/8/auto-mode/), [Aug 27](https://simonwillison.net/2026/Aug/27/breaking-claude-code-opus-5-auto-mode/)
+- **Mods** (v2.1.287, Oct 1, 2026): unsandboxed JS/TS that runs inside Claude Code. A mod can redraw the UI, rewrite prompts and tool calls, call models and approve tool calls. Admins can limit them with `allowManagedModsOnly`. This is the biggest new expansion of what an extension can do. — [mods](https://code.claude.com/docs/en/plugins/mods/overview)
+- **Gaps in workspace trust:**
+  - A project skill's hooks and `allowed-tools` are never gated by trust.
+  - `claude -p` and the SDK connect `.mcp.json` servers without asking.
+  - For untrusted repos the docs advise `--bare` or `--setting-sources user`. — [permissions](https://code.claude.com/docs/en/permissions)
+- **Incidents in 2026:**
+  - **Feb 5 — Snyk ToxicSkills:** of 3,984 skills from ClawHub and skills.sh, 36.8% had a security flaw and 76 were confirmed malicious. — [Snyk](https://snyk.io/blog/toxicskills-malicious-ai-agent-skills-clawhub/)
+  - **Feb 9 and 17 — Clinejection:** a prompt injection in a GitHub issue title hit Cline's triage bot, which ran `claude-code-action@v1` with Bash allowed. The stolen token published `cline@2.3.0`, which installed OpenClaw and was downloaded about 4,000 times. — [Snyk](https://snyk.io/blog/cline-supply-chain-attack-prompt-injection-github-actions/)
+  - **Feb 25 — CVE-2025-59536 and CVE-2026-21852** (Check Point): repository hooks, `.mcp.json` and `ANTHROPIC_BASE_URL` could run or steal API keys before the trust prompt. Fixed before disclosure. — [Check Point](https://blog.checkpoint.com/research/check-point-researchers-expose-critical-claude-code-flaws/)
+  - **Mar 24 — CVE-2026-47751:** claude-code-action ran a malicious `.mcp.json` from pull requests (CVSS 5.3), fixed in 1.0.78. — [Tenable](https://www.tenable.com/security/research/tra-2026-27)
+  - **Mar 31 — source leak:** a v2.1.88 npm source map exposed the full source. Anthropic called it "human error, not a security breach". — [InfoQ](https://infoq.com/news/2026/04/claude-code-source-leak)
+  - **Jun 5–7 — Miasma worm:** it planted `.claude/settings.json` SessionStart hooks (plus Cursor, Gemini and VS Code configs) in Azure/durabletask, and GitHub disabled 73 repositories. — [StepSecurity](https://www.stepsecurity.io/blog/miasma-worm-hits-microsoft-again-azure-functions-action-and-72-other-repositories-disabled-after-supply-chain-attack-targeting-ai-coding-agents)
+  - **Sep 17 — Plugin4Shell** (AIR): a git-reference trick defeats SHA pinning, and auto-update makes it zero-click. It hit Claude Code, Codex, Copilot and Gemini CLI. Reported fixed in Claude Code 2.1.179 and Codex 0.146.0. — [Register](https://www.theregister.com/security/2026/09/17/ai-coding-agents-0-click-rce-flaw-could-hand-attackers-keys-to-the-kingdom/5297335). **Shaky:** the "26,000 agents" and "SkillJacking" figures appear only on aggregator sites.
+- **Current best practice** ([Anthropic blog](https://claude.com/blog/steering-claude-code-skills-hooks-rules-subagents-and-more), Jun 18, 2026; [docs](https://code.claude.com/docs/en/features-overview)):
+  - Keep CLAUDE.md under 200 lines, give it an owner and review it like code.
+  - Put file-specific guidance in path-scoped rules.
+  - Put procedures in skills. Only their descriptions load each session, and `disable-model-invocation` keeps a skill out of context entirely.
+  - Put guardrails in hooks; an instruction is "a request, not a guarantee".
+  - Use subagents for side tasks.
+  - MCP tool search has been on by default since 2.1.7 (Jan 14, 2026).
+- **What Anthropic staff say** ([Willison, Jul 21](https://simonwillison.net/2026/Jul/21/cat-and-thariq/)): Thariq said the system prompt was cut 80% and the team is "trend[ing] towards fewer tools". Cat Wu said "almost every single person uses auto mode" at Anthropic. A secondary source ([imasters](https://imasters.com/inteligencia-artificial/anthropic-overhauls-claude-code-harness-mods-projects-artifacts)) says Thariq floated that CLAUDE.md may become obsolete; treat that as shaky.
+- **Live debates:**
+  - Whether auto mode should be the default, and classifier versus sandbox.
+  - ["MCP was always a bad idea?"](https://news.ycombinator.com/item?id=49779329) (HN, about 331 comments, Sep 2026): CLI tools plus skills, the MCP "context tax", and the counterpoint that MCP keeps credentials away from the agent.
+  - Skills and plugin stores as "the new npm".
+  - Anthropic staying outside Agent Plugins.
+
+## Looked for but couldn't find
+- Any signing or provenance scheme for plugins, skills, mods or MCP servers.
+- A Plugin4Shell fix in the public changelog (the 2.1.179 notes don't mention it), or a primary source for the 26k and SkillJacking numbers.
+- Independent replication of Anthropic's 13.6% / 89% figures.
+- Community reaction to mods overriding deny rules. The shared web-search budget ran out; you can send a follow-up to continue. Cursor and Codex details came from Cursor's changelog and secondary sources only.
+- Any Anthropic statement on joining Agent Plugins.

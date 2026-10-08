@@ -1,0 +1,119 @@
+## Checked beliefs
+- **CHANGED:** Plugins (public beta, Oct 2025) bundle commands, agents, skills, hooks and MCP. → Plugins launched on 9 Oct 2025 (v2.0.12) as a public beta with four component types: commands, subagents, MCP servers and hooks. Skills came later, on 16 Oct 2025. Current docs no longer call plugins beta. Components today:
+  - skills (docs now call commands the "older format")
+  - agents and hooks
+  - MCP servers, including `.mcpb` bundles
+  - LSP servers
+  - output styles
+  - themes and monitors, both under `experimental`
+  - channels
+  - `bin/` executables, put on the Bash tool's PATH
+  - `settings.json`, where only `agent` and `subagentStatusLine` take effect
+  - workflows, `userConfig`, and mods
+
+  Sources: [launch post](https://claude.com/blog/claude-code-plugins), [manifest reference](https://code.claude.com/docs/en/plugins/manifest-reference.md). As of Oct 2025 and Oct 2026.
+- **CONFIRMED, with additions:** Marketplaces are repos with `.claude-plugin/marketplace.json`; add with `/plugin marketplace add owner/repo`; install with `/plugin install name@mkt`. → Still true, with changes:
+  - Inside a session, `/plugin install` no longer installs straight away. It opens a details pane showing what will be installed and an estimated context cost, and you choose a scope there.
+  - A marketplace source can also be any git URL (with `#ref`), a local path, a hosted `marketplace.json` URL, or a marketplace hosted on claude.ai (`--claudeai`).
+  - Source: [install](https://code.claude.com/docs/en/plugins/install.md). As of Oct 2026.
+- **CHANGED:** Layout: `plugin.json` with only `name` required, components at the root, `${CLAUDE_PLUGIN_ROOT}`, `/plugin:cmd` names, `--plugin-dir` for testing. →
+  - The manifest itself is now optional. Without one, the name comes from the marketplace entry or the directory name.
+  - Names follow `/plugin:skill`.
+  - `--plugin-dir` also accepts a `.zip` (May 2026) or a folder of plugins. `--plugin-url` and `CLAUDE_CODE_PLUGIN_DIRS` also load a plugin for one session.
+  - Plugin folders placed under `~/.claude/skills/` load automatically as `@skills-dir`. `claude plugin init` scaffolds one there.
+  - `/reload-plugins` (Mar 2026) applies changes without restarting.
+  - `${CLAUDE_PLUGIN_ROOT}` points at a separate cache directory for each version, so it changes on every update.
+  - Sources: [manifest reference](https://code.claude.com/docs/en/plugins/manifest-reference.md), [loading](https://code.claude.com/docs/en/plugins/loading.md).
+- **CONFIRMED:** The official marketplace is `anthropics/claude-plugins-official`. → Claude Code adds it automatically the first time you start an interactive terminal session. Two other Anthropic marketplaces exist:
+  - community: `anthropics/claude-plugins-community`, installed with the name `claude-community`; third-party plugins, nearly all pinned to a commit SHA
+  - demo: `anthropics/claude-code`, named `claude-code-plugins`; old tutorials often mistake it for the official one
+
+  Official and community names are honored only when the source is under github.com/anthropics. The official marketplace takes no directory submissions. Sources: [Anthropic's marketplaces](https://code.claude.com/docs/en/plugins/anthropic-marketplaces.md), [publish](https://code.claude.com/docs/en/plugins/publish.md). As of Oct 2026.
+- **CONFIRMED:** Plugins can ship LSP configs. → Via `.lsp.json` or the `lspServers` key. The official marketplace has 13 `*-lsp` plugins; you install the language-server binary yourself. Plugin language servers don't start in cloud sessions, and claude.ai and Cowork ignore them. Source: [code intelligence](https://code.claude.com/docs/en/plugins/code-intelligence.md). LSP tool since 19 Dec 2025.
+- **CONFIRMED, with caveats:** Teams share through `extraKnownMarketplaces` and `enabledPlugins`; enterprises lock down with `strictKnownMarketplaces`. →
+  - A repo's `extraKnownMarketplaces` applies only after the user accepts the workspace trust dialog.
+  - A repo's `enabledPlugins` does not download plugins whose source is outside the marketplace repo. Each teammate runs `claude plugin install … --scope project`.
+  - Cloud sessions ignore both keys.
+  - `strictKnownMarketplaces` is managed-only, and `[]` blocks every source.
+  - Since 22 Apr 2026 (v2.1.117) the allowlist is also enforced on install, update, refresh and auto-update.
+  - New controls: `blockedMarketplaces`, `owner/*` wildcards (Aug 2026), `disableSideloadFlags`, `strictPluginOnlyCustomization`, `syncClaudeAiPlugins`, `allowManagedModsOnly`, and seed directories.
+  - Source: [org](https://code.claude.com/docs/en/plugins/org.md).
+- **CONFIRMED:** Cowork got plugins in Jan 2026. → Launched 30 Jan 2026 as a research preview for all paid plans, with 11 open-source plugins. At launch, plugins were saved locally on each machine. Source: [TechCrunch](https://techcrunch.com/2026/01/30/anthropic-brings-agentic-plugins-to-cowork/).
+
+## New findings
+- **Shell CLI.** `claude plugin` has these subcommands: `install`, `uninstall`, `enable`, `disable`, `update`, `list`, `details`, `configure`, `prune`, `init`, `tag`, `validate`, `eval`, `test`, and `marketplace add|list|update|remove`.
+  - Flags include `--scope`, `--json`, and `--accept-command <sha256>` for install commands that a marketplace declares.
+  - One-command add and install: `/plugin install p --marketplace <source>` (v2.1.275, 17 Sep 2026).
+  - Source: [CLI reference](https://code.claude.com/docs/en/plugins/cli-reference.md).
+- **Versioning and auto-update.**
+  - Version precedence: manifest `version`, then the marketplace entry's `version`, then the 12-character commit SHA (or archive hash).
+  - Setting `version` keeps users on that version until you bump it. If it is set in both places, `plugin.json` wins without warning.
+  - Auto-update is per marketplace. It is on by default for Anthropic's official names (except `knowledge-work-plugins` and `first-party-plugins`) and for marketplaces added from claude.ai. It is off for the community marketplace and for third-party ones.
+  - It runs within 10 minutes of your first message and needs `/reload-plugins` to apply. Old versions stay on disk for 14 days.
+  - Marketplace owners get a `renames` map and `forceRemoveDeletedPlugins`.
+  - Sources: [loading](https://code.claude.com/docs/en/plugins/loading.md), [host a marketplace](https://code.claude.com/docs/en/plugins/host-marketplace.md).
+- **Dependencies** (in place by Apr 2026).
+  - Declared in `plugin.json`, with npm-style semver ranges resolved against `<name>--v<ver>` git tags created by `claude plugin tag`.
+  - Pulling a dependency from another marketplace requires that marketplace in `allowCrossMarketplaceDependenciesOn`.
+  - `claude plugin prune` removes orphaned dependencies. A plugin with only a name and dependencies works as a bundle.
+  - Source: [dependencies](https://code.claude.com/docs/en/plugins/dependencies.md).
+- **Validate and eval.**
+  - `claude plugin validate --strict --json` gives CI exit codes and checks for names that impersonate Anthropic and for MCP problems.
+  - `claude plugin eval` reached general availability on 11 Sep 2026 (v2.1.269). It runs each case 3 times in isolated sessions, with and without the plugin, and reports the difference.
+  - Evals spend real usage. When you are signed in to claude.ai, the HTML report is also published as a private artifact.
+  - Source: [plugin evals](https://code.claude.com/docs/en/plugin-evals.md).
+- **Persistent data and user config.**
+  - `${CLAUDE_PLUGIN_DATA}` is `~/.claude/plugins/data/<id>/` (v2.1.78, 17 Mar 2026). It survives updates and is deleted at the last uninstall unless you pass `--keep-data`.
+  - `userConfig` arrived in Mar 2026. `sensitive` values go to the keychain.
+  - Since Jul 2026 (v2.1.207), `${user_config.*}` is rejected in shell-form hooks, monitors and headersHelper commands, to prevent shell injection.
+  - Source: [manifest reference](https://code.claude.com/docs/en/plugins/manifest-reference.md).
+- **Mods** (v2.1.287, 1 Oct 2026). Mods are JS/TS function hooks declared under `modules` in `hooks/hooks.json`.
+  - They can draw panes, rewrite prompts or tool calls, and approve tool calls.
+  - They are not sandboxed.
+  - Some of Claude Code's own features are built-in mods, such as `/diff`.
+  - `claude plugin test` runs a mod's tests.
+  - Source: [mods overview](https://code.claude.com/docs/en/plugins/mods/overview.md).
+- **claude.ai sync.**
+  - Plugins enabled on your claude.ai account load in Claude Code as `name@synced`, including ones added from the directory and ones your org requires.
+  - Terminal sync started mid-Sep 2026: docs say v2.1.273, the changelog says v2.1.275. It needs a claude.ai login; API-key sessions don't sync.
+  - Sync is one-way: plugins installed from the CLI don't go up to your account.
+  - Chat loads only skills, commands and remote MCP. Cowork also loads agents, hooks and local MCP. claude.ai and Cowork refuse any plugin with a top-level `bin/`.
+  - Sources: [platform support](https://claude.com/docs/plugins/platform-support), [loading](https://code.claude.com/docs/en/plugins/loading.md).
+- **Directory and marketplace site.**
+  - The directory submission portal opened 25 Sep 2026 for paid plans. Every version gets automated validation and a security scan; a person reviews each new listing.
+  - The claude.com/marketplace website ("2,000+ connectors and plugins") launched 23 Sep 2026. It is not something you add with `/plugin`.
+  - Sources: [directory publish](https://claude.com/docs/directory/publish), [portal blog](https://claude.com/blog/build-plugins-for-claude), [marketplace blog](https://claude.com/blog/claude-marketplace).
+- **Cloud sessions.**
+  - There is no `/plugin` panel.
+  - They load plugins from server-managed settings and, per the changelog, claude.ai-synced plugins (Aug 2026 onward).
+  - They do not load user-scope plugins, or plugins and marketplaces declared in the repo's `.claude/settings.json`.
+  - Sources: [cloud environments](https://code.claude.com/docs/en/cloud-environments.md), [changelog](https://code.claude.com/docs/en/changelog.md).
+- **Security.** There is no plugin signing. Trust rests on:
+  - reserved marketplace names
+  - commit-SHA pins in the community catalog
+  - optional `sha256` pins on archive sources
+  - npm integrity checks (Sep 2026)
+  - the directory's scan and review
+  - a trust warning before install
+
+  Incidents and research:
+  - **Plugin4Shell** (Air Security, disclosed 17 Sep 2026): an attacker names a branch after the pinned SHA, so the checkout resolves to the attacker's code. It affected Claude Code, Codex, Copilot and Gemini CLI. The researchers say Claude Code was fixed in 2.1.179 (Jun 2026), but the changelog doesn't mention the fix. No in-the-wild exploitation was reported. Sources: [Air Security](https://www.air.security/blog-posts/plugin4shell), [The Register](https://www.theregister.com/security/2026/09/17/ai-coding-agents-0-click-rce-flaw-could-hand-attackers-keys-to-the-kingdom/5297335).
+  - The "26,000 agents" headlines come from a separate, earlier malicious-skill experiment by the same vendor. Treat that figure as shaky.
+  - Earlier design-level demonstrations, not patched bugs: malicious plugin hooks that disable permission prompts ([PromptArmor, Oct 2025](https://promptarmor.substack.com/p/hijacking-claude-code-via-injected)), and a skill that hijacks the package index ([Prompt Security, Jan 2026](https://prompt.security/blog/when-your-plugin-starts-picking-your-dependencies-marketplace-skills-and-dependency-hijack-in-claude-code)). Both are security vendors, so they benefit from alarm.
+- **What trips practitioners up:**
+  - a frozen `version`, or two different `version` values ([dev.to, Jul 2026](https://dev.to/opula_io/your-github-repo-can-be-a-claude-plugin-marketplace-here-is-the-whole-setup-24cg))
+  - putting components inside `.claude-plugin/`
+  - hard-coded or `../` paths that break once the plugin is copied to the cache
+  - SHA versioning, so every merge becomes an unannounced update ([claudefa.st, Sep 2026](https://claudefa.st/blog/tools/mcp-extensions/plugins-distribution))
+  - token cost of always-on descriptions (about 1k per turn reported). claude.ai sync injected about 6k tokens until the `syncClaudeAiPlugins` opt-out arrived in Sep 2026, per GitHub issue #39686 (seen in a search snippet only).
+  - an unconnected MCP connector, which makes the plugin look broken
+  - reloads that change MCP tools need `--force` and break the prompt cache
+
+## Looked for but couldn't find
+- Any plugin code-signing or publisher-signature scheme.
+- An explicit announcement that plugins reached general availability. The beta label simply disappeared from the docs.
+- A confirmed malicious plugin in any Anthropic marketplace in 2026. The reported malware campaigns (Snyk ToxicSkills, ClawHub) concern third-party skill hubs, and I didn't verify them.
+- A changelog entry for the Plugin4Shell fix.
+- `/plugin directory`: claude.com says it exists from v2.1.287, but it isn't in the CLI reference. Shaky.
+- A Hacker News/Reddit sweep. The shared web-search budget ran out first.
+- A date for when the plugin `channels` key arrived.

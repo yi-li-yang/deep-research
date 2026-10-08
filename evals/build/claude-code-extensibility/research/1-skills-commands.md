@@ -1,0 +1,81 @@
+## Checked beliefs
+- **CHANGED: Custom slash commands in `.claude/commands/` with `$ARGUMENTS`, `!` lines and `@file`.** These files still work, but they are now a legacy form of skills. Since v2.1.3 (Jan 9 2026) commands and skills are merged. A command file takes all skill frontmatter except `name` and `paths`. Argument syntax grew: `$ARGUMENTS[N]` and `$N` (brackets replaced `$ARGUMENTS.0` in v2.1.19, Jan 23 2026), plus named `$name` declared in `arguments:`. Shell injection has two forms: inline `` !`cmd` ``, which must start a line or follow whitespace, and fenced ```` ```! ```` blocks. If one of these commands fails or is denied, the whole invocation aborts. The old SlashCommand tool (Sep 2025) is gone; Claude now calls everything through the `Skill` tool, which can also run `/init` and `/security-review` (v2.1.108, Apr 2026). — [skills](https://code.claude.com/docs/en/skills), [changelog](https://code.claude.com/docs/en/changelog) — Oct 2026
+- **CONFIRMED with caveat: launch Oct 16 2025; `name` ≤64 chars, `description` ≤1024.** The launch date holds, and Claude Code v2.0.20 shipped skills the same day. The 64/1024 limits are the rules of the spec and the API, where `name` also can't contain XML tags or the words "anthropic"/"claude". In Claude Code, both fields are optional. Its listing cuts `description` plus `when_to_use` at 1,536 chars (`skillListingMaxDescChars`). — [blog](https://claude.com/blog/skills), [spec](https://agentskills.io/specification), [API guide](https://platform.claude.com/docs/en/build-with-claude/skills-guide)
+- **CHANGED: only name and description stay in context.**
+  - **Listing budget:** the listing always keeps every skill name, but over budget it drops descriptions, least-used skills first. The budget defaults to 1% of the context window (`skillListingBudgetFraction`). It was 2% from v2.1.32 (Feb 5 2026). The per-skill cap went from 250 chars (v2.1.86, Mar 27) to 1,536 (v2.1.105, Apr 13 2026).
+  - **After invocation:** the skill body stays in context for the rest of the session and is not re-read. After compaction, each skill keeps its first 5k tokens, within 25k in total.
+  - **Exceptions:** `disable-model-invocation: true` removes even the description. A subagent's `skills:` field injects full skill content at startup. — [skills](https://code.claude.com/docs/en/skills), [settings ref](https://code.claude.com/docs/en/settings-reference)
+- **CHANGED: skills load from `~/.claude/skills/`, `.claude/skills/` and plugins via the Skill tool; `allowed-tools` works only in Claude Code.**
+  - **More locations now:** an enterprise managed directory, nested `<subdir>/.claude/skills` (loaded once Claude touches files there), `--add-dir`, and the claude.ai account.
+  - **Where personal skills don't load:** Cowork, cloud sessions and routines never read `~/.claude/skills`.
+  - **`allowed-tools`:** it is in the open spec (marked experimental) and claude.ai/API uploads accept it. In Claude Code it only pre-approves tools for the invoking turn; it doesn't restrict tools and isn't gated by workspace trust. It is ignored under `allowManagedPermissionRulesOnly` (v2.1.282). The Agent SDK now honours it too. — [skills](https://code.claude.com/docs/en/skills), [SDK](https://code.claude.com/docs/en/agent-sdk/skills)
+- **CONFIRMED: merge in early 2026; `user-invocable` and `disable-model-invocation` control who invokes.** The merge was v2.1.3 and `user-invocable` came in v2.1.0 (Jan 7 2026). Nuances:
+  - `user-invocable: false` only hides the skill from the `/` menu; Claude can still invoke it.
+  - `disable-model-invocation` also blocks preloading into subagents and firing from scheduled tasks.
+  - The new `skillOverrides` setting (`on`, `name-only`, `user-invocable-only`, `off`; working since v2.1.129, May 2026) does the same without editing the file.
+- **CONFIRMED: open standard around Dec 2025, adopted by Codex, Copilot, Cursor and others.** It became an open standard on Dec 18 2025. The client showcase now lists 46 products, including ChatGPT & Codex, GitHub Copilot, VS Code, Cursor, Gemini CLI, Junie, Kiro, Amp, Goose, OpenCode, Databricks, Snowflake and Mistral Vibe. The site says Anthropic originated it and it is "open to contributions"; it names no foundation. — [blog](https://claude.com/blog/skills), [clients](https://agentskills.io/clients)
+- **CONFIRMED + CHANGED: 2.1.x added hot-reload, `context: fork` and frontmatter hooks.** All three arrived in v2.1.0 (Jan 7 2026).
+  - Since v2.1.218 (Jul 22 2026), forked skills run in the **background by default**; set `background: false` to wait. They still wait in `-p`/SDK runs and similar cases.
+  - Backgrounded forks get a narrower tool set, and their edits bypass checkpoints, so `/rewind` can't undo them.
+  - The fork does **not** inherit conversation history.
+  - Hooks defined in a skill persist for the rest of the session; `once: true` removes them after one successful run. — [skills](https://code.claude.com/docs/en/skills), [hooks](https://code.claude.com/docs/en/hooks)
+- **CONFIRMED (Sep 2026): skills synced between claude.ai and Claude Code.** The sync is one-way.
+  - **How it works:** terminal sessions signed in via `/login` download account skills into `~/.claude/skills/synced/` and check again about every 10 minutes. The docs and Help Center say this needs v2.1.273; the changelog announces it in v2.1.275 (Sep 17).
+  - **Where it doesn't happen:** sessions using an API key, Bedrock, or bare mode don't sync.
+  - **What syncs:** user skills, org-provisioned skills, and Anthropic's `pdf`/`xlsx`, which always sync. The skills in this cloud session include `anthropic-skills:pdf` and `anthropic-skills:skill-creator`, which fits.
+  - **Naming:** skills run as `/anthropic-skills:<name>`, or by short name when nothing else uses it.
+  - **Local restrictions:** on your machine, synced bodies don't run `!` commands or expand `@` files or `${CLAUDE_*}` variables (v2.1.228, Aug 11).
+  - **Opt-out:** `syncClaudeAiSkills: false`. — [skills](https://code.claude.com/docs/en/skills), [help](https://support.claude.com/en/articles/12512180-use-skills-in-claude)
+
+## New findings
+- **Full frontmatter list (Oct 2026):** `name`, `description`, `when_to_use`, `argument-hint`, `arguments`, `disable-model-invocation`, `user-invocable`, `allowed-tools`, `disallowed-tools` (v2.1.152), `model`, `effort` (v2.1.80), `context`, `agent`, `background`, `hooks`, `paths`, `shell` (bash or powershell), `metadata`, `license`, `compatibility`.
+  - Unknown keys are **silently ignored**, so a typo fails quietly.
+  - Booleans accept yes/no/on/off/1/0.
+  - Malformed YAML still loads the body, with no metadata (v2.1.186).
+  - The changelog mentions `display-name`, `default-enabled` and `fallback` keys that the docs never document. — [skills](https://code.claude.com/docs/en/skills)
+- **Substitutions:**
+  - `${CLAUDE_SESSION_ID}` (v2.1.9)
+  - `${CLAUDE_SKILL_DIR}` (v2.1.69, Mar 2026)
+  - `${CLAUDE_EFFORT}` (v2.1.120)
+  - `${CLAUDE_PROJECT_DIR}` (v2.1.196)
+  - `${CLAUDE_PLUGIN_ROOT}` and `${CLAUDE_PLUGIN_DATA}`
+  - Skill-dir and project-dir variables also expand inside `allowed-tools` Bash rules, so a skill can run its own bundled scripts without prompts.
+  - If no placeholder takes the arguments, Claude Code appends `ARGUMENTS: …`.
+- **What claude.ai upload rejects:** claude.ai upload, the Skills API and `package_skill.py` accept only six keys: `name`, `description`, `license`, `compatibility`, `metadata`, `allowed-tools`. Anything else is a hard error: "Unexpected key(s) in SKILL.md frontmatter". The Help Center also lists ZIP too large, folder name not matching the skill name, missing skill.md, and invalid characters. Practitioners hit the unexpected-key error when sharing Claude Code skills. — [skills](https://code.claude.com/docs/en/skills#using-skill-frontmatter-outside-claude-code), [Bracketly](https://dev.to/ethan_5b3022150e2c07a4030/your-skillmd-works-fine-locally-and-fails-the-instant-you-try-to-share-it-3e53) (Aug 21 2026; promotes a validator)
+- **Anthropic's own docs contradict each other:**
+  - The Help Center "create skills" page (Jul 22 2026) still says descriptions max 200 chars, uses human-style names, and lists a `dependencies` field — all at odds with the six-key rule.
+  - The [platform overview](https://platform.claude.com/docs/en/agents-and-tools/agent-skills/overview) says custom skills "do not sync across surfaces", claude.ai can't manage skills centrally, and document skills aren't in Claude Code. Help Center pages and the Claude Code docs contradict all three. — [help](https://support.claude.com/en/articles/12512198-how-to-create-custom-skills)
+- **claude.ai today:** skills are on Free, Pro, Max, Team and Enterprise, under Customize > Skills, uploaded as a ZIP.
+  - Team/Enterprise users can share skills with people or groups, or "Publish to org", optionally with review.
+  - Default changes on Oct 2 2026: publishing defaults to "Requires review" for orgs that hadn't chosen, and Enterprise skill scanning is on by default.
+  - Skills also work in the Excel, PowerPoint, Word and Outlook add-ins.
+  - In Cowork on Mac you can create a skill by recording your screen ("Record a skill"). — [provisioning](https://support.claude.com/en/articles/13119606-provision-and-manage-skills-for-your-organization)
+- **API:** the Skills API left beta on Aug 19 2026, so the `skills-2025-10-02` header is no longer needed, and response shapes changed. Limits are 20 skills per request and 30 MB per upload. Skills sit in the container at `/skills/{name}/` with no network and are scoped to the workspace. Managed Agents sessions load skills from a mounted repo's `.claude/skills` (Aug 7 2026). — [release notes](https://platform.claude.com/docs/en/release-notes/overview)
+- **Evals and skill-creator:**
+  - The skill-creator upgrade (Mar 3 2026) added evals, benchmarks, blind A/B comparison and description tuning. Anthropic reports "improved triggering on 5 out of 6 public skills".
+  - In Claude Code it is a plugin: `skill-creator@claude-plugins-official`. It writes `evals/evals.json`, `grading.json` and `benchmark.json`.
+  - `claude plugin eval` (v2.1.269, Sep 11) runs eval suites for plugin skills against a no-plugin baseline, with a `tool_used: Skill` grader. — [blog](https://claude.com/blog/improving-skill-creator-test-measure-and-refine-agent-skills)
+- **Tooling:** `/skill-doctor` (v2.1.261), `/reload-skills` (v2.1.152), and `claude plugin validate .claude/skills`. The `UserPromptExpansion` hook catches a typed `/skill`; `PreToolUse` only sees Skill tool calls.
+- **Other changes:**
+  - A skill folder with `.claude-plugin/plugin.json` loads as a plugin (v2.1.157).
+  - A project skill named `verify` or `simplify` gets run before each commit (v2.1.286).
+  - Up to 6 skills can be stacked in one message.
+  - `/import` brings in skills from Codex, Gemini CLI or Cursor.
+- **Cross-client convention:** agentskills.io recommends `.agents/skills/` as the shared path. Claude Code's docs and changelog never mention it, so it is probably not scanned. That is an absence of evidence, not confirmation. — [client guide](https://agentskills.io/client-implementation/adding-skills-support)
+- **What practitioners say trips people up:**
+  - Descriptions silently dropped from the listing.
+  - YAML problems: colons, block scalars.
+  - `context: fork` on a reference-only skill returns nothing.
+  - Skills stop being followed after compaction.
+  - Personal skills are missing in routines.
+  - A `manifest.json` bug moved skills to `.trash` (fixed in v2.1.280).
+  - Stale advice still circulates: blogs cite a "~15,000 char" budget, and one Mar 2026 post claims about a 50% autonomous trigger rate (shaky). [dev.to](https://dev.to/lizechengnet/why-claude-code-skills-dont-trigger-and-how-to-fix-them-in-2026-o7h)
+  - Most of these blogs are SEO or skill-marketplace content, so I gave them little weight.
+
+## Looked for but couldn't find
+- When the listing budget default changed from 2% to 1%.
+- The exact claude.ai ZIP size limit, and whether claude.ai or the API enforce `allowed-tools`.
+- When the API limits reached 20 skills / 30 MB. From memory, launch-era limits were 8 skills / 8 MB; unverified.
+- A version or date for the spec, or any governing body.
+- Practitioner reaction to forks running in the background by default: the shared web-search budget ran out mid-research.
+- Why the docs and changelog give different versions (doc vs changelog: sync v2.1.273 vs v2.1.275; `/skill-doctor` v2.1.252 vs v2.1.261). A staged rollout is likely but not confirmed.

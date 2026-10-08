@@ -1,0 +1,74 @@
+## Checked beliefs
+- **CONFIRMED, plus a width taper the prior lacks.** The blade is thickest at the head and thinnest at the bevel (one example: 9 mm to 6 mm). It is also widest at the head and narrowest at the edge. Consequences:
+  - Each sharpening widens the edge, so the ears (耳 mimi) must be re-ground. Otherwise the edge rides into the grooves (押え溝 osae-mizo) and shavings jam.
+  - The blade's sides should touch the groove bottoms only where they exit the top. That lets you steer the edge by tapping.
+  - As the blade gets shorter it tightens and can split old bodies. Ease the groove a hair when that happens; don't pre-cut 2–2.5 mm of clearance.
+  - Sources: [Covington Pt3](https://covingtonandsons.com/2021/05/01/japanese-handplanes-part-3-the-blade/), [Pt4](https://covingtonandsons.com/2021/05/08/japanese-handplanes-part-4-fitting-blade-body/) (2021-05); [曼陀羅屋 Mandaraya](https://daiku-dougu.jp/kannna-noha-mimiotoshikouteo.html) (page live 2026); [Fine Tools](https://www.fine-tools.com/grintec.html) (undated).
+- **CONFIRMED, refined (bed angle).** The pitch is a rise of x per 10 of run, written in 分 bu for planes (八分勾配 hachibu-kōbai). Maker 常三郎 Tsunesaburo's table:
+  - 桐・杉 (paulownia, cedar): 6.5–7.5 (33–37°)
+  - 桧・松 (hinoki, pine): 8 (38.7°)
+  - 栗・栂 (chestnut, hemlock): 8.3–8.5 (about 40°)
+  - 欅・桜 (zelkova, cherry): 9 and up (42°+); ebony steeper
+  - Source: [tsune36](https://www.tsune36.co.jp/kanna_kaitai_shinsho/page_003/) (2016-10). Dealer 鉋や寸八 beds its planes at 8.5 and calls 9 "hardwood-only, poor for thin shavings" ([kanna-ya](https://www.kanna-ya.net/kannatoha/), ≤2019).
+- **CONFIRMED (size).** A 寸八 has a 70 mm blade, a 63 mm cutting width and a 9.5-sun body; 1.8 sun is about 54.5 mm (same two sources).
+- **CONFIRMED (fitting by marks and paring; too tight splits the body), but there are two schools on where the grip should be.**
+  - Japanese dealers: fit the bed (表馴染み omote-najimi) to full contact using oil or pencil transfer marks. Leave a faint light gap at the blade's sides. Avoid hard contact at the bed's front corners, which causes splits. Shim a loose bed with a postcard or car-body putty. Sources: [Mandaraya](https://daiku-dougu.jp/kannna-osaebou.html); [角利 Kakuri](https://www.kakuri.co.jp/2017/01/25/%E9%89%8B%E3%81%AE%E3%81%8A%E6%89%8B%E5%85%A5%E3%82%8C/) (2017, updated 2023).
+  - Covington: only the 4–5 mm strips inside the grooves should pinch, and pressure on the bed bulges the sole ([Pt7](https://covingtonandsons.com/2024/10/16/japanese-handplanes-part-7-bedding-the-blade-correcting-some-common-misunderstandings/), 2024-10).
+  - Targets: the blade seats in 3–4 medium mallet blows (Covington). Leave about 1 mm of side play, and fit slightly tight because the body crushes ([深田健太朗 Fukada, licensed 1st-class carpenter](https://daiku-manual.com/ken/2020/04/13/kanna2/), 2020, updated 2024).
+- **CHANGED (back flattening).** Lapping on a kanaban with kongō-sha is still taught (Kakuri). Working professionals now call it optional, because flat stones or diamond plates give more consistent results (Fukada; [Covington](https://covingtonandsons.com/2021/04/24/sharpening-japanese-tools-part-30-uradashi-uraoshi/), 2021-04). High-speed-steel and powder-steel blades are sold as 裏出し不要, needing no ura-dashi ([Tsunesaburo](https://www.tsune36.co.jp/kanna_kaitai_shinsho/page_001/), 2016).
+- **CONFIRMED (ura-dashi).**
+  - Peck only the soft iron (jigane), in a band starting 2–3 mm behind the steel line. Put about two-thirds of the blows in the middle third, over a rounded anvil corner.
+  - A dull コツコツ sound means the blade is supported; rattling means it isn't.
+  - A narrow itoura of 0.5–1 mm is prized; 3–4 mm makes the chipbreaker easier to fit.
+  - When lapping afterwards, press only within 3–4 mm of the edge (Kakuri; Covington 2021).
+- **CONFIRMED with numbers (bevel).**
+  - Tsunesaburo: 28–30° standard, about 21° for paulownia, 33–35° for hardwood ([2016](https://www.tsune36.co.jp/kanna_kaitai_shinsho/page_005/)).
+  - Covington: 27.5–30°, 35° for tropical hardwoods, 22–24° for paulownia. Keep one flat bevel and use micro-bevels only as field fixes. A tiny bevel on the ura side is a traditional emergency fix for tearout ([2020](https://covingtonandsons.com/2020/02/08/sharpening-part-22-the-double-bevel-blues/)).
+  - Corners get a slight radius (Fukada).
+- **CONFIRMED, with a wide spread of numbers (chipbreaker, 裏金 uragane).** The no-gap fit is confirmed; check it against light.
+  - Setback: "one hair" behind the edge, and only as tight as needed to stop tearout; over-tightening jams and dulls the finish (Fukada). A hobby club teaches 0.1–0.3 mm ([club notes](https://hajityoro.com/mokkou9-kanna-sikomi), 2021). Covington's 0.5–0.8 mm starting point is an outlier ([Pt5](https://covingtonandsons.com/2021/07/10/the-japanese-handplane-part-5-the-chipbreaker/), 2021).
+  - Secondary bevel (二段研ぎ): Mandaraya grinds it to stand vertical to the sole in an 8-bu body, about 51° to the blade, with about 20 strokes on a #1000 stone. Too wide a bevel fouls the koppa-gaeshi and jams ([Mandaraya](https://daiku-dougu.jp/dct-kannna-uragane-togi.htm)). Covington uses 70–80°.
+  - Correct a skewed chipbreaker at the pin (押え棒 osae-bō), not by bending its ears ([Mandaraya](https://daiku-dougu.jp/daiuchi-kouhen.html), c.2010).
+- **MOSTLY CONFIRMED but contested (sole profile).**
+  - Naming trap: 台尻 dai-jiri is the end that leads in the pull; 台頭 dai-gashira is the end at the blade head.
+  - Tsunesaburo: a medium plane (中仕上げ) keeps contact bands of 2 bu at the 台頭, 1 bu at the mouth (刃口) and 2 bu at the 台尻, relieved by one paper thickness. A finishing plane keeps only the mouth and the 台尻. This matches the prior and [Covington Pt6](https://covingtonandsons.com/2024/07/06/the-japanese-handplane-part-6-setting-up-and-maintaining-the-sole/) (2024-07).
+  - Kakuri's diagrams reverse it: two contact points for general planes, three for finishing planes.
+  - Relief depth: Covington says 0.2–0.5 mm. Japanese sources say about a paper's thickness or less. Fukada: if light shows under the straightedge, you have cut too much.
+- **CONFIRMED / CHANGED (truing).**
+  - Confirmed: true the sole with the blade in at working tension. The blade bulges the sole behind the mouth; relieve that zone in advance or a projecting blade won't cut (Kakuri). Covington prefers a card scraper to the dai-naoshi.
+  - Changed: don't re-true on a seasonal schedule. Every truing opens the mouth — 「金一枚、台十丁」, "one blade, ten bodies" (Mandaraya). True only when the plane misbehaves, and only at the burnished spots (Fukada).
+- **CONFIRMED but disputed (mouth inlay).** 口埋め kuchi-ume is done with an end-grain strip 8–9 mm wide across the full width ([blog](http://woodwork.cocolog-nifty.com/woodwork/2018/01/post-f16f.html), 2018). Fukada says to re-make the body instead.
+- **CHANGED (study date); 2012 rediscovery confirmed.**
+  - Citation: Kato C., Kawai Y., "Wear of Knife Used for Hand Plane III: The influence of the cap iron," Mokuzai Gakkaishi 35(10):886–895 (1989). Part II is 35(2):77–84 ([JWRS](https://www.jwrs.org/english/journals/mkz-toce/mkze-35/)).
+  - The video was presented in 1994. Bill Tindall reached the authors in 2011, the video circulated in April 2012, and Wilbur Pan's subtitled version came out 2012-05-16 ([Sawmill Creek](https://sawmillcreek.org/threads/history-of-the-kato-and-kawai-planing-video-and-cap-iron-studies.213423/), [WoodCentral](https://www.woodcentral.com/forkbb/topic/3495018/Some%20accurate%20documented%20cap%20iron%20history)).
+
+## New findings
+- **Kato & Kawai part III findings (shaky: secondhand).** Setup: Aogami-1 blade, 30° bevel plus 10° clearance, birch at 10% moisture, 200 m of planing. Findings, per Kees van der Heiden's 2012-06 reading ([WoodCentral](https://www.woodcentral.com/forums/topic/3456431/the-kato-wear-study-link)):
+  - A cap iron at 0.1 or 0.2 mm, with 40/50/60° fronts, did not increase wear as measured by cutting force.
+  - It kept the blade pulling itself into the cut longer at 0.2 mm, or at 0.1 mm with a 40° front, but not at 0.1 mm with 50–60° fronts.
+  - Edge wear was deeper but shorter.
+- **The video is not a setup guide.** The professors said so. David Weaver finds its flat 80° wall worse than a tiny steep land rolling into a curve ([2024-04](https://ofhandmaking.com/2024/04/02/the-infamous-cap-iron-video-its-worthless-for-setting-a-hand-plane/)).
+- **Chipbreaker vs. pitch (forum abstract only).** A chipbreaker at 0.1 mm with a 45° front matched a 60° cutting angle, and the high-angle setups needed about 30% more cutting force ([van der Heiden 2014](https://sawmillcreek.org/threads/mechanics-of-chipbreakers-and-high-cutting-angles-in-woodworking-planes-abstract.221689/)).
+- **Mouth numbers.**
+  - Two-blade planes set up "ready to use": about 0.3 mm. Single-blade planes: one shaving thickness.
+  - Koppa-gaeshi angle: 75–80° on two-blade bodies, about 45° on single-blade ([Mandaraya](https://daiku-dougu.jp/2a-2.htm)).
+  - As truing widens the mouth, steepen the chipbreaker's secondary bevel. Enthusiasts aim for 0.1–0.2 mm (2018 blog above).
+- **Diagnostics.**
+  - Chatter, a wavy surface, or a blade that jumps out on light taps: the bed is loose, often because lapping has thinned the blade. Shim the bed.
+  - Blade projects but won't cut: a bulge behind the mouth, or the strip in front of the mouth isn't bearing.
+  - Shavings jam: untrimmed ears, an oversized secondary bevel, a gap under the chipbreaker, or a mouth too tight for the shaving.
+  - Tearout despite a close setting: the pin isn't parallel (片利き katakiki).
+  - Blade drifts sideways: one groove pinches harder than the other.
+- **Retail planes ship tight on purpose.** They are sold deliberately tight or "90% fitted" (9分仕上げ), and the final fit is the owner's job (Mandaraya; Covington).
+- **Climate.**
+  - A plane moved from humid Japan to dry air can split as the body shrinks across the blade. Pull the blade and let the body acclimatize about a week (Covington 2021).
+  - Makers air-dry the oak 2–3 years or more, keep planes out of sun and water, and store them with the blade in but retracted (Tsunesaburo; kanna-ya).
+  - Covington instead removes the blade for long storage and rests planes on their side ([Pt9](https://covingtonandsons.com/2026/04/25/japanese-handplanes-part-9-maintenance-storage/), 2026-04).
+  - Oil-soaked bodies (油台): kanna-ya says they resist moisture; Fukada saw no benefit.
+- **Incentives.** Covington, Mandaraya, Tsunesaburo and Kakuri all sell tools, and Covington's warranty requires a 27.5–30° bevel. Fukada and Weaver don't sell planes.
+
+## Looked for but couldn't find
+- The full text of Kato & Kawai. Steve Elliott's review site is offline, so the test conditions come from forum summaries and a search snippet.
+- Takenaka Carpentry Tools Museum pages (blocked by bot protection) and Chris Hall's blog (returned 503). I found nothing from Yann Giguère.
+- A measured relief depth from a professional body-maker (台打ち dai-uchi), and any vocational standard for mouth gap.
+- The web-search quota ran out partway through, so later leads were followed only by fetching pages directly.

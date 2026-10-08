@@ -1,0 +1,7 @@
+1
+00:00:01,000 --> 00:00:03,000
+Sharpen the blade first.
+
+2
+00:00:03,500 --> 00:00:06,000
+Then set the <i>chipbreaker</i> close to the edge.

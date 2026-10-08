@@ -1,0 +1,68 @@
+## Checked beliefs
+- **CHANGED:** The belief that subagents are Markdown+YAML files in `.claude/agents/` or `~/.claude/agents/`, managed with `/agents` → The files are the same. Both folders are now scanned recursively, and edits load without a restart. Agents can also come from managed settings, `--agents` and plugins. Only `name` and `description` are required. If you omit `tools`, the subagent gets every tool *available to subagents*, which excludes a few that are always stripped. The `/agents` wizard is gone: the command now only tells you to ask Claude or edit the files. — [sub-agents](https://code.claude.com/docs/en/sub-agents), [changelog](https://code.claude.com/docs/en/changelog) — wizard removed v2.1.198, Jul 1 2026
+- **CONFIRMED:** The Task tool was renamed Agent in v2.1.63. Permission rules written as `Task(...)` still work as aliases. One SDK quirk: the `system:init` tool list still says "Task" while `tool_use` blocks say "Agent". — [sub-agents](https://code.claude.com/docs/en/sub-agents), [SDK subagents](https://code.claude.com/docs/en/agent-sdk/subagents) — Feb 28 2026
+- **CHANGED:** "Fresh context, returns only its final message" → Still true for non-fork subagents. They do receive CLAUDE.md, a git-status snapshot and a list of named sibling agents. They can be resumed by sending `SendMessage` to their ID or name. Explore and Plan are one-shot and cannot be resumed. — [sub-agents](https://code.claude.com/docs/en/sub-agents) — current as of Oct 2026
+- **WRONG:** "Subagents can't spawn subagents" → Nesting is on by default, up to 3 layers below the main conversation. `CLAUDE_CODE_MAX_SUBAGENT_SPAWN_DEPTH` sets the limit, and `1` turns nesting off. History: 5 levels from v2.1.172 (Jun 10), off by default in v2.1.217 (Jul 21), 3 since v2.1.219 (Jul 24 2026). Agent-team teammates still cannot spawn teammates. — [sub-agents](https://code.claude.com/docs/en/sub-agents), [changelog](https://code.claude.com/docs/en/changelog)
+- **WRONG:** "Subagents never see the parent conversation" → Forks inherit the full conversation and its prompt cache. Claude starts one with `subagent_type: "fork"`; users start one with `/subtask`. Fork mode is on by default in interactive sessions since v2.1.232, and off in `-p` and the SDK unless `CLAUDE_CODE_FORK_SUBAGENT=1`. A fork cannot fork. — [sub-agents](https://code.claude.com/docs/en/sub-agents), [Week 33](https://code.claude.com/docs/en/whats-new/2026-w33) — Aug 13 2026
+- **CHANGED:** Explore is no longer Haiku. It inherits the main session's model, capped at Opus; define your own `Explore` with `model: haiku` to get the old behaviour. Other built-ins now exist: `claude` (catch-all), `statusline-setup`, `claude-code-guide`, and `fork`. — [changelog](https://code.claude.com/docs/en/changelog) — v2.1.198, Jul 1 2026
+- **CONFIRMED, and extended:** `permissionMode`, `skills` and `hooks` exist. The frontmatter also has `disallowedTools`, `maxTurns`, `mcpServers`, `memory`, `background`, `effort`, `isolation: worktree`, `omitClaudeMd`, `initialPrompt`, `color` and `experimental.cacheTtl`. Caveats:
+  - Plugin agents ignore `hooks`, `mcpServers` and `permissionMode`.
+  - `permissionMode` is ignored when the parent session is in bypass, acceptEdits or auto mode.
+  - Source: [sub-agents](https://code.claude.com/docs/en/sub-agents) — Oct 2026
+- **CHANGED:** Background subagents are now the **default** (v2.1.198, Jul 1 2026). Their permission prompts appear in the main session instead of being auto-denied (v2.1.186, Jun 22 2026). — [changelog](https://code.claude.com/docs/en/changelog)
+- **CONFIRMED:** `--agents` takes JSON. In `-p` it also accepts a path to a JSON file (v2.1.281, Sep 23 2026). — [cli-reference](https://code.claude.com/docs/en/cli-reference)
+- **CONFIRMED, but static:** Agent teams arrived as a research preview in v2.1.32 (Feb 5 2026). As of Oct 6 2026 they are **still experimental and off by default** (`CLAUDE_CODE_EXPERIMENTAL_AGENT_TEAMS=1`), though fixes keep landing.
+  - Interactive sessions only; one team per session; no nested teams; `/resume` does not restore in-process teammates.
+  - Gotcha: once enabled, any *named* Agent call launches a teammate, so a team can form without you asking for one.
+  - Source: [agent-teams](https://code.claude.com/docs/en/agent-teams)
+- **WRONG:** "The SDK loads no filesystem config unless asked via `settingSources`" → Omitting `settingSources` now loads user, project and local settings, the same as the CLI. Pass `[]` to isolate. The docs say the empty default existed only "briefly" in v0.1.0 and was reverted. — [SDK features](https://code.claude.com/docs/en/agent-sdk/claude-code-features), [migration guide](https://code.claude.com/docs/en/agent-sdk/migration-guide) — Oct 2026
+- **CONFIRMED, with caveat:** `claude -p` drives CI, and `claude-code-action@v1` is "built on the SDK". The docs recommend `--bare` for scripts and say it "will become the default for `-p`". Without it, `-p` runs project hooks and `.mcp.json` servers even in folders you never trusted. — [headless](https://code.claude.com/docs/en/headless), [github-actions](https://code.claude.com/docs/en/github-actions) — Oct 2026
+
+## New findings
+- **Agent tool inputs:** `description`, `prompt`, `subagent_type`, `model` (sonnet|opus|haiku|fable), `run_in_background`, `name`, `isolation` ("worktree"|"remote").
+  - `mode` and `team_name` are deprecated and ignored.
+  - When fork mode is on, `run_in_background` is removed from the tool.
+  - `isolation: "remote"` appears in the SDK type but nowhere else in the docs (shaky).
+  - Permission rules can match parameters, e.g. `Agent(model:opus)` (Jun 2026).
+  - Source: [TS reference](https://code.claude.com/docs/en/agent-sdk/typescript)
+- **Tool restrictions:**
+  - Stripped from every subagent: `AskUserQuestion`, `EnterPlanMode`, `ExitPlanMode` (unless in plan mode), `ScheduleWakeup`, `Workflow`, `WaitForMcpServers`, `EndConversation`, and `Agent` once at the depth limit.
+  - Background subagents keep all MCP tools but only these built-ins: Read, Grep, Glob, LSP, Bash, PowerShell, Edit, Write, NotebookEdit, WebFetch, WebSearch, TodoWrite, Skill, ToolSearch, Enter/ExitWorktree, Monitor, TaskStop, SendMessage, Artifact.
+  - Source: [sub-agents](https://code.claude.com/docs/en/sub-agents)
+- **Limits:**
+  - At most 20 subagents running at once (`CLAUDE_CODE_MAX_CONCURRENT_SUBAGENTS`, v2.1.217, Jul 21 2026).
+  - The 200-per-session spawn cap was removed in v2.1.224 (Aug 7 2026).
+  - In the SDK, `maxBudgetUsd` caps total spend across subagents.
+- **Dynamic workflows** (v2.1.154, May 28 2026) — [workflows](https://code.claude.com/docs/en/workflows):
+  - The `Workflow` tool runs a JavaScript script Claude writes, using `agent()`, `parallel()`, `pipeline()`, `phase()` and `log()`, with optional JSON-schema outputs.
+  - Runs in the background. Defaults: 16 agents at a time, 1,000 agents per run, 4,096 items per `parallel()` or `pipeline()` call. Resumable within the same session.
+  - Watched with `/workflows`; scripts can be saved to `.claude/workflows/` and shipped in plugins.
+  - `/deep-research` is bundled.
+  - Opt-in: the keyword `ultracode` (renamed from "workflow" in v2.1.160, Jun 2), or `/effort ultracode`, which lets Claude workflow every substantive task and lifts the subagent concurrency cap.
+- **Agent view** (research preview, v2.1.139, May 11 2026): `claude agents`, `claude --bg`, `/background`, `claude attach` and `claude logs`. Background sessions are local and isolated in worktrees. `/fork` now copies the whole session into a new background session (Jul 2026). — [agent-view](https://code.claude.com/docs/en/agent-view)
+- **Cross-session messaging** (v2.1.224, Aug 7 2026): `ListAgents` plus `SendMessage` across your local, remote-machine and cloud sessions. Relayed messages carry no user authority. — [cross-session](https://code.claude.com/docs/en/cross-session-messaging)
+- **Scheduling** — [scheduled-tasks](https://code.claude.com/docs/en/scheduled-tasks), [routines](https://code.claude.com/docs/en/routines):
+  - `/loop` (v2.1.71, Mar 7 2026) is backed by `CronCreate`/`CronList`/`CronDelete`. Tasks are session-scoped, at most 50, and recurring ones expire after 7 days.
+  - Without an interval, `/loop` self-paces through `ScheduleWakeup`; with no prompt, it runs a built-in maintenance prompt or `loop.md`.
+  - Routines are cloud runs triggered by a schedule (1-hour minimum), an API call or a GitHub event. Launched Apr 13–17 2026, still a research preview. Created with `/schedule`; they run with no permission prompts.
+  - Desktop scheduled tasks run locally at intervals down to 1 minute.
+- **`/goal`** (v2.1.139): a separate evaluator model keeps Claude working until a stated condition holds. Also works with `-p`. — [goal](https://code.claude.com/docs/en/goal)
+- **Cloud sessions:** `claude --cloud` (`--remote` is a deprecated alias) and `--teleport`. **Projects** is a public beta on Pro and Max in which Claude runs parallel cloud "threads". — [cloud](https://code.claude.com/docs/en/claude-code-on-the-web), [projects](https://code.claude.com/docs/en/claude-projects)
+- **Task tools on newer models:** the shared-task-list tools (`TaskCreate` etc.) are on by default only on older models (up to Opus 4.7 and Sonnet 4.6) since v2.1.268 (Sep 10 2026). On newer models, teams coordinate through messages unless you opt in. — [tools-reference](https://code.claude.com/docs/en/tools-reference)
+- **Safety hardening:**
+  - Subagent output scanning (v2.1.210, Jul 14 2026).
+  - In auto mode, subagents deliver reports through `SubagentHandback`, and the classifier reviews them first (v2.1.271, Sep 14 2026).
+  - Inline MCP servers and hooks in project agent files need workspace trust.
+- **Vendor guidance on over-delegation:** Opus 5 delegates "more readily than prior models". When Claude Code uses its `claude_code` system-prompt preset on Opus 5, it adds a "don't call Agent unless asked" line. Anthropic's advice is to delegate only "genuinely independent, sizeable" work and not to use subagents to verify Claude's own work. — [Opus 5 guide](https://platform.claude.com/docs/en/build-with-claude/prompt-engineering/prompting-claude-opus-5), [SDK subagents](https://code.claude.com/docs/en/agent-sdk/subagents) — Jul–Oct 2026
+- **What works and what doesn't** (Anthropic gains from heavier token use; Cognition sells Devin):
+  - Anthropic's docs say agent teams use about 7× the tokens in plan mode, recommend 3–5 teammates, and say not to split work on the same file. — [costs](https://code.claude.com/docs/en/costs)
+  - Anthropic's harness post: a separate evaluator agent is "a strong lever". But the full harness cost $200 over 6 hours versus $9 over 20 minutes solo, and the evaluator became "unnecessary overhead" for tasks within the model's solo ability. — [harness](https://www.anthropic.com/engineering/harness-design-long-running-apps) — Mar 24 2026
+  - Carlini's 16-agent C compiler used a bash loop with git and file locks, not agent teams. It cost about $20k; the tests were the key. — [C compiler](https://www.anthropic.com/engineering/building-c-compiler) — Feb 5 2026
+  - Cognition: multi-agent works "when writes stay single-threaded", with extra agents doing review or acting as a stronger "smart friend". Parallel writer swarms still fail. Their bug statistics are internal. — [Cognition](https://cognition.com/blog/multi-agents-working) — Apr 22 2026
+  - Simon Willison: the main value of subagents is managing context, so don't "go overboard" with specialists. Separately, running coding work in subagents on cheaper models stretched his top-model allowance. — [guide](https://simonwillison.net/guides/agentic-engineering-patterns/subagents/) (Mar 2026), [post](https://simonwillison.net/2026/Jul/3/judgement/) (Jul 3 2026)
+
+## Looked for but couldn't find
+- When the SDK's `settingSources` default was reverted. The SDK changelogs don't record it.
+- Independent practitioner reports on dynamic workflows, ultracode or agent teams at scale. The team's shared web-search budget ran out partway through, so Reddit and HN weren't surveyed, and Jesse Vincent's blog returned 503.
+- A launch date for Projects, and any timeline for agent teams leaving experimental status.
+- Documentation for `isolation: "remote"` on the Agent tool.

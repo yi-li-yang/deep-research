@@ -1,0 +1,185 @@
+{"questions": [
+  {"q": 1, "type": "recent-change",
+   "answers": {
+     "1": {"score": 7,
+           "confident_false_claims": [
+             "Komori make small planes only and are not a source for a 70 mm smoother (the Yoita guild lists 小森小鉋製作所's main products as 小鉋・大鉋)",
+             "'The Komori brothers' (the guild page describes Masaki as Hideki's おじ（弟）, i.e. uncle)"
+           ],
+           "unsupported_claims": [
+             "Nitori Tōru is a 'former Nikon engineer' (his profile and the na-nagaoka article say only an unnamed precision-equipment maker, in quality assurance)",
+             "Mizuno Seisuke is a pupil of Usui Kengo",
+             "The 13 March 2026 death was reported by Mandaraya (the date is confirmed by Risaku Works; not found on Mandaraya)",
+             "Komori have no successor"
+           ],
+           "rationale": "The core facts are right and current. Funatsu died on 13 Mar 2026, the guild marks the forge 廃業, the Kurashige and Hida stock details check out (every Hida item page shows out of stock), and 与板刃物工芸館 did close in Feb 2025. Several specifics are wrong or unsourced, though: Komori is written off as small-plane-only, and the biography adds 'Nikon' and 'pupil of Usui Kengo' with no source."},
+     "2": {"score": 9,
+           "confident_false_claims": [],
+           "unsupported_claims": [],
+           "rationale": "Accurate and current throughout. It has the death date from Risaku Works and the guild's 廃業 listing. Mizuno is correctly born 1950 (per his own site) with his seven lines, and 知足 is described as his site describes it. Nitori's Oct 2020 apprenticeship, Oct 2025 independence and swan stamp are right, Komori is correctly 'mostly small planes plus some full-size', and the Usui/Nakano closures and the >200 to about a dozen decline match the cited article."},
+     "3": {"score": 8,
+           "confident_false_claims": [
+             "Hida's Funahiro Koushun ($1,030.90) was still available in early October (the category page lacks a sold badge, but the item page says OUT OF STOCK)",
+             "Komori Masaki is Hideki's brother (the guild page says おじ（弟）, i.e. uncle)",
+             "Komori make small planes only (the guild lists 小鉋・大鉋)"
+           ],
+           "unsupported_claims": [
+             "Funatsu died 'at 79' (born 1946; exact birth date not found)",
+             "The Fuji ¥85,800 Genshin was on Japanese wrought iron (the Fuji listing gives only 青紙1号)"
+           ],
+           "rationale": "The change and the alternatives are correct and well sourced. Chihara's prices check out (Genshin 寸八 ¥89,100, Mizuno's four planes, Nitori's Suzaku ¥52,800), as does Fuji's sold-out ¥85,800 Aogami #1 Genshin. Minor errors: the Hida Koushun is actually out of stock, and Komori is described as brothers who make small planes only."}
+   }},
+  {"q": 2, "type": "current-fact",
+   "answers": {
+     "1": {"score": 9,
+           "confident_false_claims": [
+             "Honmamon's Aogami #1 price range starts at ¥17,500 (the ¥17,500 Honmamon item is an Aogami #2 反り鉋; its Aogami #1 planes start higher)"
+           ],
+           "unsupported_claims": [
+             "CWA is absent from the 2017 JSSA tool-steel brand table",
+             "Hitachi Hyōron's 1964 article covers CWA"
+           ],
+           "rationale": "Accurate, well sourced and insightful. The Kawai company history confirms the 1906 Togo trademark, Andrew & Co. plus Swedish and German mills, and Admiral Tōgō's permission. Yamamoto does call his rediscovered remnant bars 東郷0号. The Inukubi, Tsubame, CWA and Swedish descriptions match Yamamoto and Tsunesaburo, Honmamon's Togo Ray ¥138,000 and Tsubame ¥46,500 are verified, and the availability bottom line is right; the only slip is one price."},
+     "2": {"score": 8,
+           "confident_false_claims": [
+             "Kawai imported the Togo steels 'from the Taishō era' (the Togo brand was registered in 1906, late Meiji)"
+           ],
+           "unsupported_claims": [
+             "Tsunesaburō's 汐音 Shion 'came out in November 2025' (only the small-plane 汐音 pages date from Nov 2025; the 70 mm item page is older, and Mandaraya says Shion's steel is old Schoeller-Bleckmann stock traded from Usui Kengo)",
+             "Inukubi came in bars about 18 × 4.5 mm"
+           ],
+           "rationale": "Correct on the main steels and their status. Covington's Inukubi analysis (about 5% W plus Cr, Mo, V; narrow strips) and Weaver's opposite sharpening experience check out, the CWA/SKS1 figures are right, and the Kurashige prices are verified, though the ¥158,670 'Togo No. 0' is a 70+48 mm set. It misdates Togo's start and leaves Tsubame's status open, although Yamamoto says little stock remains."},
+     "3": {"score": 8,
+           "confident_false_claims": [],
+           "unsupported_claims": [
+             "Brian Holcombe describes K120 as 'old stock 1.2% carbon'"
+           ],
+           "rationale": "Accurate and concise. Togo's late-Meiji origin for scalpels and metal-cutting tools, Ray as the plane grade, the disagreement over Inukubi (Japan-Tool does say it is closer to white steel), CWA as SKS1 and no longer made, Tsubame as stock steel, and the Honmamon prices are all verified. It has less historical and price depth than the best answer, but no errors."}
+   }},
+  {"q": 3, "type": "judgment",
+   "answers": {
+     "1": {"score": 8,
+           "confident_false_claims": [],
+           "unsupported_claims": [
+             "Holcombe prefers a mouth-plus-heel sole layout"
+           ],
+           "rationale": "Sound, sourced advice. It acclimatizes with the blade out (Covington's 'week or so', Holcombe's few weeks) and fits to Covington's verified three-blow, 3–4-tap standard. It trues the sole with the irons in, keeps relief minimal, sets the chipbreaker 0.1–0.2 mm back and stores the plane retracted (Tsunesaburo). It is a little vaguer than the others on the sole layout, since 'front' is ambiguous on a pull plane."},
+     "2": {"score": 9,
+           "confident_false_claims": [],
+           "unsupported_claims": [],
+           "rationale": "Excellent. The Wood Handbook figure of about 6% indoor EMC for the dry Southwest is correct, and it acclimatizes with the blade out and tracks progress by weight. It quotes Tsunesaburō's 仕上げ scheme correctly (刃口 5厘 ≈1.5 mm, 台尻 1分 ≈3 mm, paper-thin relief), and Mandaraya's ~0.3 mm mouth for two-iron planes is verified. Practical and calibrated."},
+     "3": {"score": 9,
+           "confident_false_claims": [],
+           "unsupported_claims": [
+             "About 1 mm of side play for the blade"
+           ],
+           "rationale": "Thorough and correct. It acclimatizes with both irons out, then fits blade, chipbreaker and sole in a sensible order. Tsunesaburō's finishing lands are given with the right orientation (台尻 leads when pulling), and Mandaraya does advise correcting a skewed chipbreaker at the 押さえ棒. The humidity follow-up is sensible."}
+   }},
+  {"q": 4, "type": "trap",
+   "answers": {
+     "1": {"score": 9,
+           "confident_false_claims": [],
+           "unsupported_claims": [],
+           "rationale": "Rejects the premise with evidence from Proterial's grade list and explains why the reasoning fails: Aogami #2 has less carbon than Shirogami #1. The hardness ('60 over' HRC) and Keizaburō's Aogami #2 planes (Big Sand ordered a 70 mm blue #2) are verified. It invents no hardness or makers for the non-existent grade."},
+     "2": {"score": 9,
+           "confident_false_claims": [],
+           "unsupported_claims": [
+             "Tsunesaburō 土性骨 costs about ¥26,760 and Yamamoto 鉄心斎芳楽 about ¥31,000 in Japan",
+             "A retailer rates edge retention at 5.5 for Blue #2 and 4.5 for White #2"
+           ],
+           "rationale": "Correctly says Aogami #3 doesn't exist. It gives accurate Proterial carbon ranges and identifies the real #3 grades (Shirogami #3, Gingami #3). Its data points are verified: Dictum quotes 63 HRC for its Blue Paper blades, and Hida's Tsunesaburo Suika in blue steel runs up to $410.90. The recommendation is balanced."},
+     "3": {"score": 9,
+           "confident_false_claims": [],
+           "unsupported_claims": [
+             "'Many' of Tsunesaburō's lower-priced planes use Aogami #2 (only the 春蘭 small-plane series was found)"
+           ],
+           "rationale": "Rejects the premise with Proterial evidence and gives a correct composition table and the verified 'HRC 60 over'. Its maker examples check out: Mandaraya's Keizaburō Aogami #2 page, and Yamamoto's vacuum-melted White #1 Kinju at $1,020 from Suzuki-ya in Oakland."}
+   }},
+  {"q": 5, "type": "current-fact",
+   "answers": {
+     "1": {"score": 9,
+           "confident_false_claims": [],
+           "unsupported_claims": [
+             "All four smiths appear among the Miki cooperative's kanna members (the cooperative site could not be accessed; Chiyozuru Sadahide's workshop is reportedly in Ono)",
+             "The Michi-no-Eki Miki hardware hall stocks about 70 local makers"
+           ],
+           "rationale": "The count is correct (Hyōgo tourism: about 50 at the peak, now 4; Yamamoto: 87 in 1929, 55 in 1939), and it names all four current smiths: Tsunesaburō, Yamamoto, Keizaburō and Chiyozuru Sadahide. The details are verified: Tsunesaburō tours by reservation with kanna and stones on sale, Morita Naoki succeeding Kanki Iwao in 2019, and Keizaburō's custom orders."},
+     "2": {"score": 7,
+           "confident_false_claims": [],
+           "unsupported_claims": [
+             "The cooperative's four kanna makers are Tsunesaburō, Yamamoto, Chiyozuru Sadahide and Koyama Kinzoku (the cooperative site was inaccessible; search-index snippets of its kanna page also name 圭三郎鉋製作所 and 蒼龍刃物製作所)",
+             "A 2019–21 Gifu survey counted about eight kanna smiths in the Miki area"
+           ],
+           "rationale": "The history is accurate and the details are well verified: Tsunesaburō's tour phone and email, the Chiyozuru lineage (神吉岩雄 b. 1944, Morita from Feb 2019) and the Rankiku plane. But it names Koyama Kinzoku, a factory maker, as the fourth and omits Keizaburō, the hand-forging smith most relevant to a visitor who wants to buy direct."},
+     "3": {"score": 7,
+           "confident_false_claims": [],
+           "unsupported_claims": [
+             "Kensuke Yamamoto was certified as a traditional craftsman in 2021",
+             "Dictum lists a Chiyozuru plane at €1,048",
+             "Tsunesaburō uses outside dai makers plus an in-house fitter"
+           ],
+           "rationale": "Its historical table matches Yamamoto's records, and its details on Tsunesaburō, Yamamoto and Chiyozuru (charcoal and bellows, Aogami #1 standard, inherited Yasuki and old Swedish steel) are verified. It says it can't name the fourth forge, so it misses Keizaburō: honest, but incomplete on the core question of who is still forging."}
+   }},
+  {"q": 6, "type": "judgment",
+   "answers": {
+     "1": {"score": 9,
+           "confident_false_claims": [],
+           "unsupported_claims": [],
+           "rationale": "The technique is correct and verified. Strike only the jigane, in Covington's band starting 2–3 mm behind the lamination line, with about two-thirds of blows in the centre third. Use a small hammer (Kakuri's 15 mm 刃槌, a Warrington peen) on a rounded-corner anvil fully under each blow, check often, then do ura-oshi on a kanaban with Kakuri's half-teaspoon of carborundum and three drops of water. The HSS advice is right: Tsunesaburō's SKH51 is ura-dashi-free, and a hollow-backed HSS blade means asking the maker first."},
+     "2": {"score": 9,
+           "confident_false_claims": [],
+           "unsupported_claims": [
+             "A postcard glued to the anvil corner stops slipping"
+           ],
+           "rationale": "Correct and well sourced. Mandaraya's 'upper third of the bevel' strike zone and its point that lengthwise cracks can't be fixed are verified, as are Kakuri's kotsu-kotsu/kata-kata sound test and Mandaraya's figure that over 90% of Tsunesaburō's HSS planes ship ura-dashi-free. The fallback for a hollow-backed HSS blade is sensible."},
+     "3": {"score": 6,
+           "confident_false_claims": [
+             "Grinding the bevel back a millimetre or two restores the flat to the edge 'with no risk'. On a hollow-backed kanna, grinding back moves the edge further into the hollow; the standard fix for ura-gire is ura-dashi plus ura-oshi.",
+             "Tsunesaburō's HSS blades are built never to need ura-dashi (Mandaraya says its 酒壺 HSS plane also comes in a normal hollow-back type that does need it, though over 90% ship ura-dashi-free)"
+           ],
+           "unsupported_claims": [
+             "HSS is too brittle to hammer (Mandaraya lightly taps HSS backs when needed)"
+           ],
+           "rationale": "Its description of ura-dashi is good: hammer, rounded anvil, striking the jigane only, the kotsu-kotsu sound, and Mandaraya's verified warning that a hidden crack can later shed a 3–4 mm chunk. But the 'safest' first fix it recommends is geometrically wrong and would waste blade without restoring the flat, and the HSS section overgeneralizes."}
+   }},
+  {"q": 7, "type": "recent-change",
+   "answers": {
+     "1": {"score": 8,
+           "confident_false_claims": [
+             "In April 2026 the specialty-steel business moved into Bain's holding company (on 26 Feb 2026 Proterial postponed the company split to 1 July 2026; only an internal SBU re-division took effect on 1 April)"
+           ],
+           "unsupported_claims": [
+             "KKF forum reports of 15–20% price rises and fewer production runs"
+           ],
+           "rationale": "The key points are correct. Hitachi Metals became Proterial in Jan 2023, the YSS white/blue grades are still listed with plane among their uses, and Aigami launched on 9 Dec 2025 with No. 2 in mass production, an undisclosed composition and no kanna use. The advice is sensible. It has one timing error in the 2026 restructuring."},
+     "2": {"score": 9,
+           "confident_false_claims": [],
+           "unsupported_claims": [],
+           "rationale": "Accurate and current. It gives the 4 Jan 2023 renaming and the 1 July 2026 reorganization in which BCJ-52 became Proterial, Ltd. with the YSS steels in the Aero & Industrial Alloy unit, plus the relisting aim, verified against Proterial's Dec 2025, Feb 2026 and Jul 2026 releases. It notes no discontinuation notice and gives the correct Aigami No. 1/No. 2 specs and uses. Rumours are flagged as unconfirmed."},
+     "3": {"score": 9,
+           "confident_false_claims": [],
+           "unsupported_claims": [],
+           "rationale": "Accurate. It covers the Proterial rename and Aogami Super still being listed for 'High quality Plane'. Magnets and cable/auto parts were split off while specialty steels stayed in the parent, and the Aigami details, including the easy-sharpening claim, are verified. It is well calibrated ('no signal' rather than a guarantee) but gives no date for the 2026 reorganization."}
+   }},
+  {"q": 8, "type": "current-fact",
+   "answers": {
+     "1": {"score": 9,
+           "confident_false_claims": [],
+           "unsupported_claims": [
+             "The 2018 Kurume final used a sugi board"
+           ],
+           "rationale": "Correct and current: the 42nd meet in Miki (about 500 participants per Sun TV) and the 43rd at Yōkaichiba Dome, Sōsa, on 21–22 Nov 2026 (about 400 competitors). It explains the spread with verified evidence: the 3.5 µm Miki prelim winner, Idei's 2 µm record at the 27th meet (R-bay), three-point totals (Sun TV's ≤30 µm target), the 2024 五寸鉋 division won at 19 µm, and the different final boards. Minor quibble: Sun TV says top competitors aim for ≤5 µm on average, not that they reach it."},
+     "2": {"score": 8,
+           "confident_false_claims": [],
+           "unsupported_claims": [
+             "Quote from Paklan that the control involved is 'far from the reality of day-to-day work' (not in the article's public text)",
+             "Competitors keep boards damp and favour single-blade bodies with tight mouths",
+             "2 µm shavings have been pinned up since at least 2009"
+           ],
+           "rationale": "The current facts are right: 40th meet in Hadano (752 contestants), the 43rd's Sōsa date, venue and 5,000 expected visitors, the KK-USA El Cerrito meet on 17–18 Oct 2026, the Katano rules (<76 mm plane, ≥55 × 1,800 mm board) and Watanabe's two 3.5 µm prelim shavings. But it attributes the ~20 µm figures only to finals, missing the 19 µm 五寸鉋 win and the summed three-point scores."},
+     "3": {"score": 8,
+           "confident_false_claims": [],
+           "unsupported_claims": [],
+           "rationale": "Accurate and current, with each of these verified: Watanabe's 3.5 µm prelim and win, the 43rd Sōsa meet, the stale national site, the KK-USA event, the Hadano rules, finals at ~15 µm (2019) and ~50 µm on sugi (2023), and the 2026 student champion's 19 µm as a three-point sum. It misses the 19 µm 五寸鉋 result and is over-sceptical in treating 2 µm as unverified, when Idei's record and a 2 µm shaving at the 41st meet are both reported."}
+   }}
+]}

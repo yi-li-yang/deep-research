@@ -1,0 +1,74 @@
+{"questions": [
+  {"q": 1, "type": "trap",
+   "answers": {
+     "1": {"score": 10, "confident_false_claims": [], "unsupported_claims": [],
+           "rationale": "Rejects the premise with evidence: 26.18 added no PC champion, Data Dragon 16.19.1 has no Norra, and Norra is Wild Rift's first exclusive champion. It then pivots to Locke, the likely real opponent, and every Locke detail checks out against the wiki, op.gg and lolalytics: Q/R 950 range, 375 blink, 10-12% execute, 30.2% ban rate, and Syndra at 47.96% over 6,751 games. It offers Wild Rift help if that was meant."},
+     "2": {"score": 9, "confident_false_claims": [], "unsupported_claims": ["Guides agree she is weak before her first item (Luden's)"],
+           "rationale": "Correctly says Norra is not on PC and that 26.18 added no champion. It names Locke as the only 2026 PC release and labels all matchup advice as Wild Rift. The WR kit numbers and the 7.1f nerf match the WR wiki. It does not ask which PC champion the user might actually mean."},
+     "3": {"score": 9, "confident_false_claims": ["Norra's E makes your hitbox bigger for 2s (WR wiki: the hitbox increase lasts 4s; only the 20% slow lasts 2s)"], "unsupported_claims": ["Usual counterpicks are Kassadin, Ekko, Zoe and Ahri"],
+           "rationale": "Correctly rejects the premise, notes the real 26.18 Syndra nerf, names Locke, and asks PC players who they are actually facing. The WR advice is clearly labelled and mostly accurate (W 900 range, R 1500-2500 range, 140% fourth volley), apart from a small duration error."}
+   }},
+  {"q": 2, "type": "current-fact",
+   "answers": {
+     "1": {"score": 8, "confident_false_claims": [], "unsupported_claims": [],
+           "rationale": "The key facts are correct: 1,350 points, +8% bonus AD/AP (Empowered Recall replaced in 26.9 at 6%, raised in 26.11), free T3 boots, point values matching the wiki, the roam bank, and a passive-only finish around 15:00 (wiki: 15:08). Minor gaps: it omits the 12s passive pause after recalling and gives only one example of the boot upgrades."},
+     "2": {"score": 10, "confident_false_claims": [], "unsupported_claims": [],
+           "rationale": "Every claim verified: the full T3 boot mapping, current Spellslinger's stats (20 + 8% pen, 45 MS), and 25-point takedowns against 15 for top/bot. The penalties are also right: up to 75% out of lane, scaling down, the roam bank, and the 12s recall pause. The finish-time estimate is clearly labelled."},
+     "3": {"score": 10, "confident_false_claims": [], "unsupported_claims": [],
+           "rationale": "Correct and current throughout: +8% AD/AP replacing Empowered Recall, all seven T3 boots, and the exact 15:08 passive-only finish from the wiki. The penalties (75% scaling down, 12s recall pause, roam bank) and the practical math (a recall costs about 18 points) are also right."}
+   }},
+  {"q": 3, "type": "judgment",
+   "answers": {
+     "1": {"score": 10, "confident_false_claims": [], "unsupported_claims": [],
+           "rationale": "Every op.gg Emerald+ 16.19 figure verified, including Aatrox 72/23, Jax 67/23, Shen 66/31, Darius Ghost 66/Ignite 25, Malphite Ignite 24/TP 74, and Darius's lolalytics Flash+Exhaust at about 53%. The quest-TP mechanics are right: 390s free TP, 300-210s upgraded versus 330-240s for other roles, 35% shield for 10s, and the 26.19 split-push rationale. The judgment is champion-dependent and sound, the LCK quotes check out, and it correctly says 26.20 has no Teleport changes."},
+     "2": {"score": 6, "confident_false_claims": ["Ornn plays Flash + Ignite most often on lolalytics (Flash+Ignite is only ~19% of Ornn top games: 18,320 of 94,556; op.gg shows Flash+TP at 76%)", "Gangplank is split roughly 50/50 (Flash+Ignite is ~88% on both lolalytics, 125,817 of 142,708, and op.gg)"], "unsupported_claims": [],
+           "rationale": "The mechanics (390s free TP, 30s cooldown cut, 35%/10s shield), the Riot quote and the when-to-take-TP framework are correct. However, two of its four stat examples are wrong, and the Ornn error falsely suggests even tanks now default to Ignite."},
+     "3": {"score": 6, "confident_false_claims": ["Aatrox Flash+Teleport ~163k games at 51.8% on lolalytics (that figure is his skill-priority sample; Flash+Ignite is ~73% of his games and TP ~23%)", "Ornn Flash+Teleport ~10k games at 54.1% (that row is starting items; Ornn takes TP in ~76% of games)", "For Aatrox and Ornn the TP/Ignite choice is 'genuinely split' (it is heavily skewed: Aatrox ~73% Ignite, Ornn ~76% TP)"], "unsupported_claims": [],
+           "rationale": "The mechanics are accurate and complete: 13:35 passive finish, TP turning Unleashed at 10:00, the quest's 30s cut and 35% shield, and +80 XP per takedown. The situational advice is good. But its central data table misreads lolalytics, so it tells the user the meta is evenly split when bruisers overwhelmingly take Ignite and tanks take TP."}
+   }},
+  {"q": 4, "type": "current-fact",
+   "answers": {
+     "1": {"score": 8, "confident_false_claims": ["The 26.20 notes add health regen to Spirit Visage, Force of Nature and Warmog's (those changes are in the League Classic section, not Summoner's Rift)"], "unsupported_claims": [],
+           "rationale": "Every jungle stat verified against lolalytics Emerald (51.3% average; Wukong 53.7, Cho 53.5, Warwick 54.1, Shyvana 53.3, Lillia 52.9, Yi 52.6) and op.gg Emerald+. The avoid list and 26.19 nerfs are right, and the Lillia/Kindred items from the final 26.20 notes are correct. It misattributes Classic-only tank item changes to the live game."},
+     "2": {"score": 9, "confident_false_claims": [], "unsupported_claims": [],
+           "rationale": "Stats match lolalytics Emerald+ (Wukong ~54%, Cho 53.4% at 6.8% pick, Rek'Sai 52.8, Evelynn 53, Zac 52.7, Vi 50.07% ranked 73/78) and op.gg (Rammus 52.3% highest). The Cho build matches lolalytics' highest-win path. The 26.17/26.19 Nocturne nerfs, the Rocketbelt AH 20->10 change and the Diana/Kindred 26.20 items are all correct."},
+     "3": {"score": 9, "confident_false_claims": [], "unsupported_claims": [],
+           "rationale": "Accurate patch timing, correct 51.7% lolalytics Emerald+ baseline, and a table matching both sites, including Graves' 26.17 nerf and Viego/Graves at ~49% on op.gg. The 26.20 preview items are correctly labelled as preview and match the final notes: Sylas changes pulled, Diana W, Kindred E/W."}
+   }},
+  {"q": 5, "type": "recent-change",
+   "answers": {
+     "1": {"score": 10, "confident_false_claims": [], "unsupported_claims": ["Everyone's lane is shown in champion select", "The next rank reset is January 2027"],
+           "rationale": "Very comprehensive and verified against the 26.1/26.9/26.15 notes and the wiki. It covers the Atakhan/Feats/Blood Roses removal, Baron at 20:00, grubs 8:00-14:45 and Herald 15:00-19:45, 0:30 minions, permanent plates with gold decaying from 11:00, +20% melee turret damage, 40% nexus turret respawn, and 200% crit. Role quests, Faelights, item and rune changes, champions and the ranked/autofill/duo rules are all correct."},
+     "2": {"score": 9, "confident_false_claims": [], "unsupported_claims": [],
+           "rationale": "Accurate on role quests, tempo (0:30 minions, 25s/20s waves), Baron at 20:00 with less gold, 75g drakes, 9,000 HP outer turrets losing resists from 11:00, Crystalline Overgrowth, 200% crit, Luden's Echo, the 26.9 rune swap, Zaahen/Locke, and the ranked changes. It omits removed items and the Mel/Shyvana updates, and the support-quest description is thin."},
+     "3": {"score": 9, "confident_false_claims": [], "unsupported_claims": ["Everyone can see your lane in champion select"],
+           "rationale": "Correct and current on all the major 26.1 changes: objectives, 0:30 minions, plate gold decay, melee turret bonus, 40% nexus respawn, 200% crit and Faelights. It also gets the role quests (including the support level-5 penalty), the 26.9 rune and item changes, champions, and the ranked/autofill/dodge/WASD changes right. It is slightly less complete than the best answer."}
+   }},
+  {"q": 6, "type": "current-fact",
+   "answers": {
+     "1": {"score": 10, "confident_false_claims": [], "unsupported_claims": [],
+           "rationale": "Matches the /dev blog and Riot Support. It covers the Season 3-anchored greatest-hits design, the draft/Co-op/custom queues, no ranked, owned champions carrying over, and Classic Levels and Pass giving BE and IP. Summoner's Journey from Classic Level 10 is right. The 72-champion list matches the official page exactly, and it correctly flags the five 26.20 additions."},
+     "2": {"score": 9, "confident_false_claims": [], "unsupported_claims": [],
+           "rationale": "Accurate and well sourced: Classic Levels to 30, Council at Classic Level 5, Summoner's Journey at 10, and Pass Act I from Jul 29 to Sep 21 with expiring coins. It correctly says rank and MMR are unaffected and gives the exact 72-champion roster. It does not name the 26.20 additions, and only points the user to the notes."},
+     "3": {"score": 10, "confident_false_claims": [], "unsupported_claims": [],
+           "rationale": "Correct on what it is (every old summoner spell, classic items, runes/masteries, IP), on what carries over (no rank/MMR effect, one-way champion access, BE rewards), and on the exact 72-champion roster. It correctly adds the 26.20 additions (Aatrox, Caitlyn, Irelia, Karma, Quinn, making 77) per the final notes."}
+   }},
+  {"q": 7, "type": "recent-change",
+   "answers": {
+     "1": {"score": 9, "confident_false_claims": [], "unsupported_claims": [],
+           "rationale": "Both nerfs are exactly right: 26.16 healing 100%->90% base AD and 6%->4% missing HP, +50 HP, new recipe at 3,100g; 26.17 HP 450->400 and AD 45->40, with Riot quotes. It covers the 26.19 Aatrox buff and Vi nerf, the 26.16 alternative-item buffs (BC, Eclipse, Sterak's, Tiamat), and Vi/Aatrox builds that match lolalytics. It correctly says Sundered Sky is now a second or third item."},
+     "2": {"score": 8, "confident_false_claims": ["Eclipse's 26.16 buff raised damage 'against melee targets' from 6% to 8% (the split is by user: 6% melee / 4% ranged users -> 8% / 5%)"], "unsupported_claims": [],
+           "rationale": "The nerf timeline, numbers, net change and the 26.19 Vi/Aatrox details are all correct. It says Sundered Sky 'isn't in Aatrox's core build', which reflects lolalytics' highest-win build, but op.gg's most common Aatrox core is still Eclipse -> Sundered Sky -> Death's Dance. It also mischaracterises the Eclipse buff."},
+     "3": {"score": 9, "confident_false_claims": ["Patch 26.20 makes no changes to fighter items (26.20 nerfed Experimental Hexplate for ranged users and changed Hextech Rocketbelt, citing AP bruisers; AD bruiser items are untouched)"], "unsupported_claims": [],
+           "rationale": "The 26.16/26.17 changes, including the ranged 50%->45% heal, and Riot's quotes are exact. It covers the 26.19 Vi nerf and Aatrox buff, and its op.gg build table checks out: Aatrox Eclipse->SS->DD, Lee Eclipse->BC->DD, Vi Tri->BC with SS first ~3%, Jax Tri->SS->Zhonya's. The only flaw is a slightly overbroad 26.20 statement."}
+   }},
+  {"q": 8, "type": "judgment",
+   "answers": {
+     "1": {"score": 8, "confident_false_claims": ["Riot removed the 'C-grade' requirement in 26.15 (the requirement had already been raised from C to B in 26.3)"], "unsupported_claims": [],
+           "rationale": "The current Aegis rules (double LP on win, normal loss, no grade), autofill parity, carry-over after a dodge, the dodge penalties and the Master+ full loss are all correct. The op.gg support win rates, the 26.16 level-5 penalty and the 26.19 Atlas regen change also verify. Its break-even math assumes Aegis applies every time, but Riot calls it an occasional bonus, and it misstates the removed grade requirement."},
+     "2": {"score": 9, "confident_false_claims": [], "unsupported_claims": [],
+           "rationale": "The most precise account of autofill protection, matching Riot Support and the /dev blog. Aegis is occasional and lost on role swap or AFK, and players get a guaranteed primary/secondary role for the 'next handful of games'. It also correctly covers the priority-role Aegis, the tiered dodge penalties (5/15/15 LP; 6/30/720 min) and the Master+ full loss. The lolalytics support win rates are exact."},
+     "3": {"score": 8, "confident_false_claims": [], "unsupported_claims": [],
+           "rationale": "Correct on dodging (status carries over; full loss at Master+), matchmaking parity, the current Aegis rules (including voiding on swap, penalty or remake), and the 26.16/26.19 support context. However, its 'no main-role guarantee' line is misleading, since Riot Support promises primary or secondary for the next handful of games. Its description of how support quest points are earned is imprecise, and the break-even math ignores that Aegis is occasional."}
+   }}
+]}
