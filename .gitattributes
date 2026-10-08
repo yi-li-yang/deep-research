@@ -1,2 +1,6 @@
 # Auto detect text files and perform LF normalization
 * text=auto
+
+# Verbatim agent and model output, and a captions fixture: keep their whitespace as recorded
+evals/** whitespace=-trailing-space
+tests/fixtures/** whitespace=-trailing-space

@@ -113,22 +113,37 @@ An independent agent wrote 24 hard questions that the briefings never saw. A jud
 
 ## Install
 
-**Claude Code**
+Pick the row that matches where you run Claude. The skill is the same everywhere; only the command name changes.
+
+| Where you run Claude | What to do | You type |
+|---|---|---|
+| claude.ai, the Claude app, Cowork, or Claude Code on the web (cloud sessions) | [Upload the skill to your account](#upload-to-your-account) once | `/expertise <topic>`, or ask Claude to "get up to speed on" the topic |
+| Claude Code in a terminal | [Install the plugin](#install-the-plugin), or [copy the folder](#copy-the-folder) | `/expertise:expertise <topic>` for the plugin, `/expertise <topic>` for a copied folder |
+| A clone of this repository, local or cloud | Nothing: the skill is checked in at `.claude/skills/expertise` | `/expertise <topic>` |
+| Another repository | [Copy the folder](#copy-the-folder) into its `.claude/skills/` and commit it | `/expertise <topic>` |
+
+Cloud sessions don't install plugins that a repository turns on, so on the web use the upload or a committed `.claude/skills/` folder.
+
+### Upload to your account
+
+```
+cd skills && zip -r expertise.zip expertise -x '*/__pycache__/*'
+```
+
+Upload `expertise.zip` under **Customize → Skills** on claude.ai. Code execution must be enabled. Skills enabled on your account then load in cloud sessions, in Cowork, and in terminal sessions signed in with the same account (terminal: Claude Code 2.1.273 or later).
+
+### Install the plugin
 
 ```
 claude plugin marketplace add yi-li-yang/deep-research
 claude plugin install expertise@deep-research
 ```
 
-Or, inside a session: `/plugin install expertise --marketplace yi-li-yang/deep-research`.
+Inside a session the same two steps are `/plugin marketplace add yi-li-yang/deep-research` and `/plugin install expertise@deep-research`. Claude Code lists the command as `/expertise:expertise`. (Its docs say the plain `/expertise` also works unless another command has that name; we only confirmed the namespaced name.) The plugin adds about 180 tokens to every session; its full text, about 2,300 tokens, loads only when the skill runs.
 
-**claude.ai**
+### Copy the folder
 
-Download this repository, zip the `skills/expertise` folder, and upload the zip under **Customize → Skills** on claude.ai. Code execution must be enabled. Once uploaded, the skill also follows you into Claude Code sessions where you sign in with the same account.
-
-**Manual**
-
-Copy `skills/expertise` into `~/.claude/skills/`.
+Copy `skills/expertise` into `~/.claude/skills/` (every project on your machine) or into a project's `.claude/skills/` (that project, including its cloud sessions).
 
 ## Use
 
@@ -142,7 +157,7 @@ Start a conversation with the topic you're about to work on:
 
 Claude reports what differs from what it believed, how confident the picture is, and what remains unknown. Then it carries on as the expert. Invoke it again on the same topic later to refresh: it reuses the saved briefing and only checks what changed.
 
-- **Where briefings live.** In Claude Code, briefings are saved in `~/.claude/briefings/`, or in your project's `briefings/` folder if it already holds briefings, and Claude tells you the path. Each is a plain markdown file you can read, edit, commit or share. On claude.ai, files don't persist between conversations: download the briefing and attach it next time, or add it to a Project.
+- **Where briefings live.** In Claude Code, briefings are saved in your project's `briefings/` folder if it already holds briefings, and otherwise in `~/.claude/briefings/`. Claude tells you the path. Each is a plain markdown file you can read, edit, commit or share. **In a cloud session, anything outside the repository is deleted when the session ends**: have Claude save the briefing in the repository's `briefings/` folder, commit it and merge it, so the next session starts from it. On claude.ai, files don't persist between conversations: download the briefing and attach it next time, or add it to a Project.
 - **Permissions.** Research uses web search and web fetch. In auto mode, the default in current Claude Code, it runs without prompts; otherwise approve WebSearch and WebFetch when asked, or allow them in `/permissions`.
 - **Video.** Transcripts need [yt-dlp](https://github.com/yt-dlp/yt-dlp): `python3 -m pip install --user yt-dlp`. Without it, Claude records videos as pointers instead.
 
