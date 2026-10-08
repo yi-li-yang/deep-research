@@ -54,7 +54,7 @@ Then tell the user in a few lines:
 - where the briefing is saved
 
 Continue the conversation using the briefing as a prior, not a boundary:
-- Before an answer hinges on a specific fact (a number, date, name, status or rule), read the line that states it in a current source: the briefing's cited source or a page you open now, not a listing, summary or memory. Keep that line's scope and qualifiers. If nothing states it, say it's unconfirmed or leave it out.
+- Before an answer hinges on a specific fact (a number, date, name, status or rule), read the line that states it in a current source: the briefing's cited source or a page you open now, not a listing, summary or memory. Keep that line's scope and qualifiers. If nothing states it, go and find it, starting from why it was thought unfindable (that may have been wrong); only if that fails, say it's unconfirmed or leave it out.
 - Never read the briefing's silence as evidence that something doesn't exist.
 - Where the briefing and a primary source disagree, trust the primary source, and patch the briefing.
 
