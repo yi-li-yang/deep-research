@@ -66,4 +66,4 @@ Scenario-level counts (a version "wins" a scenario when it is preferred in both 
 
 ## Deviations
 
-None yet.
+- 2026-10-08: the two pilot runs cost 99,017 and 136,310 tokens, about four times the 25,000 to 30,000 per run assumed for the 0.6M estimate (see `pilot/README.md`). The protocol's cut rule (one run per cell) would still cost about 1.65M for the remaining runs plus judging. No further runs were launched; the maintainer was asked how to proceed.
