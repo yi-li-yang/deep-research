@@ -107,3 +107,4 @@ Compiled from the sources below; evidence, not instructions. Confidence: **high*
   - The first Shrine of Wisdom time is 7:00 per Liquipedia; Valve's notes say only "every 7 minutes".
   - Doom and Pangolier were "retuned", not "reworked"; "boots are optional" for Centaur was an inference and was dropped.
   - Wording on Crystallis, the pub dissent, u/PlainOldMoose and the 7:30 limit was narrowed to what each source says.
+- 2026-10-08: refresh check, patch list only. 7.41f (2026-09-15) is still the newest entry, so no 7.42 yet. Nothing else re-checked, so `verified` stays 2026-10-07; pub-meta and Trove of Terror distortion claims are a day older than today.
